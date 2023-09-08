@@ -199,8 +199,8 @@ angular.module('plugin-messaging', ['ngResource', 'ui.bootstrap', 'ui.router', '
             });
         };
 
-        var loading = false;
-        var loadData = function () {
+        let loading = false;
+        const loadData = () => {
             $scope.errorMessage = undefined;
 
             if (loading) {

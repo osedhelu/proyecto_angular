@@ -4,6 +4,7 @@ angular.module('headwind-kiosk')
         confirmModal, deviceService, groupService, settingsService, hintService,
         authService, pluginService, configurationService, alertService,
         spinnerService, localization, utils) {
+        // #region Clase principal
 
 
         var saveDeviceSearchParams = function () {
@@ -22,7 +23,6 @@ angular.module('headwind-kiosk')
         };
 
         var restoreDeviceSearchParams = function () {
-            console.log('hola mundo')
             if ($cookies.get('deviceSearch')) {
                 var deviceSearch = JSON.parse($cookies.get('deviceSearch'));
                 $scope.searchParams = deviceSearch.searchParams;
@@ -255,15 +255,15 @@ angular.module('headwind-kiosk')
         });
         $scope.$on('$destroy', sub);
 
-        $scope.init = function () {
+        $scope.init = () => {
+            loadSettings();
             spinnerService.show('spinner2');
             $rootScope.settingsTabActive = false;
             $rootScope.pluginsTabActive = false;
             $scope.search(false, function () {
-                // Hints are shown after all devices are loaded
                 $timeout(function () {
                     hintService.onStateChangeSuccess();
-                }, 100);
+                }, 800);
             });
         };
 
@@ -271,8 +271,8 @@ angular.module('headwind-kiosk')
         var searchIsRunning = false;
         $scope.search = function (spinnerHidden, callback) {
             if (searchIsRunning) {
-                console.log('hola mundo', new Error())
-                console.log("Skipping device search since a previous search is pending", new Error());
+                console.log(searchIsRunning)
+                console.log("Skipping device search since a previous search is pending");
                 return;
             }
 
@@ -905,77 +905,13 @@ angular.module('headwind-kiosk')
                 $scope.search();
             });
         }
-
-        $scope.openBulkGroupModal = function () {
-            $scope.groupAction = 'set';
-
-            $scope.options = [{
-                "name": "Option 1",
-                "id": "option1",
-                "selected": false
-            }, {
-                "name": "Option 2",
-                "id": "option2",
-                "selected": true
-            }, {
-                "name": "Option 3",
-                "id": "option3",
-                "selected": true
-            }, {
-                "name": "Option 4",
-                "id": "option4",
-                "selected": false
-            }, {
-                "name": "Option 5",
-                "id": "option5",
-                "selected": false
-            }, {
-                "name": "Option 6",
-                "id": "option6",
-                "selected": false
-            }];
-
-
-            $scope.getOptionId = function (option) {
-                return option.id;
-            };
-
-            $scope.isOptionSelected = function (option) {
-                var selected;
-                if (option.selected) {
-                    selected = "selected"
-                }
-                return selected;
-            };
-            groupService.getAllGroups(function (response) {
-                $scope.groups = response.data;
-                $scope.groupsList = response.data.map(function (group) {
-                    return { id: group.id, label: group.name };
-                });
-            });
-
-            $scope.groupsSelection = [];
-
-            $scope.saveDeviceGroupModalController = function () {
-                var ids = [];
-                for (var i = 0; i < devices.length; i++) {
-                    if (devices[i].selected) {
-                        ids.push(devices[i].id);
-                    }
-                }
-
-                var device = {
-                    'ids': ids,
-                    'action': $scope.groupAction,
-                    'groups': $scope.groupsSelection
-                };
-                deviceService.updateDeviceGroupBulk(device, function () {
-                    $modalInstance.close();
-                });
-            };
+        // #endregion
+        $scope.openBulkGroupModal = () => {
+            console.log("Hola mundo ___________ Hola mundo");
 
 
         };
+        // #region
 
         $scope.confirmBulkDelete = function () {
             let localizedText = localization.localize('question.delete.device.bulk');
@@ -1062,6 +998,7 @@ angular.module('headwind-kiosk')
                 }
             }
         });
+        // #endregion
 
         $scope.init();
     })

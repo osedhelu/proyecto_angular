@@ -112,12 +112,9 @@ angular.module('plugin-messaging', ['ngResource', 'ui.bootstrap', 'ui.router', '
     .controller('PluginMessagingTabController', function ($scope, $rootScope, $window, $location, $modal, $timeout, $interval,
         pluginMessagingService, getDevicesService, confirmModal,
         authService, localization) {
-
         $scope.hasPermission = authService.hasPermission;
-
         $rootScope.settingsTabActive = false;
         $rootScope.pluginsTabActive = true;
-
         $scope.paging = {
             pageNum: 1,
             pageSize: 50,

@@ -5,6 +5,7 @@ angular.module('headwind-kiosk')
         authService, pluginService, configurationService, alertService,
         spinnerService, localization, utils) {
 
+
         var saveDeviceSearchParams = function () {
             var expireDate = new Date();
             expireDate.setTime(expireDate.getTime() + 600);
@@ -882,44 +883,98 @@ angular.module('headwind-kiosk')
             }
         };
 
-        $scope.openBulkUpdateModal = (aa) => {
+        $scope.seletConfigID = 1
+        $scope.openBulkUpdateModal = () => {
             configurationService.getAllConfigurations(function (response) {
+                $scope.seletConfigID = response.data[0].id
                 $scope.deviceParams = {
-                    devices: $scope.devices,
-                    save: () => {
-                        var ids = [];
-                        for (var i = 0; i < devices.length; i++) {
-                            if (devices[i].selected) {
-                                ids.push(devices[i].id);
-                            }
-                        }
-
-                        var device = { 'ids': ids, configurationId: $scope.device.configurationId };
-                        deviceService.updateDevice(device, function () {
-                            $modalInstance.close();
-                        });
-                    },
-                    configurationId: response.data[0].id,
                     configurations: response.data
                 };
             });
 
         };
-
-        $scope.openBulkGroupModal = function () {
-            var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/device.group.html',
-                controller: 'DeviceGroupModalController',
-                resolve: {
-                    devices: function () {
-                        return $scope.devices;
-                    }
+        $scope.saveOpenBulkUpdateModal = (configurationId) => {
+            var ids = [];
+            for (var i = 0; i < $scope.devices.length; i++) {
+                if ($scope.devices[i].selected) {
+                    ids.push($scope.devices[i].id);
                 }
-            });
-
-            modalInstance.result.then(function () {
+            }
+            var device = { 'ids': ids, configurationId }
+            deviceService.updateDevice(device, function () {
                 $scope.search();
             });
+        }
+
+        $scope.openBulkGroupModal = function () {
+            $scope.groupAction = 'set';
+
+            $scope.options = [{
+                "name": "Option 1",
+                "id": "option1",
+                "selected": false
+            }, {
+                "name": "Option 2",
+                "id": "option2",
+                "selected": true
+            }, {
+                "name": "Option 3",
+                "id": "option3",
+                "selected": true
+            }, {
+                "name": "Option 4",
+                "id": "option4",
+                "selected": false
+            }, {
+                "name": "Option 5",
+                "id": "option5",
+                "selected": false
+            }, {
+                "name": "Option 6",
+                "id": "option6",
+                "selected": false
+            }];
+
+
+            $scope.getOptionId = function (option) {
+                return option.id;
+            };
+
+            $scope.isOptionSelected = function (option) {
+                var selected;
+                if (option.selected) {
+                    selected = "selected"
+                }
+                return selected;
+            };
+            groupService.getAllGroups(function (response) {
+                $scope.groups = response.data;
+                $scope.groupsList = response.data.map(function (group) {
+                    return { id: group.id, label: group.name };
+                });
+            });
+
+            $scope.groupsSelection = [];
+
+            $scope.saveDeviceGroupModalController = function () {
+                var ids = [];
+                for (var i = 0; i < devices.length; i++) {
+                    if (devices[i].selected) {
+                        ids.push(devices[i].id);
+                    }
+                }
+
+                var device = {
+                    'ids': ids,
+                    'action': $scope.groupAction,
+                    'groups': $scope.groupsSelection
+                };
+                deviceService.updateDeviceGroupBulk(device, function () {
+                    $modalInstance.close();
+                });
+            };
+
+
         };
 
         $scope.confirmBulkDelete = function () {
@@ -1010,67 +1065,9 @@ angular.module('headwind-kiosk')
 
         $scope.init();
     })
-    .controller('DeviceUpdateModalController', function ($scope, $modalInstance, configurationService, deviceService, devices) {
-        $scope.device = {};
 
-        configurationService.getAllConfigurations(function (response) {
-            $scope.device.configurationId = response.data[0].id;
-            $scope.configurations = response.data;
-        });
-
-        $scope.save = function () {
-            var ids = [];
-            for (var i = 0; i < devices.length; i++) {
-                if (devices[i].selected) {
-                    ids.push(devices[i].id);
-                }
-            }
-
-            var device = { 'ids': ids, configurationId: $scope.device.configurationId };
-            deviceService.updateDevice(device, function () {
-                $modalInstance.close();
-            });
-        };
-
-        $scope.closeModal = function () {
-            console.log('Hola mundo ==== closeModal',)
-            $modalInstance.dismiss();
-        }
-    })
     .controller('DeviceGroupModalController', function ($scope, $modalInstance, groupService, deviceService, devices) {
-        $scope.device = {};
-        $scope.groupAction = 'set';
 
-        groupService.getAllGroups(function (response) {
-            $scope.groups = response.data;
-            $scope.groupsList = response.data.map(function (group) {
-                return { id: group.id, label: group.name };
-            });
-        });
-
-        $scope.groupsSelection = [];
-
-        $scope.save = function () {
-            var ids = [];
-            for (var i = 0; i < devices.length; i++) {
-                if (devices[i].selected) {
-                    ids.push(devices[i].id);
-                }
-            }
-
-            var device = {
-                'ids': ids,
-                'action': $scope.groupAction,
-                'groups': $scope.groupsSelection
-            };
-            deviceService.updateDeviceGroupBulk(device, function () {
-                $modalInstance.close();
-            });
-        };
-
-        $scope.closeModal = function () {
-            $modalInstance.dismiss();
-        }
     })
     .controller('DeviceModalController',
         function ($scope, $modalInstance, deviceService, configurationService, groupService, device, settings,

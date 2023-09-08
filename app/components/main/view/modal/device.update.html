@@ -37,7 +37,8 @@
 
             <!-- Modal body -->
             <div class="modal-body">
-                <select class='form-control' ng-model='deviceParams.configurationId '
+
+                <select class='form-control' ng-model='seletConfigID'
                     ng-options="configuration.id as configuration.name for configuration in deviceParams.configurations">
                 </select>
 
@@ -47,7 +48,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal" localized>button.cancel</button>
                 <button type="button" class="btn btn-primary" data-dismiss="modal"
-                    ng-click="deviceParams.save()">Guardar</button>
+                    ng-click="saveOpenBulkUpdateModal(seletConfigID)">Guardar</button>
             </div>
 
         </div>

@@ -52,7 +52,8 @@
                                     <a class="dropdown-item pointer" ng-click="openBulkUpdateModal()"
                                         data-toggle="modal" data-target="#openBulkUpdateModal"
                                         localized>button.set.configuration</a>
-                                    <a ng-click="openBulkGroupModal()" class="dropdown-item pointer"
+                                    <a ng-click="openBulkGroupModal()" data-toggle="modal"
+                                        data-target="#openBulkGroupModal" class="dropdown-item pointer"
                                         localized>button.set.group</a>
                                     <a ng-click="confirmBulkDelete()" class="dropdown-item pointer"
                                         localized>button.delete</a>
@@ -530,4 +531,5 @@
         </div>
     </div>
     <ng-include src="'app/components/main/view/modal/device.update.html'" ng-init="deviceParams"></ng-include>
+    <ng-include src="'app/components/main/view/modal/device.group.html'" ng-init="deviceParams"></ng-include>
 </div>

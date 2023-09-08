@@ -1,89 +1,61 @@
-<!-- Localization completed -->
-<nav class='navbar navbar-default navbar-fixed-top header'
-    style="height: 75px; background: white; border-color: white;border-color: #4CEE00;">
-
-
-    <div class='nav navbar-nav navbar-left logo-text'>
-        <a ng-click='mainPanel()'>
-            <img src='/images/logo5.png' alt='Logo' style='width: 100%;'>
-        </a>
-    </div>
-
-    <ul class='nav navbar-nav navbar-right'>
-        <li ng-if="expiryWarning"><a id='headerExpiryWarning' class="expiry-warning"
-                localized-change-tracking>account.expired.short</a></li>
-        <li class='hide-on-small-screen'>
-            <a id='headerDateTime'>
-                <h5 style=" font-size:14px; text-shadow: 0px 1px 0px #5B5B59;
- color: black; margin: 10px 10px 0px 8px;">{{dateTime}}</h5>
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid d-flex ">
+        <div class="p-2 mr-auto ">
+            <a ng-click='mainPanel()'>
+                <img src='/images/logo5.png' alt='Logo' style='width: 100%;'>
             </a>
-        </li>
+        </div>
+        <div class="p-2 "> <a id='headerExpiryWarning' ng-if="expiryWarning" class="expiry-warning"
+                localized-change-tracking>account.expired.short</a>
+            <div class="mr-3" id='headerDateTime'>{{dateTime}}</div>
+        </div>
+        <div class="p-2 ">
 
+            <div class="dropdown">
 
-
-
-        <li class='dropdown margin-right' style="text-shadow: 0px 1px 0px #5B5B59;
- color: black; margin: 6px 0px 0px 8px;">
-
-            <button type="button" class="btn btn-link dropdown-toggle" style="background-color:transparent"
-                data-bs-toggle="dropdown" aria-expanded="false">
-
-                <!--                <span class='hide-on-small-screen username-tip' localized-change-tracking>header.label.username</span> -->
-                <span class='username-label'>
-                    <h5 style=" font-size:16px; color: black; text-shadow: 0px 1px 0px #5B5B59;
-">{{getUserName()}}</h5>
-                </span>
-                <span style="text-shadow: 1px 1px 1px #5B5B59; color: black; margin: 18px 0px 0px 8px;"
-                    class='caret username-caret'></span>
-            </button>
-            <ul class='dropdown-menu' style="background: #FFFFFF; width: 230px; border-radius: 10px; height: 170px; ">
-                <li type="button" class="btn btn-outline-black"><a style="background-color:transparent; height: 20px;"
-                        ng-click="about()" localized-change-tracking>
-                        <h4 style="font-size:16px; color: #0d6efd; text-shadow: 0px 0px 0px #0d6efd; ">Información</h4>
-                    </a></li>
-                <li type="button" class="btn btn-outline-dark"><a style="background-color:transparent;  height: 20px;"
-                        ui-sref='profile' localized-change-tracking>
-                        <h4 style="font-size:16px; color: #0d6efd; text-shadow: 0px 0px 0px #0d6efd; ">Perfil</h4>
-                    </a></li>
-
-                <li type="button" class="btn btn-outline-dark" ng-if="updatesAllowed()"><a
-                        style="background-color:transparent;  height: 20px;" ui-sref='updates' ng-style='color'
-                        localized-change-tracking>
-                        <h4 style="font-size:16px; color: #0d6efd; text-shadow: 0px 0px 0px #0d6efd; ">Buscar
-                            Actualizaciones</h4>
-                    </a></li>
-
-                <li type="button" class="btn btn-outline-dark" ng-if="authService.isSuperAdmin() && !isControlPanel">
-                    <a style="background-color:transparent;  height: 20px;" ng-click='controlPanel()'
-                        localized-change-tracking>
-                        <h4 style="font-size:16px; color: #0d6efd; text-shadow: 0px 0px 0px #0d6efd; ">Panel Maestro
-                        </h4>
+                <button type="button" class="btn btn-outline-black dropdown-toggle" data-toggle="dropdown">
+                    {{getUserName()}}
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" ng-click="about()" localized-change-tracking>
+                        Información
                     </a>
-                </li>
-
-                <li type="button" class="btn btn-outline-dark" ng-if="authService.isSuperAdmin() && isControlPanel">
-                    <a style="background-color:transparent;  height: 20px;" ng-click='mainPanel()'
-                        localized-change-tracking>
-                        <h4 style="font-size:16px; color: #0d6efd; text-shadow: 0px 0px 0px #0d6efd; ">Panel Principal
-                        </h4>
+                    <a ui-sref='profile' class="dropdown-item" localized-change-tracking>
+                        Perfil
                     </a>
-                </li>
-                <li type="button" class="btn btn-outline-dark">
-                    <a style="background-color:transparent;  height: 20px;" ng-click='logout()'
-                        localized-change-tracking>
-                        <h4 style="font-size:16px; color: #0d6efd; text-shadow: 0px 0px 0px #0d6efd; ">Salir</h4>
+
+
+
+                    <a class="dropdown-item" ng-if="updatesAllowed() " localized-change-tracking
+                        ng-style='color'>Actualizaciones</a>
+
+
+
+                    <a class="dropdown-item" ng-if="authService.isSuperAdmin() && !isControlPanel"
+                        ng-click='controlPanel()' localized-change-tracking>
+                        Panel Maestro
                     </a>
-                </li>
 
 
 
-            </ul>
-        </li>
+                    <a class="dropdown-item" ng-click='mainPanel()' ng-if="authService.isSuperAdmin() && isControlPanel"
+                        localized-change-tracking>
+                        Panel Principal
+                    </a>
 
 
-    </ul>
 
+
+                    <a class="dropdown-item" ng-click='logout()' localized-change-tracking>
+                        Salir
+                    </a>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
 
 
 </nav>
-<br />

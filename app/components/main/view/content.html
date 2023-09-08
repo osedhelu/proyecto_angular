@@ -1,85 +1,114 @@
-<!-- Localization completed -->
-<div class='content-wrapper fullscreen'>
-    <tabset class='tabset'>
-        <tab active="act.DEVICES" ng-click="openTab('DEVICES')">
-            <tab-heading localized-change-tracking>tab.devices</tab-heading>
+<div class="container-fluid">
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item cursor-pointer" style="cursor: pointer;">
+            <a ng-class="{'nav-link': true, 'active': activeTab === 'DEVICES'}" ng-click="openTab('DEVICES')"
+                localized-change-tracking>tab.devices</a>
+        </li>
+
+        <li ng-if="hasPermission('applications')" style="cursor: pointer;" class="nav-item cursor-pointer">
+            <a ng-class="{'nav-link': true, 'active': activeTab === 'APPS'}" ng-click="openTab('APPS')"
+                localized-change-tracking>tab.applications</a>
+        </li>
+
+        <li class="nav-item cursor-pointer" style="cursor: pointer;">
+            <a ng-class="{'nav-link': true, 'active': activeTab === 'CONFS'}" ng-click="openTab('CONFS')"
+                localized-change-tracking>tab.configurations</a>
+        </li>
+
+        <li class="nav-item cursor-pointer" style="cursor: pointer;"><a
+                ng-class="{'nav-link': true, 'active': activeTab === 'FILES'}" ng-click="openTab('FILES')"
+                localized-change-tracking>tab.files</a></li>
+
+        <li class="nav-item cursor-pointer" style="cursor: pointer;">
+
+            <div class="dropdown">
+                <span
+                    ng-class="{'text-primary': true, 'nav-link': true, 'dropdown-toggle': true, 'active':  settingsTabActive}"
+                    data-toggle="dropdown" localized-change-tracking>menu.settings</span>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a ng-class="{'dropdown-item': true,  'active': activeTab === 'DESIGN'}"
+                        ng-click="openTab('DESIGN')" localized-change-tracking>tab.default.design</a>
+                    <a ng-class="{'dropdown-item': true,  'active': activeTab === 'COMMON'}"
+                        ng-click="openTab('COMMON')" localized-change-tracking>tab.common.settings</a>
+                    <a ng-class="{'dropdown-item': true,  'active': activeTab === 'USERS'}" ng-click="openTab('USERS')"
+                        localized-change-tracking>tab.users</a>
+                    <a ng-class="{'dropdown-item': true,  'active': activeTab === 'GROUPS'}"
+                        ng-click="openTab('GROUPS')" localized-change-tracking>tab.groups</a>
+                    <a ng-class="{'dropdown-item': true,  'active': activeTab === 'LANG'}" ng-click="openTab('LANG')"
+                        localized-change-tracking>tab.language</a>
+                    <a ng-class="{'dropdown-item': true,  'active': activeTab === 'HINTS'}" ng-click="openTab('HINTS')"
+                        localized-change-tracking>tab.hints</a>
+                    <a ng-class="{'dropdown-item': true,  'active': activeTab === 'PLUGINS'}"
+                        ng-click="openTab('PLUGINS')" localized-change-tracking>tab.plugins</a>
+
+                    <a ng-repeat="plugin in settingsPlugins"
+                        ng-class="{'dropdown-item': true, 'active': activeTab === 'plugin-settings-' + plugin.identifier }"
+                        active="act['plugin-settings-' + plugin.identifier]"
+                        ng-if="!plugin.settingsPermission || hasPermission(plugin.settingsPermission)"
+                        ng-click="openTab('plugin-settings-' + plugin.identifier)">
+                        {{localization.localize(plugin.nameLocalizationKey)}}</a>
+
+
+
+                </div>
+            </div>
+        </li>
+        <li class="nav-item cursor-pointer" style="cursor: pointer;">
+
+            <div class="dropdown">
+                <span
+                    ng-class="{'text-primary': true, 'nav-link': true, 'dropdown-toggle': true, 'active':  pluginsTabActive}"
+                    data-toggle="dropdown" localized-change-tracking>menu.functions</span>
+                <div class="dropdown-menu dropdown-menu-right">
+
+                    <a ng-repeat="plugin in functionsPlugins"
+                        ng-class="{'dropdown-item': true, 'active': activeTab === 'plugin-' + plugin.identifier }"
+                        ng-if="!plugin.functionsPermission || hasPermission(plugin.functionsPermission)"
+                        ng-click="openTab('plugin-' + plugin.identifier)">
+
+                        {{localization.localize(plugin.nameLocalizationKey)}}</a>
+
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <div class="container-fluid">
+        <div>
             <ng-include src="'app/components/main/view/devices.html'" ng-if="activeTab === 'DEVICES'"></ng-include>
-        </tab>
-
-        <tab active="act.APPS" ng-if="hasPermission('applications')" ng-click="openTab('APPS')">
-            <tab-heading localized-change-tracking>tab.applications</tab-heading>
+        </div>
+        <div ng-if="hasPermission('applications')">
             <ng-include src="'app/components/main/view/applications.html'" ng-if="activeTab === 'APPS'"></ng-include>
-        </tab>
+        </div>
 
-        <tab active="act.CONFS" ng-if="hasPermission('configurations')" ng-click="openTab('CONFS')">
-            <tab-heading localized-change-tracking>tab.configurations</tab-heading>
+        <div ng-if="hasPermission('configurations')">
             <ng-include src="'app/components/main/view/configurations.html'" ng-if="activeTab === 'CONFS'"></ng-include>
-        </tab>
-
-        <tab active="act.FILES" ng-if="hasPermission('files')" ng-click="openTab('FILES')">
-            <tab-heading localized-change-tracking>tab.files</tab-heading>
+        </div>
+        <div ng-if="hasPermission('files')">
             <ng-include src="'app/components/main/view/files.html'" ng-if="activeTab === 'FILES'"></ng-include>
-        </tab>
+        </div>
+        <div ng-if="hasPermission('settings')">
+            <ng-include src="'app/components/main/view/settings/design.html'"
+                ng-if="activeTab === 'DESIGN'"></ng-include>
+            <ng-include src="'app/components/main/view/settings/common.html'"
+                ng-if="activeTab === 'COMMON'"></ng-include>
 
-        <li ng-if="hasPermission('settings')"
-                class="dropdown" ng-class="{'active': settingsTabActive}">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span localized-change-tracking>menu.settings</span><span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <tab active="act.DESIGN" ng-click="openTab('DESIGN')">
-                    <tab-heading localized-change-tracking>tab.default.design</tab-heading>
-                    <ng-include src="'app/components/main/view/settings/design.html'" ng-if="activeTab === 'DESIGN'"></ng-include>
-                </tab>
-                <tab active="act.COMMON" ng-click="openTab('COMMON')">
-                    <tab-heading localized-change-tracking>tab.common.settings</tab-heading>
-                    <ng-include src="'app/components/main/view/settings/common.html'" ng-if="activeTab === 'COMMON'"></ng-include>
-                </tab>
-                <tab active="act.USERS" ng-click="openTab('USERS')">
-                    <tab-heading localized-change-tracking>tab.users</tab-heading>
-                    <ng-include src="'app/components/main/view/settings/users.html'" ng-if="activeTab === 'USERS'"></ng-include>
-                </tab>
-                <tab  active="act.GROUPS" ng-click="openTab('GROUPS')">
-                    <tab-heading localized-change-tracking>tab.groups</tab-heading>
-                    <ng-include src="'app/components/main/view/settings/groups.html'" ng-if="activeTab === 'GROUPS'"></ng-include>
-                </tab>
-                <tab  active="act.LANG" ng-click="openTab('LANG')">
-                    <tab-heading localized-change-tracking>tab.language</tab-heading>
-                    <ng-include src="'app/components/main/view/settings/language.html'" ng-if="activeTab === 'LANG'"></ng-include>
-                </tab>
-                <tab  active="act.HINTS" ng-click="openTab('HINTS')">
-                    <tab-heading localized-change-tracking>tab.hints</tab-heading>
-                    <ng-include src="'app/components/main/view/settings/hints.html'" ng-if="activeTab === 'HINTS'"></ng-include>
-                </tab>
-                <tab active="act.PLUGINS" ng-click="openTab('PLUGINS')" ng-if="hasPermission('plugins_customer_access_management')">
-                    <tab-heading localized-change-tracking>tab.plugins</tab-heading>
-                    <ng-include src="'app/components/main/view/settings/plugins.html'" ng-if="activeTab === 'PLUGINS'"></ng-include>
-                </tab>
-
-                <tab ng-repeat="plugin in settingsPlugins" active="act['plugin-settings-' + plugin.identifier]"
-                     ng-if="!plugin.settingsPermission || hasPermission(plugin.settingsPermission)"
-                     ng-click="openTab('plugin-settings-' + plugin.identifier)">
-
-                    <tab-heading>{{localization.localize(plugin.nameLocalizationKey)}}</tab-heading>
-
-                    <ng-include src="plugin.settingsViewTemplate"
-                                ng-if="activeTab === ('plugin-settings-' + plugin.identifier)"></ng-include>
-                </tab>
-                
-            </ul>
-        </li>
-
-        <li class="dropdown" ng-if="functionsPlugins.length > 0" ng-class="{'active': pluginsTabActive}">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                <span localized-change-tracking>menu.functions</span><span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-                <tab ng-repeat="plugin in functionsPlugins" active="act['plugin-' + plugin.identifier]"
-                     ng-if="!plugin.functionsPermission || hasPermission(plugin.functionsPermission)"
-                     ng-click="openTab('plugin-' + plugin.identifier)">
-                    <tab-heading>{{localization.localize(plugin.nameLocalizationKey)}}</tab-heading>
-                    <ng-include src="plugin.functionsViewTemplate"
-                                ng-if="activeTab === ('plugin-' + plugin.identifier)"></ng-include>
-                </tab>
-            </ul>
-        </li>
-    </tabset>
+            <ng-include src="'app/components/main/view/settings/users.html'" ng-if="activeTab === 'USERS'"></ng-include>
+            <ng-include src="'app/components/main/view/settings/groups.html'"
+                ng-if="activeTab === 'GROUPS'"></ng-include>
+            <ng-include src="'app/components/main/view/settings/language.html'"
+                ng-if="activeTab === 'LANG'"></ng-include>
+            <ng-include src="'app/components/main/view/settings/hints.html'" ng-if="activeTab === 'HINTS'"></ng-include>
+            <ng-include src="'app/components/main/view/settings/plugins.html'"
+                ng-if="activeTab === 'PLUGINS'"></ng-include>
+            <div ng-if="hasPermission('plugins_customer_access_management')">
+                <ng-include ng-repeat="plugin in settingsPlugins" src="plugin.settingsViewTemplate"
+                    ng-if="activeTab === ('plugin-settings-' + plugin.identifier)"></ng-include>
+            </div>
+            <div ng-if="!plugin.functionsPermission || hasPermission(plugin.functionsPermission)">
+                <ng-include ng-repeat="plugin in functionsPlugins" src="plugin.functionsViewTemplate"
+                    ng-if="activeTab === ('plugin-' + plugin.identifier)"></ng-include>
+            </div>
+        </div>
+    </div>
 </div>

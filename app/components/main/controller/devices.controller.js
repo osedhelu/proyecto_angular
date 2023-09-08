@@ -1,11 +1,11 @@
 // Localization completed
 angular.module('headwind-kiosk')
     .controller('DevicesTabController', function ($scope, $rootScope, $state, $modal, $interval, $cookies, $window, $filter, $timeout,
-                                                  confirmModal, deviceService, groupService, settingsService, hintService,
-                                                  authService, pluginService, configurationService, alertService,
-                                                  spinnerService, localization, utils) {
+        confirmModal, deviceService, groupService, settingsService, hintService,
+        authService, pluginService, configurationService, alertService,
+        spinnerService, localization, utils) {
 
-        var saveDeviceSearchParams = function() {
+        var saveDeviceSearchParams = function () {
             var expireDate = new Date();
             expireDate.setTime(expireDate.getTime() + 600);
             expireDate.setDate(expireDate.getDate());
@@ -20,7 +20,8 @@ angular.module('headwind-kiosk')
             $cookies.put('deviceSearch', JSON.stringify(searchData));
         };
 
-        var restoreDeviceSearchParams = function() {
+        var restoreDeviceSearchParams = function () {
+            console.log('hola mundo')
             if ($cookies.get('deviceSearch')) {
                 var deviceSearch = JSON.parse($cookies.get('deviceSearch'));
                 $scope.searchParams = deviceSearch.searchParams;
@@ -85,11 +86,11 @@ angular.module('headwind-kiosk')
             'dateTo': false
         };
 
-        $scope.openDateCalendar = function( $event, isStartDate ) {
+        $scope.openDateCalendar = function ($event, isStartDate) {
             $event.preventDefault();
             $event.stopPropagation();
 
-            if ( isStartDate ) {
+            if (isStartDate) {
                 $scope.openDatePickers.dateFrom = true;
             } else {
                 $scope.openDatePickers.dateTo = true;
@@ -97,20 +98,20 @@ angular.module('headwind-kiosk')
         };
 
         $scope.installStatusOptions = [
-            {id: 'ALL', name: localization.localize('form.devices.selection.install.status.all')},
-            {id: 'SUCCESS', name: localization.localize('form.devices.selection.install.status.success')},
-            {id: 'VERSION_MISMATCH', name: localization.localize('form.devices.selection.install.status.version.mismatch')},
-            {id: 'FAILURE', name: localization.localize('form.devices.selection.install.status.failure')}
+            { id: 'ALL', name: localization.localize('form.devices.selection.install.status.all') },
+            { id: 'SUCCESS', name: localization.localize('form.devices.selection.install.status.success') },
+            { id: 'VERSION_MISMATCH', name: localization.localize('form.devices.selection.install.status.version.mismatch') },
+            { id: 'FAILURE', name: localization.localize('form.devices.selection.install.status.failure') }
         ];
 
-        $scope.firstRecord = function() {
+        $scope.firstRecord = function () {
             if ($scope.paging.totalItems == 0) {
                 return 0;
             }
             return ($scope.paging.pageNum - 1) * $scope.paging.pageSize + 1;
         };
 
-        $scope.lastRecord = function() {
+        $scope.lastRecord = function () {
             var l = $scope.paging.pageNum * $scope.paging.pageSize;
             if (l > $scope.paging.totalItems) {
                 return $scope.paging.totalItems;
@@ -166,16 +167,16 @@ angular.module('headwind-kiosk')
 
         groupService.getAllGroups(function (response) {
             $scope.groups = response.data;
-            $scope.groups.unshift({id: -1, name: localization.localize('devices.group.options.all')});
+            $scope.groups.unshift({ id: -1, name: localization.localize('devices.group.options.all') });
         });
 
         configurationService.getAllConfigurations(function (response) {
             $scope.configurations = response.data;
-            $scope.configurations.unshift({id: -1, name: localization.localize('devices.configuration.options.all')});
+            $scope.configurations.unshift({ id: -1, name: localization.localize('devices.configuration.options.all') });
         });
 
-        var loadCommonSettings = function(completion) {
-            settingsService.getSettings({}, function(response) {
+        var loadCommonSettings = function (completion) {
+            settingsService.getSettings({}, function (response) {
                 if (response.data) {
                     // Common settings
                     $scope.commonSettings = response.data;
@@ -195,7 +196,7 @@ angular.module('headwind-kiosk')
                 $scope.availableConfigs.push(config.id);
             });
         }
-        $scope.configAvailable = function(config) {
+        $scope.configAvailable = function (config) {
             return $scope.availableConfigs == null ||
                 $scope.availableConfigs.indexOf(config.id) !== -1;
         };
@@ -203,7 +204,7 @@ angular.module('headwind-kiosk')
         var loadSettings = function (completion) {
             var user = authService.getUser();
             if (user.userRole) {
-                settingsService.getUserRoleSettings({roleId: user.userRole.id}, function (response) {
+                settingsService.getUserRoleSettings({ roleId: user.userRole.id }, function (response) {
                     if (response.data) {
                         // Display settings
                         $scope.settings = response.data;
@@ -226,7 +227,7 @@ angular.module('headwind-kiosk')
             }
         };
 
-        var checkExpiryTime = function() {
+        var checkExpiryTime = function () {
             if ($scope.commonSettings.expiryTime) {
                 var expiryDays = ($scope.commonSettings.expiryTime - new Date()) / 86400000;
                 var expiryWarningAttrName = 'hmdm-expiry-warning-time';
@@ -254,6 +255,7 @@ angular.module('headwind-kiosk')
         $scope.$on('$destroy', sub);
 
         $scope.init = function () {
+            spinnerService.show('spinner2');
             $rootScope.settingsTabActive = false;
             $rootScope.pluginsTabActive = false;
             $scope.search(false, function () {
@@ -268,6 +270,7 @@ angular.module('headwind-kiosk')
         var searchIsRunning = false;
         $scope.search = function (spinnerHidden, callback) {
             if (searchIsRunning) {
+                console.log('hola mundo', new Error())
                 console.log("Skipping device search since a previous search is pending", new Error());
                 return;
             }
@@ -371,11 +374,11 @@ angular.module('headwind-kiosk')
 
                         if ($scope.accountExpired) {
                             if (counter == 3) {
-                                device.class='expired-device-opacity1';
+                                device.class = 'expired-device-opacity1';
                             } else if (counter == 4) {
-                                device.class='expired-device-opacity2';
+                                device.class = 'expired-device-opacity2';
                             } else if (counter > 4) {
-                                device.class='expired-device-hidden';
+                                device.class = 'expired-device-hidden';
                             }
                             counter++;
                         }
@@ -452,7 +455,7 @@ angular.module('headwind-kiosk')
             }
         };
 
-        $scope.calculateStatusText = function(device) {
+        $scope.calculateStatusText = function (device) {
             if (device.lastUpdateDate.getTime() == 0) {
                 return localization.localize('devices.date.unknown');
             }
@@ -809,11 +812,11 @@ angular.module('headwind-kiosk')
                         let localizedText = localization.localize('devices.file.not.installed').replace('${file}', files[j].path);
                         title = title + localizedText;
                         title += '\n';
-                    // } else if (files[j].status === 4) {
-                    //     let localizedText = localization.localize('devices.app.installed').replace('${applicationName}', files[j].name);
-                    //     let localizedText2 = localization.localize('devices.app.needs.removal').replace('${applicationVersion}', (files[j].installedVersion ? ' ' + files[j].installedVersion : ""));
-                    //     title = title + localizedText + localizedText2;
-                    //     title += '\n';
+                        // } else if (files[j].status === 4) {
+                        //     let localizedText = localization.localize('devices.app.installed').replace('${applicationName}', files[j].name);
+                        //     let localizedText2 = localization.localize('devices.app.needs.removal').replace('${applicationVersion}', (files[j].installedVersion ? ' ' + files[j].installedVersion : ""));
+                        //     title = title + localizedText + localizedText2;
+                        //     title += '\n';
                     } else if (files[j].status === 2) {
                         let localizedText = localization.localize('devices.file.lastUpdate.differs')
                             .replace('${file}', files[j].path)
@@ -879,16 +882,23 @@ angular.module('headwind-kiosk')
             }
         };
 
-        $scope.openBulkUpdateModal = function () {
+        $scope.openBulkUpdateModal = (aa) => {
+            console.log(aa)
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/device.update.html',
-                controller: 'DeviceUpdateModalController',
                 resolve: {
                     devices: function () {
+
+                        console.log("hola mundo")
                         return $scope.devices;
                     }
                 }
             });
+
+            console.log($scope.devices)
+            $scope.deviceParams = {
+                devices: $scope.devices
+            };
+
 
             modalInstance.result.then(function () {
                 $scope.search();
@@ -911,7 +921,7 @@ angular.module('headwind-kiosk')
             });
         };
 
-        $scope.confirmBulkDelete = function() {
+        $scope.confirmBulkDelete = function () {
             let localizedText = localization.localize('question.delete.device.bulk');
             confirmModal.getUserConfirmation(localizedText, function () {
                 var ids = [];
@@ -920,7 +930,7 @@ angular.module('headwind-kiosk')
                         ids.push($scope.devices[i].id);
                     }
                 }
-                deviceService.removeDeviceBulk({ids: ids}, function () {
+                deviceService.removeDeviceBulk({ ids: ids }, function () {
                     $scope.search();
                     // Reload settings because the device amount may be changed
                     loadCommonSettings();
@@ -936,7 +946,7 @@ angular.module('headwind-kiosk')
                     device: function () {
                         return device;
                     },
-                    settings: function() {
+                    settings: function () {
                         return $scope.commonSettings;
                     }
                 }
@@ -949,10 +959,10 @@ angular.module('headwind-kiosk')
             });
         };
 
-        $scope.removeDevice = function (device) { 
+        $scope.removeDevice = function (device) {
             let localizedText = localization.localize('question.delete.device').replace('${deviceNumber}', device.number);
             confirmModal.getUserConfirmation(localizedText, function () {
-                deviceService.removeDevice({id: device.id}, function () {
+                deviceService.removeDevice({ id: device.id }, function () {
                     $scope.search();
                     // Reload settings because the device amount may be changed
                     loadCommonSettings();
@@ -965,7 +975,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.editConfiguration = function (configuration) {
-            $state.transitionTo('configEditor', {"id": configuration.id});
+            $state.transitionTo('configEditor', { "id": configuration.id });
         };
 
         $scope.manageApplicationSettings = function (device) {
@@ -1015,7 +1025,7 @@ angular.module('headwind-kiosk')
                 }
             }
 
-            var device = {'ids': ids, configurationId: $scope.device.configurationId};
+            var device = { 'ids': ids, configurationId: $scope.device.configurationId };
             deviceService.updateDevice(device, function () {
                 $modalInstance.close();
             });
@@ -1032,7 +1042,7 @@ angular.module('headwind-kiosk')
         groupService.getAllGroups(function (response) {
             $scope.groups = response.data;
             $scope.groupsList = response.data.map(function (group) {
-                return {id: group.id, label: group.name};
+                return { id: group.id, label: group.name };
             });
         });
 
@@ -1046,7 +1056,8 @@ angular.module('headwind-kiosk')
                 }
             }
 
-            var device = {'ids': ids,
+            var device = {
+                'ids': ids,
                 'action': $scope.groupAction,
                 'groups': $scope.groupsSelection
             };
@@ -1061,7 +1072,7 @@ angular.module('headwind-kiosk')
     })
     .controller('DeviceModalController',
         function ($scope, $modalInstance, deviceService, configurationService, groupService, device, settings,
-                  localization, authService, confirmModal) {
+            localization, authService, confirmModal) {
 
             $scope.canEditDevice = authService.hasPermission('edit_devices');
 
@@ -1073,12 +1084,12 @@ angular.module('headwind-kiosk')
             groupService.getAllGroups(function (response) {
                 $scope.groups = response.data;
                 $scope.groupsList = response.data.map(function (group) {
-                    return {id: group.id, label: group.name};
+                    return { id: group.id, label: group.name };
                 });
             });
 
             $scope.groupsSelection = (device.groups || []).map(function (group) {
-                return {id: group.id};
+                return { id: group.id };
             });
 
             $scope.tableFilteringTexts = {
@@ -1102,7 +1113,7 @@ angular.module('headwind-kiosk')
 
             $scope.loading = false;
 
-            var saveCompletion = function(targetService, pathParams, request) {
+            var saveCompletion = function (targetService, pathParams, request) {
                 targetService(pathParams, request, function (response) {
                     $scope.loading = false;
                     if (response.status === 'OK') {
@@ -1178,9 +1189,9 @@ angular.module('headwind-kiosk')
             });
         })
     .controller('DeviceApplicationSettingsModalController', function ($scope, $modal, $modalInstance,
-                                                                      localization, deviceService,
-                                                                      applicationService, alertService,
-                                                                      device) {
+        localization, deviceService,
+        applicationService, alertService,
+        device) {
 
         $scope.device = device;
         $scope.applicationSettings = [];
@@ -1226,7 +1237,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.getAppSettingsApps = getAppSettingsApps;
-        
+
         $scope.onAppSettingsFilterAppSelected = function ($item) {
             $scope.settingsPaging.appSettingsFilterApp = $item;
             $scope.settingsPaging.appSettingsAppFilterText = $item.pkg;
@@ -1251,7 +1262,7 @@ angular.module('headwind-kiosk')
                 controller: 'ApplicationSettingEditorController',
                 resolve: {
                     applicationSetting: function () {
-                        return {type: "STRING"};
+                        return { type: "STRING" };
                     },
                     getApps: function () {
                         return getAppSettingsApps;
@@ -1326,7 +1337,7 @@ angular.module('headwind-kiosk')
             $scope.errorMessage = undefined;
             $scope.successMessage = undefined;
 
-            deviceService.saveDeviceApplicationSettings({id: device.id}, allApplicationSettings, function (response) {
+            deviceService.saveDeviceApplicationSettings({ id: device.id }, allApplicationSettings, function (response) {
                 if (response.status === 'OK') {
                     $modalInstance.close();
                 } else {
@@ -1344,7 +1355,7 @@ angular.module('headwind-kiosk')
             $scope.errorMessage = undefined;
             $scope.successMessage = undefined;
 
-            deviceService.notifyDeviceOnAppSettingsUpdate({id: device.id}, {}, function (response) {
+            deviceService.notifyDeviceOnAppSettingsUpdate({ id: device.id }, {}, function (response) {
                 if (response.status === 'OK') {
                     $scope.successMessage = localization.localize('success.config.update.device.app.settings.notification');
                 } else {
@@ -1381,7 +1392,7 @@ angular.module('headwind-kiosk')
         };
 
         var loadData = function () {
-            deviceService.getDeviceApplicationSettings({id: device.id}, function (response) {
+            deviceService.getDeviceApplicationSettings({ id: device.id }, function (response) {
                 if (response.status === 'OK') {
                     allApplicationSettings = response.data;
                     filterApplicationSettings();

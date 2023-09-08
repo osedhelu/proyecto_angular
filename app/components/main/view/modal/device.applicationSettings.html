@@ -1,0 +1,120 @@
+<!-- Localization completed -->
+<div ng-show='errorMessage' class='modal-header'>
+    <div ng-show='errorMessage' class='error'><span>{{errorMessage}}</span></div>
+</div>
+<div ng-show='successMessage' class='modal-header'>
+    <div ng-show='successMessage' class='success'><span>{{successMessage}}</span></div>
+</div>
+<div class='modal-body'>
+    <form class='form-horizontal'>
+
+        <div class="form-group">
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+<div class="col-sm-12 margin-bottom">
+
+                                <button type="button" class="btn btn-primary" style="width:200px; float: right;"
+                                        ng-click="addApplicationSetting()"
+                                        localized>button.add</button>
+                            
+<br/>
+ </div>
+
+                        <div class="col-sm-12 margin-bottom margin-top" style="justify-content: center;">
+
+
+                            <div class="col-sm-5  margin-bottom margin-left margin-top" style="width:320px;">
+
+                                <input type="text"  maxlength="512" name="mdm1" style="margin: 0px 0px 0px 0px; padding: 5px; border:#DCDCDC 1px solid;border-radius: 3px;
+box-shadow: 0px 0px 1px 1px #4CEE00;"
+                                       ng-model="settingsPaging.appSettingsFilterApp"
+                                       ng-change="appSettingsFilterChanged()"
+                                       autocomplete="off"
+                                       localized-placeholder="search.placeholder.application"
+                                       class="form-control"
+                                       typeahead="app as (app.pkg) for app in getAppSettingsApps($viewValue)"
+                                       typeahead-loading="loadingApps"
+                                       typeahead-wait-ms="300"
+                                       typeahead-input-formatter="appSettingsAppLookupFormatter($model)"
+                                       typeahead-focus-first="false"
+                                       typeahead-on-select="onAppSettingsFilterAppSelected($item)"
+                                       typeahead-no-results="noResults">
+                            </div>
+                            <div class="col-sm-5 margin-bottom  margin-left margin-top" style="width:320px;">
+                                <input type="text" class="form-control" style="margin: 0px 0px 0px 0px; padding: 5px; border:#DCDCDC 1px solid;border-radius: 3px;
+box-shadow: 0px 0px 1px 1px #4CEE00;"
+                                       ng-change="appSettingsFilterChanged()"
+                                       localized-placeholder="search.placeholder.application.setting"
+                                       ng-model="settingsPaging.appSettingsFilterText"/>
+<br/>
+                            </div>
+
+
+
+
+
+
+
+</div>
+
+<div class="col-sm-12 table-responsive" style="border: #C1C1C2 1px solid;border-radius: 3px;
+                        box-shadow: 0px 0px 4px 1px #C1C1C2; margin: 0em auto 3em;">
+                        <br/>
+
+                        
+                            <table  class='table table-responsive'>
+                                <thead>
+                                <tr>
+                                    <th localized>table.heading.application.setting.app.pkg</th>
+                                    <th localized>table.heading.application.setting.app.name</th>
+                                    <th localized>table.heading.application.setting.name</th>
+                                    <th localized>table.heading.application.setting.value</th>
+                                    <th localized>table.heading.application.setting.comment</th>
+                                    <th localized>table.heading.application.setting.lastUpdate</th>
+                                    <th localized class="actions-column">Acción</th>
+                                </tr>
+                                </thead>
+
+                                <tbody >
+                                <tr ng-repeat="setting in applicationSettings | orderBy:'applicationPkg'">
+                                    <td>{{setting.applicationPkg}}</td>
+                                    <td>{{setting.applicationName}}</td>
+                                    <td>{{setting.name}}</td>
+                                    <td>{{setting.value}}</td>
+                                    <td>{{setting.comment}}</td>
+                                    <td>{{setting.lastUpdate | date: 'dd/MM/yyyy'}}</td>
+                                    <td>
+                                        <div>
+                                            <button class="btn btn-default" style="border-color: #43FF01; background-color:white;"  ng-click="editApplicationSetting(setting)">
+                                                <span class="glyphicon glyphicon-pencil" style="color: #43FF01;"></span>
+                                            </button>
+                                            <button class="btn" style="border-color: red; background-color:white;" ng-click="removeApplicationSetting(setting)">
+                                                <span class="glyphicon glyphicon-trash" style="color: red;"></span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+<br/>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+<hr/>
+        <div class='form-group'>
+            <div class='col-sm-offset-3 col-sm-12'>
+                <button type='submit' class='btn btn-primary' ng-click='save()' ng-disabled="saving"
+                        localized>button.save</button> &#160; &#160;
+                <button type='submit' class='btn btn-success' ng-click='notifyDevice()' ng-disabled="saving"
+                        localized>button.notify.update</button> &#160; &#160;
+                <button type='button' class='btn btn-default'  style="background-color: red; color: white;" ng-click='closeModal()' localized>button.cancel</button>
+            </div>
+        </div>
+    </form>
+</div>

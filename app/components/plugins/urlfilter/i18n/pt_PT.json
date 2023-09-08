@@ -1,0 +1,33 @@
+{
+  "breadcrumb.plugin.urlfilter.rules": "Regras de filtragem",
+  "breadcrumb.plugin.urlfilter.lists": "Filtrando listas",
+
+  "plugin.urlfilter.localization.key.name": "Regras de filtragem",
+  "plugin.urlfilter.title": "Listas de filtragem",
+
+  "plugin.urlfilter.update.successful": "As regras de filtragem de URL foram atualizadas com sucesso",
+  "plugin.urlfilter.copy.source": "Copiar da configuração",
+  "plugin.urlfilter.copy.button": "Copiar",
+  "plugin.urlfilter.rules.active": "Ativo",
+  "plugin.urlfilter.rules.adblock": "Bloquear anúncios",
+  "plugin.urlfilter.rules.blacklist": "Lista negra",
+  "plugin.urlfilter.rules.whitelist": "Lista branca",
+  "plugin.urlfilter.edit.rules": "Editar regras",
+  "plugin.urlfilter.copy.profile": "Copiar perfil de outra configuração",
+  "plugin.urlfilter.lists.title": "Listas de filtragem de URL",
+  "plugin.urlfilter.list.name": "Nome",
+  "plugin.urlfilter.list.name.placeholder": "Digite o nome que identifica a lista",
+  "plugin.urlfilter.list.comment": "Comentário",
+  "plugin.urlfilter.list.count": "Contagem",
+  "plugin.urlfilter.no.lists": "Sem listas de filtragem, clique em 'Adicionar' para criar uma",
+  "plugin.urlfilter.edit.list": "Editar",
+  "plugin.urlfilter.delete.list": "Excluir",
+  "plugin.urlfilter.list.contents": "Conteúdo",
+  "plugin.urlfilter.list.contents.hint": "Use * para curingas, domínios separados por linhas",
+  "plugin.urlfilter.question.delete.list": "Tem certeza de que deseja excluir a lista '${listname}'?",
+  "plugin.urlfilter.error.empty.list.name": "Por favor, digite o nome da lista!",
+  "plugin.urlfilter.error.empty.list.content": "Por favor, insira o conteúdo da lista!",
+  "plugin.urlfilter.rule.for": "Regras de filtragem para",
+  "plugin.urlfilter.application.not.found": "Por favor, instale o aplicativo de filtragem de URL (com.hmdm.urlfilter)!",
+  "plugin.urlfilter.no.list": "(sem lista)"
+}

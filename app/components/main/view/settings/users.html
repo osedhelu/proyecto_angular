@@ -1,0 +1,86 @@
+<!-- Localization completed -->
+<div ng-controller="UsersTabController" style="padding:1em;">
+    <div class="text-center">
+        <h3 localized>form.settings.users.title</h3>
+    </div>
+ <div class="col-sm-12"><br/></div>
+
+
+<div class="col-sm-12 margin-bottom">
+
+ <div class="col-sm-6 margin-bottom">
+            <input class="col-sm-7" type='text' ng-model='search.searchValue' ng-enter='search()'
+                   localized-placeholder='form.settings.users.search.placeholder'
+style="padding: 5px; border:#DCDCDC 1px solid;border-radius: 3px;
+box-shadow: 0px 0px 1px 1px #4CEE00; height: 32px; width: 320px;"
+                   class='form-control'> &#160;
+
+
+                <button type='button' class='btn btn-success' ng-click='search()' localized>button.search</button>
+</div>
+<div class="col-sm-3"> </div>
+<div class='col-sm-3 margin-bottom'>
+
+                <button type='button' class='btn btn-primary btn-block' ng-click='editUser( {} )' localized>button.add</button>
+</div>
+        </div>
+
+
+
+<div class="col-sm-12"> <br/><br/></div>
+
+<div class="col-sm-12 table-responsive" style="border: #C1C1C2 1px solid;border-radius: 3px;
+                        box-shadow: 0px 0px 4px 1px #C1C1C2; margin: 0em auto 3em;">
+                        <br/>
+        <table ng-if='users && users.length > 0' class='table table-responsive'>
+            <thead>
+            <tr>
+                <th localized>table.heading.users.login</th>
+                <th localized>table.heading.users.name</th>
+                <th localized>table.heading.users.role</th>
+                <th class='actions-column' style="min-width: 150px" localized>table.heading.users.actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat='user in users.slice(((paging.currentPage-1)*paging.pageSize), ((paging.currentPage)*paging.pageSize))'>
+                <td>{{user.login}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.userRole.name}}</td>
+                <td>
+                    <div>
+                        <button
+                                type='button' class='btn'style="border-color: #00D523; background-color:white;"  ng-click='editUser( user )'>
+                            <span class='glyphicon glyphicon-pencil' style="color: #00D523;"></span>
+                        </button>
+                        <button type='button' ng-if="user.editable && !user.superAdmin"
+                                class='btn' style="border-color: #00B2FF; background-color:white;"  localized-title="button.login"
+                                ng-click='loginAs( user )'>
+                            <span class='glyphicon glyphicon-copy' style="color: #00B2FF;"></span>
+                        </button>
+                        <button type='button' ng-if="user.editable && !user.superAdmin"
+                                class='btn' style="border-color: red; background-color:white;"
+                                ng-disabled='group.id === 1'
+                                ng-click='removeUser( user )'>
+                            <span class='glyphicon glyphicon-trash' style="color:red;"></span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div ng-if='users && users.length === 0' class='center' localized>notfound.users</div>
+
+        <div class="text-center" ng-if="users.length > paging.pageSize">
+            <pagination
+                    boundary-links='true' class='pagination-sm'
+                    max-size='3'
+                    ng-model='paging.currentPage'
+                    total-items='users.length'
+                    items-per-page='paging.pageSize'
+                    previous-text='&lsaquo;' next-text='&rsaquo;' first-text='&laquo;'
+                    last-text='&raquo;'></pagination>
+        </div>
+<br/>
+</div>
+    </div>

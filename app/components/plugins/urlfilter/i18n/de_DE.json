@@ -1,0 +1,33 @@
+{
+  "breadcrumb.plugin.urlfilter.rules": "Filterregeln",
+  "breadcrumb.plugin.urlfilter.lists": "Filterlisten",
+
+  "plugin.urlfilter.localization.key.name": "URL-Filterung",
+  "plugin.urlfilter.title": "URL-Filterung",
+
+  "plugin.urlfilter.update.successful": "URL-Filterregeln wurden erfolgreich aktualisiert",
+  "plugin.urlfilter.copy.source": "Aus Konfiguration kopieren",
+  "plugin.urlfilter.copy.button": "Kopieren",
+  "plugin.urlfilter.rules.active": "Aktiv",
+  "plugin.urlfilter.rules.adblock": "Werbung blockieren",
+  "plugin.urlfilter.rules.blacklist": "Schwarze Liste",
+  "plugin.urlfilter.rules.whitelist": "Weiße Liste",
+  "plugin.urlfilter.edit.rules": "Regeln bearbeiten",
+  "plugin.urlfilter.copy.profile": "Profil aus einer anderen Konfiguration kopieren",
+  "plugin.urlfilter.lists.title": "URL-Filterlisten",
+  "plugin.urlfilter.list.name": "Name",
+  "plugin.urlfilter.list.name.placeholder": "Geben Sie den Namen ein, der die Liste identifiziert",
+  "plugin.urlfilter.list.comment": "Kommentar",
+  "plugin.urlfilter.list.count": "Anzahl",
+  "plugin.urlfilter.no.lists": "Keine Filterlisten, klicken Sie auf 'Hinzufügen', um eine zu erstellen",
+  "plugin.urlfilter.edit.list": "Bearbeiten",
+  "plugin.urlfilter.delete.list": "Löschen",
+  "plugin.urlfilter.list.contents": "Inhalt",
+  "plugin.urlfilter.list.contents.hint": "Verwenden Sie * für Platzhalter, trennen Sie Domänen durch Zeilen",
+  "plugin.urlfilter.question.delete.list": "Möchten Sie die Liste '${listname}' wirklich löschen?",
+  "plugin.urlfilter.error.empty.list.name": "Bitte geben Sie den Listennamen ein!",
+  "plugin.urlfilter.error.empty.list.content": "Bitte geben Sie den Listeninhalt ein!",
+  "plugin.urlfilter.rule.for": "Filterregeln für",
+  "plugin.urlfilter.application.not.found": "Bitte installieren Sie die URL-Filteranwendung (com.hmdm.urlfilter)!",
+  "plugin.urlfilter.no.list": "(keine Liste)"
+}

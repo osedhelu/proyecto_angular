@@ -1,0 +1,33 @@
+{
+  "breadcrumb.plugin.urlfilter.rules": "过滤规则",
+  "breadcrumb.plugin.urlfilter.lists": "过滤列表",
+
+  "plugin.urlfilter.localization.key.name": "Règles de filtrage",
+  "plugin.urlfilter.title": "过滤列表",
+
+  "plugin.urlfilter.update.successful": "URL过滤规则更新成功",
+  "plugin.urlfilter.copy.source": "从配置中复制",
+  "plugin.urlfilter.copy.button": "复制",
+  "plugin.urlfilter.rules.active": "活动",
+  "plugin.urlfilter.rules.adblock": "屏蔽广告",
+  "plugin.urlfilter.rules.blacklist": "黑名单",
+  "plugin.urlfilter.rules.whitelist": "白名单",
+  "plugin.urlfilter.edit.rules": "编辑规则",
+  "plugin.urlfilter.copy.profile": "从另一个配置复制配置文件",
+  "plugin.urlfilter.lists.title": "URL 过滤列表",
+  "plugin.urlfilter.list.name": "名称",
+  "plugin.urlfilter.list.name.placeholder": "输入识别列表的名称",
+  "plugin.urlfilter.list.comment": "评论",
+  "plugin.urlfilter.list.count": "计数",
+  "plugin.urlfilter.no.lists": "没有过滤列表，点击'添加' 创建一个",
+  "plugin.urlfilter.edit.list": "编辑",
+  "plugin.urlfilter.delete.list": "删除",
+  "plugin.urlfilter.list.contents": "内容",
+  "plugin.urlfilter.list.contents.hint": "使用 * 作为通配符，按行分隔域",
+  "plugin.urlfilter.question.delete.list": "你确定要删除列表'${listname}'吗？",
+  "plugin.urlfilter.error.empty.list.name": "请输入列表名称！",
+  "plugin.urlfilter.error.empty.list.content": "请输入列表内容！",
+  "plugin.urlfilter.rule.for": "过滤规则",
+  "plugin.urlfilter.application.not.found": "请安装 URL 过滤应用程序 (com.hmdm.urlfilter)！",
+  "plugin.urlfilter.no.list": "(无列表)"
+}

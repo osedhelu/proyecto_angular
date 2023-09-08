@@ -1,0 +1,33 @@
+{
+  "breadcrumb.plugin.urlfilter.rules": "Правила фильтрации",
+  "breadcrumb.plugin.urlfilter.lists": "Списки фильтрации",
+
+  "plugin.urlfilter.localization.key.name": "Правила фильтрации",
+  "plugin.urlfilter.title": "Списки фильтрации",
+
+  "plugin.urlfilter.update.successful": "Правила фильтрации URL успешно обновлены",
+  "plugin.urlfilter.copy.source": "Копировать из конфигурации",
+  "plugin.urlfilter.copy.button": "Копировать",
+  "plugin.urlfilter.rules.active": "Активный",
+  "plugin.urlfilter.rules.adblock": "Блокировать рекламу",
+  "plugin.urlfilter.rules.blacklist": "Черный список",
+  "plugin.urlfilter.rules.whitelist": "Белый список",
+  "plugin.urlfilter.edit.rules": "Редактировать правила",
+  "plugin.urlfilter.copy.profile": "Копировать профиль из другой конфигурации",
+  "plugin.urlfilter.lists.title": "Списки фильтрации URL",
+  "plugin.urlfilter.list.name": "Имя",
+  "plugin.urlfilter.list.name.placeholder": "Введите имя, идентифицирующее список",
+  "plugin.urlfilter.list.comment": "Комментарий",
+  "plugin.urlfilter.list.count": "Количество",
+  "plugin.urlfilter.no.lists": "Нет списков фильтрации, нажмите 'Добавить', чтобы создать",
+  "plugin.urlfilter.edit.list": "Изменить",
+  "plugin.urlfilter.delete.list": "Удалить",
+  "plugin.urlfilter.list.contents": "Содержание",
+  "plugin.urlfilter.list.contents.hint": "Используйте * для подстановочных знаков, разделяйте домены строками",
+  "plugin.urlfilter.question.delete.list": "Вы уверены, что хотите удалить список '${listname}'?",
+  "plugin.urlfilter.error.empty.list.name": "Пожалуйста, введите название списка!",
+  "plugin.urlfilter.error.empty.list.content": "Пожалуйста, введите содержимое списка!",
+  "plugin.urlfilter.rule.for": "Правила фильтрации для",
+  "plugin.urlfilter.application.not.found": "Пожалуйста, установите приложение для фильтрации URL-адресов (com.hmdm.urlfilter)!",
+  "plugin.urlfilter.no.list": "(нет списка)"
+}

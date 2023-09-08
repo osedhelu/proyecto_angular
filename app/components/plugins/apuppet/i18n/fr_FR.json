@@ -1,0 +1,38 @@
+{
+  "breadcrumb.plugin.apuppet.main": "Télécommande",
+
+  "plugin.apuppet.localization.key.name": "Télécommande",
+  "plugin.apuppet.title": "Télécommande",
+
+  "plugin.apuppet.configuration": "Configuration",
+  "plugin.apuppet.use.default": "Utiliser les valeurs par défaut",
+  "plugin.apuppet.server.url": "URL du serveur",
+  "plugin.apuppet.secret": "Secret",
+  "plugin.apuppet.bitrate": "Bitrate",
+  "plugin.apuppet.frame.rate": "Fréquence d'images",
+  "plugin.apuppet.notify.sharing": "Point clignotant lors du partage",
+  "plugin.apuppet.exit.if.idle": "Quitter si inactif",
+  "plugin.apuppet.default.server.url": "URL du serveur",
+  "plugin.apuppet.default.secret": "Secret",
+  "plugin.apuppet.configuration.hint": "Veuillez sélectionner les configurations dans lesquelles la télécommande sera utilisée et enregistrer les paramètres pour configurer l'agent mobile.",
+
+  "plugin.apuppet.enter.secret": "Veuillez saisir un secret généré lors de l'installation du serveur Headwind Remote!",
+  "plugin.apuppet.enter.server.url": "Veuillez saisir l'URL du serveur!",
+
+  "plugin.apuppet.application.not.found": "Veuillez d'abord télécharger l'application Headwind Remote (com.hmdm.control)!",
+  "plugin.apuppet.application.not.found.configuration": "Veuillez ajouter l'application Headwind Remote (com.hmdm.control) dans la configuration de cet appareil!",
+
+  "plugin.apuppet.button.control": "Contrôle",
+  "plugin.apuppet.enter.device": "Veuillez sélectionner un appareil!",
+  "plugin.apuppet.session.requested": "Télécommande demandée, en attente de confirmation",
+  "plugin.apuppet.session.ready": "L'appareil est prêt!",
+  "plugin.apuppet.session.start": "Démarrer la session",
+
+  "plugin.apuppet.one.minute": "minute",
+  "plugin.apuppet.two.minutes": "minutes",
+  "plugin.apuppet.many.minutes": "minutes",
+  "plugin.apuppet.never": "Jamais",
+
+  "plugin.apuppet.unsaved": "Les paramètres n'ont pas encore été enregistrés. Cliquez sur 'Enregistrer' pour configurer le plugin d'accès à distance!",
+  "success.plugin.apuppet.settings.saved": "Paramètres enregistrés avec succès"
+}

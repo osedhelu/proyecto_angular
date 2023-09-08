@@ -1,0 +1,38 @@
+{
+  "breadcrumb.plugin.apuppet.main": "Fernbedienung",
+
+  "plugin.apuppet.localization.key.name": "Fernbedienung",
+  "plugin.apuppet.title": "Fernbedienung",
+
+  "plugin.apuppet.configuration": "Konfiguration",
+  "plugin.apuppet.use.default": "Standardwerte verwenden",
+  "plugin.apuppet.server.url": "Server-URL",
+  "plugin.apuppet.secret": "Geheimnis",
+  "plugin.apuppet.bitrate": "Bitrate",
+  "plugin.apuppet.frame.rate": "Bildrate",
+  "plugin.apuppet.notify.sharing": "Blinkender Punkt beim Teilen",
+  "plugin.apuppet.exit.if.idle": "Beenden im Leerlauf",
+  "plugin.apuppet.default.server.url": "Server-URL",
+  "plugin.apuppet.default.secret": "Geheimnis",
+  "plugin.apuppet.configuration.hint": "Bitte wählen Sie Konfigurationen aus, in denen die Fernbedienung verwendet werden soll, und speichern Sie die Einstellungen, um den mobilen Agenten zu konfigurieren.",
+
+  "plugin.apuppet.enter.secret": "Bitte geben Sie ein Geheimnis ein, das während der Installation des Remote-Servers generiert wurde!",
+  "plugin.apuppet.enter.server.url": "Bitte geben Sie die Server-URL ein!",
+
+  "plugin.apuppet.application.not.found": "Bitte laden Sie zuerst die Remote-Anwendung (com.hmdm.control) hoch!",
+  "plugin.apuppet.application.not.found.configuration": "Bitte fügen Sie die Remote-Anwendung (com.hmdm.control) in die Konfiguration dieses Geräts ein!",
+
+  "plugin.apuppet.button.control": "Steuern",
+  "plugin.apuppet.enter.device": "Bitte wählen Sie ein Gerät!",
+  "plugin.apuppet.session.requested": "Fernbedienung angefordert und auf Bestätigung gewartet",
+  "plugin.apuppet.session.ready": "Gerät ist fertig!",
+  "plugin.apuppet.session.start": "Starten",
+
+  "plugin.apuppet.one.minute": "Minute",
+  "plugin.apuppet.two.minutes": "Minuten",
+  "plugin.apuppet.many.minutes": "Minuten",
+  "plugin.apuppet.never": "Niemals",
+
+  "plugin.apuppet.unsaved": "Die Einstellungen wurden noch nicht gespeichert. Klicken Sie auf 'Speichern', um das RAS-Plugin zu konfigurieren!",
+  "success.plugin.apuppet.settings.saved": "Einstellungen werden erfolgreich gespeichert"
+}

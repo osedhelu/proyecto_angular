@@ -1,0 +1,161 @@
+<!--
+  ~
+  ~ Headwind MDM: Open Source Android MDM Software
+  ~ https://h-mdm.com
+  ~
+  ~ Copyright (C) 2019 Headwind Solutions LLC (http://h-sms.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<div class="width-1000" ng-controller="PluginApuppetSettingsController">
+    <div class="text-center">
+        <h4 localized-change-tracking>plugin.apuppet.title</h4>
+    </div>
+
+    <div>
+        <form name="settings" class='form-horizontal'>
+            <div class='form-group'>
+                <div ng-show='successMessage' class='success'><span>{{successMessage}}</span></div>
+                <div ng-show='errorMessage' class='error'><span>{{errorMessage}}</span></div>
+            </div>
+
+            <div class='form-group'>
+                <label class='col-sm-3 control-label' localized>plugin.apuppet.default.server.url</label>
+                <div class='col-sm-9'>
+                    <input ng-model='default.serverUrl' required
+                           type='text' class='form-control'>
+                </div>
+            </div>
+
+            <div class='form-group'>
+                <label class='col-sm-3 control-label' localized>plugin.apuppet.default.secret</label>
+                <div class='col-sm-9'>
+                    <input ng-model='default.secret' required
+                           type='text' class='form-control'>
+                </div>
+            </div>
+
+            <div class='form-group'>
+                <div class='col-sm-offset-4 col-sm-8 padding-left'>
+                    <button type='submit' class='btn btn-default' ng-click='saveDefault()'
+                            localized>button.save</button>
+                </div>
+            </div>
+
+
+            <div class='form-group' style="margin-top: 50px">
+                <label class='col-sm-3 control-label' localized>plugin.apuppet.configuration</label>
+                <div class='col-sm-9'>
+                    <select class='form-control'
+                            ng-model='data.configurationId'
+                            ng-change='onConfigSelect()'
+                            ng-options="configuration.id as configuration.name for configuration in configurations">
+                    </select>
+                    <div ng-if="!data.configurationId" style="margin-top: 10px"><small localized>plugin.apuppet.configuration.hint</small></div>
+                </div>
+            </div>
+
+            <div ng-if="data.configurationId">
+
+                <div ng-if="data.unsaved" class='form-group' style="margin-top: 10px">
+                    <div class='col-sm-3'></div>
+                    <div class='col-sm-9'><small class="warning-font" localized>plugin.apuppet.unsaved</small></div>
+                </div>
+
+                <div class='form-group'>
+                    <label class='col-sm-3 control-label' localized>plugin.apuppet.use.default</label>
+                    <div class='col-sm-9'>
+                        <input ng-model='data.useDefault'
+                               type='checkbox' class='form-control'>
+                    </div>
+                </div>
+
+                <div class='form-group'>
+                    <label class='col-sm-3 control-label' localized>plugin.apuppet.server.url</label>
+                    <div class='col-sm-9'>
+                        <input ng-model='data.serverUrl' required
+                               ng-disabled='data.useDefault'
+                               type='text' class='form-control'>
+                    </div>
+                </div>
+
+                <div class='form-group'>
+                    <label class='col-sm-3 control-label' localized>plugin.apuppet.secret</label>
+                    <div class='col-sm-9'>
+                        <input ng-model='data.secret' required
+                               ng-disabled='data.useDefault'
+                               type='text' class='form-control'>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class='col-sm-3 control-label' for="bitrate" localized>plugin.apuppet.bitrate</label>
+                    <div class="col-sm-9">
+                        <select id="bitrate" required ng-model="data.bitrate" ng-disabled='data.useDefault' class="form-control">
+                            <option ng-value="128000" ng-selected="data.bitrate == 128000">128 kbps</option>
+                            <option ng-value="256000" ng-selected="data.bitrate == 256000">256 kbps</option>
+                            <option ng-value="512000" ng-selected="data.bitrate == 512000">512 kbps</option>
+                            <option ng-value="768000" ng-selected="data.bitrate == 768000">768 kbps</option>
+                            <option ng-value="1024000" ng-selected="data.bitrate == 1024000">1024 kbps</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class='col-sm-3 control-label' for="framerate" localized>plugin.apuppet.frame.rate</label>
+                    <div class="col-sm-9">
+                        <select id="framerate" required ng-model="data.frameRate" ng-disabled='data.useDefault' class="form-control">
+                            <option ng-value="5" ng-selected="data.frameRate == 5">5 fps</option>
+                            <option ng-value="10" ng-selected="data.frameRate == 10">10 fps</option>
+                            <option ng-value="15" ng-selected="data.frameRate == 15">15 fps</option>
+                            <option ng-value="20" ng-selected="data.frameRate == 20">20 fps</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class='form-group'>
+                    <label class='col-sm-3 control-label' for="notifySharing" localized>plugin.apuppet.notify.sharing</label>
+                    <div class='col-sm-9'>
+                        <input id="notifySharing" ng-model='data.notifySharing' ng-disabled='data.useDefault'
+                               type='checkbox' class='form-control'>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class='col-sm-3 control-label' for="idletimeout" localized>plugin.apuppet.exit.if.idle</label>
+                    <div class="col-sm-9">
+                        <select id="idletimeout" required ng-model="data.appIdleTimeout" ng-disabled='data.useDefault' class="form-control">
+                            <option value="60" ng-selected="data.appIdleTimeout == 60">1 {{localization.localize('plugin.apuppet.one.minute')}}</option>
+                            <option value="120" ng-selected="data.appIdleTimeout == 120">2 {{localization.localize('plugin.apuppet.two.minutes')}}</option>
+                            <option value="300" ng-selected="data.appIdleTimeout == 300">5 {{localization.localize('plugin.apuppet.many.minutes')}}</option>
+                            <option value="600" ng-selected="data.appIdleTimeout == 600">10 {{localization.localize('plugin.apuppet.many.minutes')}}</option>
+                            <option value="1800" ng-selected="data.appIdleTimeout == 1800">30 {{localization.localize('plugin.apuppet.many.minutes')}}</option>
+                            <option value="0" ng-selected="data.appIdleTimeout === 0" localized>plugin.apuppet.never</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class='form-group'>
+                    <div class='col-sm-offset-4 col-sm-8 padding-left'>
+                        <button type='submit' class='btn btn-default {{saveButtonClass()}}' ng-click='save()'
+                                localized>button.save</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+</div>

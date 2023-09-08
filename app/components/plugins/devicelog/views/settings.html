@@ -1,0 +1,88 @@
+<!-- Localization completed -->
+<div ng-controller="PluginDeviceLogSettingsController" style="padding:1em;">
+    <div class="text-center">
+        <h3 localized>plugin.devicelog.settings.title</h3>
+    </div>
+
+   
+        <form class='form-horizontal'>
+            <div class='form-group'>
+                <div ng-show='errorMessage' class='error'><span>{{errorMessage}}</span></div>
+            </div>
+            <div class='form-group'>
+                <div ng-show='successMessage' class='success'><span>{{successMessage}}</span></div>
+            </div>
+<div class="col-sm-12 margin-bottom">
+            <div class='form-group'>
+                <label class='col-sm-2'style="width:230px;" for="c0" localized>plugin.devicelog.settings.log.preserve.period</label>
+                <div class='col-sm-1'>
+                    <input id="c0" ng-model='settings.logsPreservePeriod' type='number' min="1" class='form-control'/>
+                </div>
+                <div class='col-sm-2'>
+                    <button type='submit' class='btn btn-primary btn-block' ng-click='save()' localized>button.save</button>
+                </div>
+<div class="col-sm-4"> </div>
+<div class="col-sm-2">
+                    <button type='button' class='btn btn-primary btn-block' ng-click='editRule({})' localized>button.add</button>
+                </div>
+
+</div>
+            </div>
+<br/>
+
+            <div ng-if="settings.identifier">
+
+                <div class="form-group text-center">
+<br/><br/>
+                    <h4 localized>plugin.devicelog.setting.rules.title</h4>
+                </div>
+
+
+<div class="col-sm-12 table-responsive" style="border: #C1C1C2 1px solid;border-radius: 3px;
+                        box-shadow: 0px 0px 4px 1px #C1C1C2; margin: 0em auto 3em;">
+                        <br/>
+                <table ng-if='settings.rules && settings.rules.length > 0' class='table table-responsive'>
+                    <thead>
+                    <tr>
+                        <th localized>plugin.devicelog.settings.rules.heading.name</th>
+                        <th localized>plugin.devicelog.settings.rules.heading.active</th>
+                        <th localized>plugin.devicelog.settings.rules.heading.severity</th>
+                        <th localized>plugin.devicelog.settings.rules.heading.filter</th>
+                        <th localized>plugin.devicelog.settings.rules.heading.application</th>
+                        <th localized>plugin.devicelog.settings.rules.heading.configuration</th>
+                        <th localized>plugin.devicelog.settings.rules.heading.group</th>
+                        <th class='actions-column' localized>table.heading.users.actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat='rule in settings.rules'>
+                        <td>{{rule.name}}</td>
+                        <td ng-if="rule.active">
+                            <span class="glyphicon glyphicon-check"></span>
+                        </td>
+                        <td ng-if="!rule.active">&nbsp;</td>
+                        <td>{{rule.severity}}</td>
+                        <td>{{rule.filter}}</td>
+                        <td>{{rule.applicationPkg}}</td>
+                        <td>{{rule.configurationName}}</td>
+                        <td>{{rule.groupName}}</td>
+                        <td>
+                            <div>
+                                <button type='button' class='btn' style="border-color: #00D523; background-color:white;" ng-click='editRule( rule )'>
+                                    <span class='glyphicon glyphicon-pencil' style="color: #00D523;"></span>
+                                </button>
+                                <button type='button' class='btn'  style="border-color: red; background-color:white;"  ng-click='removeRule( rule )'>
+                                    <span class='glyphicon glyphicon-trash'style="color:red;"></span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+<br/>
+                </div>
+            </div>
+
+        </form>
+</div>
+

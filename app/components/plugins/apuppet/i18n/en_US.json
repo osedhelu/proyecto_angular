@@ -1,0 +1,38 @@
+{
+  "breadcrumb.plugin.apuppet.main": "Remote Control",
+  
+  "plugin.apuppet.localization.key.name": "Remote Control",
+  "plugin.apuppet.title": "Remote Control",
+
+  "plugin.apuppet.configuration": "Configuration",
+  "plugin.apuppet.use.default": "Use default values",
+  "plugin.apuppet.server.url": "Server URL",
+  "plugin.apuppet.secret": "Secret",
+  "plugin.apuppet.bitrate": "Bitrate",
+  "plugin.apuppet.frame.rate": "Frame rate",
+  "plugin.apuppet.notify.sharing": "Flashing dot while sharing",
+  "plugin.apuppet.exit.if.idle": "Exit if the app is idle",
+  "plugin.apuppet.default.server.url": "Server URL",
+  "plugin.apuppet.default.secret": "Secret",
+  "plugin.apuppet.configuration.hint": "Please select configurations where the remote control will be used, and save settings to configure the mobile agent.",
+
+  "plugin.apuppet.enter.secret": "Please enter a secret generated during the Headwind Remote server installation!",
+  "plugin.apuppet.enter.server.url": "Please enter the server URL!",
+
+  "plugin.apuppet.application.not.found": "Please upload the Headwind Remote application (com.hmdm.control) first!",
+  "plugin.apuppet.application.not.found.configuration": "Please add the Headwind Remote application (com.hmdm.control) in the configuration of this device!",
+
+  "plugin.apuppet.button.control": "Control",
+  "plugin.apuppet.enter.device": "Please select a device!",
+  "plugin.apuppet.session.requested": "Remote session requested, waiting for confirmation",
+  "plugin.apuppet.session.ready": "Device is ready!",
+  "plugin.apuppet.session.start": "Start session",
+
+  "plugin.apuppet.one.minute": "minute",
+  "plugin.apuppet.two.minutes": "minutes",
+  "plugin.apuppet.many.minutes": "minutes",
+  "plugin.apuppet.never": "Never",
+
+  "plugin.apuppet.unsaved": "Settings are not yet saved. Click 'Save' to configure the remote access plugin!",
+  "success.plugin.apuppet.settings.saved": "Settings saved successfully"
+}

@@ -1,0 +1,33 @@
+{
+   "breadcrumb.plugin.urlfilter.rules": "قواعد الترشيح",
+   "breadcrumb.plugin.urlfilter.lists": "قوائم التصفية",
+
+   "plugin.urlfilter.localization.key.name": "تصفية URL",
+   "plugin.urlfilter.title": "تصفية URL",
+
+   "plugin.urlfilter.update.successful": "تم تحديث قواعد تصفية URL بنجاح",
+   "plugin.urlfilter.copy.source": "نسخ من التكوين",
+   "plugin.urlfilter.copy.button": "ينسخ",
+   "plugin.urlfilter.rules.active": "نشيط",
+   "plugin.urlfilter.rules.adblock": "إعلانات كتلة",
+   "plugin.urlfilter.rules.blacklist": "القائمة السوداء",
+   "plugin.urlfilter.rules.whitelist": "القائمة البيضاء",
+   "plugin.urlfilter.edit.rules": "تحرير القواعد",
+   "plugin.urlfilter.copy.profile": "نسخ ملف التعريف من تكوين آخر",
+   "plugin.urlfilter.lists.title": "قوائم تصفية عناوين URL",
+   "plugin.urlfilter.list.name": "اسم",
+   "plugin.urlfilter.list.name.placeholder": "أدخل الاسم الذي يحدد القائمة",
+   "plugin.urlfilter.list.comment": "تعليق",
+   "plugin.urlfilter.list.count": "عدد",
+   "plugin.urlfilter.no.lists": "لا توجد قوائم تصفية ، انقر فوق إضافة لإنشاء واحدة",
+   "plugin.urlfilter.edit.list": "تعديل",
+   "plugin.urlfilter.delete.list": "حذف",
+   "plugin.urlfilter.list.contents": "محتويات",
+   "plugin.urlfilter.list.contents.hint": "استخدم * لأحرف البدل ، افصل المجالات حسب الأسطر",
+   "plugin.urlfilter.question.delete.list": "هل أنت متأكد أنك تريد حذف القائمة ${listname}؟",
+   "plugin.urlfilter.error.empty.list.name": "الرجاء إدخال اسم القائمة!",
+   "plugin.urlfilter.error.empty.list.content": "الرجاء إدخال محتويات القائمة!",
+   "plugin.urlfilter.rule.for": "قواعد التصفية لـ",
+   "plugin.urlfilter.application.not.found": "الرجاء تثبيت تطبيق تصفية عناوين URL (com.hmdm.urlfilter)!",
+   "plugin.urlfilter.no.list": "(لا توجد قائمة)"
+}

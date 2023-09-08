@@ -1,0 +1,33 @@
+{
+  "breadcrumb.plugin.urlfilter.rules": "フィルタリングルール",
+  "breadcrumb.plugin.urlfilter.lists": "リストのフィルタリング",
+
+  "plugin.urlfilter.localization.key.name": "URLフィルタリング",
+  "plugin.urlfilter.title": "URLフィルタリング",
+
+  "plugin.urlfilter.update.successful": "URLフィルタリングルールが正常に更新されました",
+  "plugin.urlfilter.copy.source": "設定からコピー",
+  "plugin.urlfilter.copy.button": "コピー",
+  "plugin.urlfilter.rules.active": "アクティブ",
+  "plugin.urlfilter.rules.adblock": "広告をブロック",
+  "plugin.urlfilter.rules.blacklist": "ブラックリスト",
+  "plugin.urlfilter.rules.whitelist": "ホワイトリスト",
+  "plugin.urlfilter.edit.rules": "ルールを編集",
+  "plugin.urlfilter.copy.profile": "別の構成からプロファイルをコピー",
+  "plugin.urlfilter.lists.title": "URL フィルタリング リスト",
+  "plugin.urlfilter.list.name": "名前",
+  "plugin.urlfilter.list.name.placeholder": "リストを識別する名前を入力してください",
+  "plugin.urlfilter.list.comment": "コメント",
+  "plugin.urlfilter.list.count": "カウント",
+  "plugin.urlfilter.no.lists": "フィルタリングリストはありません。[追加] をクリックして作成してください",
+  "plugin.urlfilter.edit.list": "編集",
+  "plugin.urlfilter.delete.list": "削除",
+  "plugin.urlfilter.list.contents": "コンテンツ",
+  "plugin.urlfilter.list.contents.hint": "ワイルドカードには * を使用し、ドメインを行で区切ります",
+  "plugin.urlfilter.question.delete.list": "リスト '${listname}' を削除してもよろしいですか?",
+  "plugin.urlfilter.error.empty.list.name": "リスト名を入力してください!",
+  "plugin.urlfilter.error.empty.list.content": "リストの内容を入力してください!",
+  "plugin.urlfilter.rule.for": "フィルタリングルール",
+  "plugin.urlfilter.application.not.found": "URL フィルタリング アプリケーション (com.hmdm.urlfilter) をインストールしてください!",
+  "plugin.urlfilter.no.list": "(リストなし)"
+}

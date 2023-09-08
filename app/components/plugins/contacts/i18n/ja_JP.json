@@ -1,0 +1,19 @@
+{
+  "breadcrumb.plugin.contacts.main": "連絡先",
+  "plugin.contacts.localization.key.name": "連絡先",
+  "plugin.contacts.notice": "このプラグインには、モバイル エージェント (連絡先プラグイン、com.hmdm.contacts) のインストールが必要です",
+  "plugin.contacts.tab.title": "連絡先をデバイスにアップロード",
+  "plugin.contacts.configuration": "設定",
+  "plugin.contacts.vcf.url": "VCF ファイルの URL",
+  "plugin.contacts.vcf.url.placeholder": "https://your.host.com/vcf.file",
+  "plugin.contacts.http.username": "HTTP ユーザー名",
+  "plugin.contacts.http.username.placeholder": "HTTP 認証用のユーザー名",
+  "plugin.contacts.http.password": "HTTP パスワード",
+  "plugin.contacts.http.password.placeholder": "HTTP 認証用のパスワード",
+  "plugin.contacts.account.type": "ACCOUNT_TYPE 値",
+  "plugin.contacts.account.type.placeholder": "同期された連絡先の ACCOUNT_TYPE",
+  "plugin.contacts.sync.timespan": "同期間隔 (秒)",
+  "plugin.contacts.sync.timespan.placeholder": "URL の再読み込みの間隔",
+  "plugin.contacts.wipe.all": "すべての連絡先をワイプ",
+  "plugin.contacts.data.saved": "設定が正常に保存されました"
+}

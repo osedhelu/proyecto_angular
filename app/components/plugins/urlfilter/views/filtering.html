@@ -1,0 +1,86 @@
+<!-- Localization completed -->
+<div class="width-1000" ng-controller="PluginUrlfilterRulesController">
+    <div class="text-center">
+        <h4 localized>plugin.urlfilter.title</h4>
+    </div>
+    <div ng-show='errorMessage' class='modal-header'>
+        <div ng-show='errorMessage' class='error'><span>{{errorMessage}}</span></div>
+    </div>
+    <div ng-show='successMessage' class='modal-header'>
+        <div ng-show='successMessage' class='success'><span>{{successMessage}}</span></div>
+    </div>
+
+    <div class='form-group'>
+        <input type='text'
+               ng-enter='search()'
+               ng-model='paging.searchValue'
+               localized-placeholder='search.placeholder.configuration'
+               class='form-control configurations-search-input'>
+
+        <div class='configurations-search-buttons'>
+            <button type='button' class='btn btn-default' ng-click='search()' localized>button.search</button>
+        </div>
+    </div>
+
+    <!-- Pagination is implemented on the client side -->
+    <div class="text-center" ng-if="rules.length > paging.pageSize">
+        <pagination
+                boundary-links='true' class='pagination-sm'
+                max-size='3'
+                ng-model='paging.currentPage'
+                total-items='rules.length'
+                items-per-page='paging.pageSize'
+                previous-text='&lsaquo;' next-text='&rsaquo;' first-text='&laquo;'
+                last-text='&raquo;'></pagination>
+    </div>
+
+    <table ng-if='rules && rules.length > 0' class='table'>
+        <thead>
+        <tr>
+            <th localized>table.heading.configuration.name</th>
+            <th localized>plugin.urlfilter.rules.active</th>
+            <th localized>plugin.urlfilter.rules.adblock</th>
+            <th localized>plugin.urlfilter.rules.blacklist</th>
+            <th localized>plugin.urlfilter.rules.whitelist</th>
+            <th localized>table.heading.configuration.actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat='rule in rules.slice(((paging.currentPage-1)*paging.pageSize), ((paging.currentPage)*paging.pageSize))'>
+            <td>{{rule.configurationName}}</td>
+            <td>{{rule.activeText}}</td>
+            <td>{{rule.blockAdsText}}</td>
+            <td>{{rule.blacklistName}}</td>
+            <td>{{rule.whitelistName}}</td>
+            <td>
+                <div>
+                    <button type='button' class='btn btn-default' localized-title="plugin.urlfilter.edit.rules"
+                            ng-click='editProfile(rule)'>
+                        <span class='glyphicon glyphicon-pencil'></span>
+                    </button>
+                    <button type='button' class='btn btn-default' localized-title="plugin.urlfilter.copy.profile"
+                            ng-click='copyProfile(rule)'>
+                        <span class='glyphicon glyphicon-duplicate'></span>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div ng-if='configurations && configurations.length == 0' class='center' localized>notfound.configurations</div>
+
+    <div class="text-center" ng-if="rules.length > paging.pageSize">
+        <pagination
+                boundary-links='true' class='pagination-sm'
+                max-size='3'
+                ng-model='paging.currentPage'
+                total-items='rules.length'
+                items-per-page='paging.pageSize'
+                previous-text='&lsaquo;' next-text='&rsaquo;' first-text='&laquo;'
+                last-text='&raquo;'></pagination>
+    </div>
+
+
+</div>
+

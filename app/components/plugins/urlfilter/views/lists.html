@@ -1,0 +1,102 @@
+<!--
+  ~
+  ~ Headwind MDM: Open Source Android MDM Software
+  ~ https://h-mdm.com
+  ~
+  ~ Copyright (C) 2019 Headwind Solutions LLC (http://h-sms.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<div class="width-1000" ng-controller="PluginUrlfilterListsController">
+    <div class="text-center">
+        <h4 localized-change-tracking>plugin.urlfilter.lists.title</h4>
+    </div>
+
+    <div ng-show='errorMessage' class='modal-header'>
+        <div ng-show='errorMessage' class='error'><span>{{errorMessage}}</span></div>
+    </div>
+    <div ng-show='successMessage' class='modal-header'>
+        <div ng-show='successMessage' class='success'><span>{{successMessage}}</span></div>
+    </div>
+
+    <div class='form-group'>
+        <input type='text'
+               ng-enter='search()'
+               ng-model='paging.filter'
+               localized-placeholder='search.placeholder'
+               class='form-control configurations-search-input'>
+
+        <div class='configurations-search-buttons'>
+            <button type='button' class='btn btn-default' ng-click='search()' localized>button.search</button>
+            <button type='button' class='btn btn-default' ng-click='editList( {} )' localized>button.add</button>
+        </div>
+    </div>
+
+    <!-- Pagination is implemented on the client side -->
+    <div class="text-center" ng-if="lists.length > paging.pageSize">
+        <pagination
+                boundary-links='true' class='pagination-sm'
+                max-size='3'
+                ng-model='paging.currentPage'
+                total-items='lists.length'
+                items-per-page='paging.pageSize'
+                previous-text='&lsaquo;' next-text='&rsaquo;' first-text='&laquo;'
+                last-text='&raquo;'></pagination>
+    </div>
+
+    <table ng-if='lists && lists.length > 0' class='table'>
+        <thead>
+        <tr>
+            <th localized>plugin.urlfilter.list.name</th>
+            <th localized>plugin.urlfilter.list.comment</th>
+            <th localized>plugin.urlfilter.list.count</th>
+            <th localized>table.heading.configuration.actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat='list in lists.slice(((paging.currentPage-1)*paging.pageSize), ((paging.currentPage)*paging.pageSize))'>
+            <td>{{list.name}}</td>
+            <td>{{list.comment}}</td>
+            <td>{{list.count}}</td>
+            <td>
+                <div>
+                    <button type='button' class='btn btn-default' localized-title="plugin.urlfilter.edit.list"
+                            ng-click='editList(list)'>
+                        <span class='glyphicon glyphicon-pencil'></span>
+                    </button>
+                    <button type='button' class='btn btn-default' localized-title="plugin.urlfilter.delete.list"
+                            ng-click='deleteList(list)'>
+                        <span class='glyphicon glyphicon-trash'></span>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div ng-if='lists && lists.length == 0' class='center' localized>plugin.urlfilter.no.lists</div>
+
+    <div class="text-center" ng-if="lists.length > lists.pageSize">
+        <pagination
+                boundary-links='true' class='pagination-sm'
+                max-size='3'
+                ng-model='paging.currentPage'
+                total-items='lists.length'
+                items-per-page='paging.pageSize'
+                previous-text='&lsaquo;' next-text='&rsaquo;' first-text='&laquo;'
+                last-text='&raquo;'></pagination>
+    </div>
+
+</div>

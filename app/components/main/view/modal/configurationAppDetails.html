@@ -1,0 +1,49 @@
+
+<!-- Localization completed -->
+<div ng-show='errorMessage' class='modal-header'>
+    <div ng-show='errorMessage' class='error'><span>{{errorMessage}}</span></div>
+</div>
+<div class='modal-body' style="padding:2em;">
+
+    <form class='form-horizontal'>
+
+        <div class='form-group text-center'>
+            <label class='control-label'>{{application.name}}</label>
+        </div>
+<br/>
+        <div class="form-group">
+            <div class="col-sm-6">
+                <label for="c_keyCode" localized>form.configuration.apps.keycode</label>
+            </div>
+            <div class="col-sm-6">
+                <input type="text" id="c_keyCode" class="form-control" ng-model="application.keyCode"
+                           value="{{application.keyCode}}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-6">
+                <label for="c_bottom" localized>form.configuration.apps.bottom</label>
+            </div>
+            <div class="col-sm-6">
+                <input type="checkbox" id="c_bottom"  ng-model="application.bottom"
+                       value="{{application.bottom}}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-6">
+                <label for="c_bottom" localized>form.configuration.apps.long.tap</label>
+            </div>
+            <div class="col-sm-6">
+                <input type="checkbox" id="c_longtap" ng-model="application.longTap"
+                       value="{{application.longTap}}"/>
+            </div>
+        </div>
+<hr/>
+        <div class='form-group'>
+            <div class='col-sm-12 text-center'>
+                <button type='submit' class='btn' style="background-color: red; color:white;"  ng-click='closeModal()' localized>button.close</button>
+            </div>
+        </div>
+    </form>
+</div>

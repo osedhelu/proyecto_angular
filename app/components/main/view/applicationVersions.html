@@ -1,0 +1,100 @@
+<!-- Localization completed -->
+<div class='content-wrapper margin-bottom'>
+
+    <div ncy-breadcrumb class="margin-bottom" style="margin:20px; background-color: white; border:#6c757d 1px solid; border-radius: 3px;"></div>
+<div class="col-sm-12" style="padding: 2em;">
+
+    <div class='form-group'>
+        <div class='center'>
+            <h3>{{parentApp.name}}</h3>
+        </div>
+    </div>
+
+ <div class="col-sm-12">
+    <div class='form-group' ng-if="parentApp.type !== 'web'">
+        <div class='col-sm-offset-8 text-right'>
+            <button type='button' style="width:320px;" class='btn btn-primary'
+                    ng-if="hasPermission('edit_application_versions') && !(parentApp.commonApplication && parentApp.customerId != user.customerId)"
+                    ng-click='addApplicationVersion( {system: parentApp.system, applicationId: parentApp.id, arch: null} )'
+                    localized>button.add</button>
+        </div>
+    </div>
+<br/>
+</div>
+
+<div class="col-sm-12" style="border: #C1C1C2 1px solid;border-radius: 3px;
+                        box-shadow: 0px 0px 4px 1px #C1C1C2; margin: 0em auto 3em;">
+                        <br/>
+
+
+
+    <table ng-if='applications && applications.length > 0' class='table'>
+        <thead>
+        <tr>
+            <th localized>table.heading.application.version</th>
+            <th localized>form.application.version.code</th>
+            <th localized>table.heading.application.url</th>
+            <th class='actions-column-150' localized>table.heading.application.actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat='application in applications.slice(((paging.currentPage-1)*paging.pageSize), ((paging.currentPage)*paging.pageSize))'>
+            <td>{{application.version}}</td>
+            <td>{{application.versionCode != 0 ? application.versionCode : ''}}</td>
+            <td ng-if="!application.split">{{application.url}}</td>
+            <td ng-if="application.split" class="column-split-apk"><span class="configuration-hint">arm64:</span>&nbsp;&nbsp;
+                <span ng-if="application.urlArm64">{{application.urlArm64}}</span>
+                <span class="warning-font" ng-if="!application.urlArm64" localized>form.configuration.apps.no.apk</span><br>
+                <span class="configuration-hint">armeabi:</span>
+                <span ng-if="application.urlArmeabi">{{application.urlArmeabi}}</span>
+                <span class="warning-font" ng-if="!application.urlArmeabi" localized>form.configuration.apps.no.apk</span>
+
+            <td>
+                <div>
+                    <button localized-title="button.set.configurations" style="border-color: #9B00FF; background-color:white;"
+                            type='button' class='btn btn-default' ng-click='manageConfigurations( application )'>
+                        <span class='glyphicon glyphicon-tasks' style="color: #9B00FF;"></span>
+                    </button>
+                    <button ng-if="hasPermission('edit_application_versions') && (!parentApp.commonApplication || parentApp.customerId == user.customerId)"
+                            style=" border-color: #00D523; background-color:white;" localized-title="button.edit"
+                            type='button' class='btn btn-default' ng-click='editApplicationVersion( application )'>
+                        <span class='glyphicon glyphicon-pencil' style="color:  #00D523;"></span>
+                    </button>
+                    <button ng-if="hasPermission('edit_application_versions') && !application.deletionProhibited && (!parentApp.commonApplication || parentApp.customerId == user.customerId)"
+                            style= "border-color: red; background-color:white;" localized-title="button.delete"
+                            type='button' class='btn btn-default' ng-click='removeApplicationVersion( application )'>
+                        <span class='glyphicon glyphicon-trash' style="color:red;"></span>
+                    </button>
+                    <button ng-if="hasPermission('edit_application_versions') && application.deletionProhibited && (!parentApp.commonApplication || parentApp.customerId == user.customerId)"
+                            style= "border-color: red; background-color:white;" localized-title="error.application.version.deletion.prohibited" disabled="disabled"
+                            type='button' class='btn btn-default'>
+                        <span class='glyphicon glyphicon-trash' style="color:red;"></span>
+                    </button>
+                    <button ng-if="hasPermission('edit_application_versions') && parentApp.commonApplication && parentApp.customerId != user.customerId"
+                            ng-click="clarifyOnCommon()" style= "border-color: #00B2FF; background-color:white;"
+                            localized-title="button.common" type='button' class='btn btn-default'>
+                        <span class='glyphicon glyphicon-cloud' style="color: #00B2FF;"></span>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <div ng-if='applications && applications.length === 0' class='center' localized>notfound.app.versions.for.display</div>
+
+    <div class="text-center" ng-if="applications.length > paging.pageSize">
+        <pagination
+                boundary-links='true' class='pagination-sm'
+                max-size='3'
+                ng-model='paging.currentPage'
+                total-items='applications.length'
+                items-per-page='paging.pageSize'
+                previous-text='&lsaquo;' next-text='&rsaquo;' first-text='&laquo;'
+                last-text='&raquo;'></pagination>
+    </div>
+
+</div>
+</div>
+</div>

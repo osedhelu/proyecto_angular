@@ -1,0 +1,137 @@
+<!-- Localization completed -->
+<div ng-controller="ApplicationsTabController" style="padding: 1em; position:relative">
+    <form class="form-horizontal">
+
+<div class="col-sm-12">
+<br/>
+
+        <div class='form-group'>
+
+        <div class="col-sm-3 text-center  margin-bottom" style="width: 350px; justify-content: center; margin: 0px 0px 0px 0px; border:#AE97FE 1px solid;border-radius: 3px;
+        box-shadow: 0px 0px 1px 1px #AE97FE; height: 34px">
+
+
+
+<input id="cc12222" style="margin: 0px 7px 0px 0px;" ng-model='showMyAppsOnly.system' name="n42" type='checkbox'
+                        ng-checked="showMyAppsOnly.system"
+                        ng-change="showSystemAppsOnlyToggled()"/>
+<label style="font-weight: normal;" for='cc12222' class="control-label" localized>form.configuration.apps.show.systeam.apps</label>
+
+<div ng-if="myAppsButtonVisible">
+    <input id="cc1"  style="margin: 7px 0px 0px 0px;" ng-model='showMyAppsOnly.on' name="n4" type='checkbox'
+        ng-change="showMyAppsOnlyToggled()"/>
+    </div>
+
+    <label  style="font-weight: normal;" for="cc1" class="control-label" ng-if="myAppsButtonVisible"
+localized>box.show.my.apps.only</label>
+
+                   </div>  
+ 
+        <div class="col-sm-3  margin-bottom" style=" width: 320px; height: 34px; float: left;" >
+            <input type='text' style="padding: 5px; border:#DCDCDC 1px solid;border-radius: 3px;
+box-shadow: 0px 0px 1px 1px #4CEE00; height: 34px; float: left;"
+                   ng-model='search.searchValue'
+                   ng-change="search()"
+                   ng-model-options="{ debounce: 500 }"
+                   ng-enter='search()'
+                   localized-placeholder='search.placeholder.application'
+                   class='form-control'>
+        </div>
+
+<div class="col-sm-2"> </div> 
+        <div class='col-sm-3  margin-bottom'>
+<button ng-if="hasPermission('edit_applications')" type='button'   class='btn btn-primary btn-block' ng-click='editApplication( {arch:null} )' localized>button.add</button>
+        </div>
+    </div>
+
+<br/>
+<br/>
+
+</div>
+
+    </form>
+
+<div class="col-sm-12 table-responsive" style="border: #C1C1C2 1px solid;border-radius: 3px;
+                        box-shadow: 0px 0px 4px 1px #C1C1C2; margin: 0em auto 3em;">
+                        <br/>
+
+    <table ng-if='applications && applications.length > 0' class='table table-responsive'>
+        <thead>
+        <tr>
+            <th localized>table.heading.application.pkg</th>
+            <th localized>table.heading.application.name</th>
+            <th localized>table.heading.application.version</th>
+            <th localized>table.heading.application.url</th>
+            <th localized>table.heading.application.label</th>
+            <th class='actions-column-140' localized>table.heading.application.actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat='application in applications.slice(((paging.currentPage-1)*paging.pageSize), ((paging.currentPage)*paging.pageSize))'>
+            <td>
+                <span ng-if="pkgInfoVisible(application)">{{application.pkg}}</span>
+            </td>
+            <td>{{application.name}}</td>
+            <td>
+                <span ng-if="pkgInfoVisible(application)">{{application.version}}</span>
+            </td>
+            <td ng-if="!application.split">{{application.url}}</td>
+            <td ng-if="application.split" class="column-split-apk"><span class="configuration-hint">arm64:</span>&nbsp;&nbsp;
+                <span ng-if="application.urlArm64">{{application.urlArm64}}</span>
+                <span class="warning-font" ng-if="!application.urlArm64" localized>form.configuration.apps.no.apk</span><br>
+                <span class="configuration-hint">armeabi:</span>
+                <span ng-if="application.urlArmeabi">{{application.urlArmeabi}}</span>
+                <span class="warning-font" ng-if="!application.urlArmeabi" localized>form.configuration.apps.no.apk</span>
+            <td>{{application.showIcon ? '+' : ''}}</td>
+
+            <td>
+                
+                    <button localized-title="button.edit.versions"
+                            type='button' class='btn' style="margin: 1px; border-color: #021BCD; background-color:white;"
+	 ng-click='editVersions( application )'>
+                        <span class='glyphicon glyphicon-cog' style="color: #021BCD;"></span>
+                    </button>
+                    <button localized-title="button.set.configurations"  style="margin: 1px; border-color: #9B00FF; background-color:white;"
+                            type='button' class='btn margin top' ng-click='editConfiguration( application )'>
+                        <span class='glyphicon glyphicon-tasks' style="color:#9B00FF;"></span>
+                    </button>
+                    <button ng-if="hasPermission('edit_applications') && (!application.commonApplication || application.customerId == user.customerId)"
+                            localized-title="button.edit" style="margin: 1px; border-color: #00D523; background-color:white;"
+                            type='button' class='btn btn-default' ng-click='editApplication( application )'>
+                        <span class='glyphicon glyphicon-pencil' style="color: #00D523;"></span>
+                    </button>
+                    <button ng-if="hasPermission('edit_applications') && !application.deletionProhibited && (!application.commonApplication || application.customerId == user.customerId)"
+                            localized-title="button.delete" style="margin:1px; border-color: red; background-color:white;"
+                            type='button' class='btn btn-default' ng-click='removeApplication( application )'>
+                        <span class='glyphicon glyphicon-trash' style="color:red;"></span>
+                    </button>
+                    <button ng-if="hasPermission('edit_applications') && application.deletionProhibited && (!application.commonApplication || application.customerId == user.customerId)"
+                            localized-title="error.application.config.reference.exists" disabled="disabled" style=" margin: 1px; border-color: red; background-color:white;"
+                            type='button' class='btn btn-default' ng-click='removeApplication( application )'>
+                        <span class='glyphicon glyphicon-trash' style="color:red;"></span>
+                    </button>
+                    <button ng-if="hasPermission('edit_applications') && application.commonApplication && application.customerId != user.customerId"
+                            ng-click="clarifyOnCommon()" style=" margin: 1px; border-color: #00B2FF; background-color:white;"
+                            localized-title="button.common" type='button' class='btn btn-default'>
+                        <span class='glyphicon glyphicon-cloud' style="color:#00B2FF;"></span>
+                    </button>
+                
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="text-center" ng-if="applications.length > paging.pageSize">
+        <pagination
+                boundary-links='true' class='pagination-sm'
+                max-size='3'
+                ng-model='paging.currentPage'
+                total-items='applications.length'
+                items-per-page='paging.pageSize'
+                previous-text='&lsaquo;' next-text='&rsaquo;' first-text='&laquo;'
+                last-text='&raquo;'></pagination>
+    </div>
+
+<div ng-if='applications && applications.length === 0' class='center' localized>notfound.apps.for.display</div><br/>
+</div>
+</div>

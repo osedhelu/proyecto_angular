@@ -1,0 +1,75 @@
+<!--
+  ~
+  ~ Headwind MDM: Open Source Android MDM Software
+  ~ https://h-mdm.com
+  ~
+  ~ Copyright (C) 2019 Headwind Solutions LLC (http://h-sms.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<div class="width-1000" ng-controller="PluginApuppetController">
+    <div class="text-center">
+        <h4 localized-change-tracking>plugin.apuppet.title</h4>
+    </div>
+
+
+    <div class='form-group' ng-if='errorMessage'>
+        <div class='error'><span>{{errorMessage}}</span></div>
+    </div>
+
+    <div class='form-group' ng-if='successMessage'>
+        <div class='success'><span>{{successMessage}}</span></div>
+    </div>
+
+
+    <form class="form-horizontal row margin-top-40">
+        <div class="col-sm-10">
+            <input type="text"
+                   ng-model="formData.deviceNumber"
+                   ng-enter='search()'
+                   localized-placeholder="search.placeholder.device"
+                   autocomplete="off"
+                   class="form-control"
+                   typeahead="address for address in searchDevices($viewValue)"
+                   typeahead-loading="loadingDevices"
+                   typeahead-wait-ms="300"
+                   typeahead-focus-first="false"
+                   typeahead-input-formatter="deviceLookupFormatter($model)"
+                   typeahead-no-results="noResults">
+        </div>
+
+        <div class="col-sm-2">
+            <button type='button' class='btn btn-default' ng-click='initSession()' ng-disabled="loading"
+                    localized>plugin.apuppet.button.control</button>
+        </div>
+    </form>
+
+    <div class='form-group'>
+        <div class='wait-message'><span>{{waitMessage}}</span></div>
+    </div>
+
+    <div class='form-group' ng-if="sessionId">
+        <div class='col-sm-offset-4 col-sm-8 padding-left'>
+            <button type='submit' class='btn btn-default' ng-click='startSession()'
+                    localized>plugin.apuppet.session.start</button>
+        </div>
+    </div>
+
+    <div ng-if="device" class="margin-top-40">
+
+
+    </div>
+
+</div>

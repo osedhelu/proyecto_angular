@@ -1,0 +1,65 @@
+<!-- Localization completed -->
+<div ng-show='errorMessage' class='modal-header'>
+    <div ng-show='errorMessage' class='error'><span>{{errorMessage}}</span></div>
+</div>
+<div class='modal-body' style="padding:2em;">
+    <form class='form-horizontal'>
+
+        <div class='form-group'>
+            <label class='col-sm-3' localized>plugin.devicelog.settings.label.rule</label>
+            <div class='col-sm-9'>
+                <input ng-model='rule.name' type='text' class='form-control' disabled/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class='col-sm-3 control-label'>&nbsp;</label>
+            <div class="col-sm-6">
+                <input type="text"
+                       ng-model="newDevice"
+                       localized-placeholder="plugin.devicelog.settings.form.rule.device.placeholder"
+                       autocomplete="off"
+                       class="form-control"
+                       typeahead="app for app in getDevices($viewValue)"
+                       typeahead-loading="loadingDevices"
+                       typeahead-wait-ms="300"
+                       typeahead-focus-first="false"
+                       typeahead-no-results="noResults"/>
+            </div>
+            <div class="cols-sm-3">
+                <button type='submit' class='btn btn-primary' ng-click='addNewDevice()'
+                        ng-disabled="saving || !newDevice" localized>button.add</button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class='col-sm-3' localized>plugin.devicelog.settings.form.rule.devices</label>
+            <div class='col-sm-9'>
+                <div class='configurations-videos panel panel-default'>
+                    <div class='panel-body'>
+                        <div ng-repeat='device in rule.devices | orderBy: "name"' class="form-group">
+                            <div class="col-sm-9">
+                                {{device.name}}
+                            </div>
+
+                            <div class="col-sm-3">
+                                <button type="button" class="btn" style="border-color: red; background-color:white;" ng-click="removeDevice(device)">
+                                    <span class="glyphicon glyphicon-trash" style="color:red;"></span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<hr/>
+        <div class='form-group'>
+            <div class='col-sm-offset-4 col-sm-9'>
+                <button type='submit' style="width:90px;" class='btn btn-primary' ng-click='save()' ng-disabled="saving" localized>button.ok</button>&#160; &#160;
+                <button type='button' class='btn'style="color:white; background-color:red;" ng-click='closeModal()' localized>button.cancel</button>
+            </div>
+        </div>
+    </form>
+</div>

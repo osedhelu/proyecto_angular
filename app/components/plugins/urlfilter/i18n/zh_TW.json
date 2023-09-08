@@ -1,0 +1,33 @@
+{
+  "breadcrumb.plugin.urlfilter.rules": "過濾規則",
+  "breadcrumb.plugin.urlfilter.lists": "過濾列表",
+
+  "plugin.urlfilter.localization.key.name": "Règles de filtrage",
+  "plugin.urlfilter.title": "過濾列表",
+
+  "plugin.urlfilter.update.successful": "URL過濾規則更新成功",
+  "plugin.urlfilter.copy.source": "從配置中復制",
+  "plugin.urlfilter.copy.button": "複製",
+  "plugin.urlfilter.rules.active": "活動",
+  "plugin.urlfilter.rules.adblock": "屏蔽廣告",
+  "plugin.urlfilter.rules.blacklist": "黑名單",
+  "plugin.urlfilter.rules.whitelist": "白名單",
+  "plugin.urlfilter.edit.rules": "編輯規則",
+  "plugin.urlfilter.copy.profile": "從另一個配置複製配置文件",
+  "plugin.urlfilter.lists.title": "URL 過濾列表",
+  "plugin.urlfilter.list.name": "名稱",
+  "plugin.urlfilter.list.name.placeholder": "輸入識別列表的名稱",
+  "plugin.urlfilter.list.comment": "評論",
+  "plugin.urlfilter.list.count": "計數",
+  "plugin.urlfilter.no.lists": "沒有過濾列表，點擊‘添加’創建一個",
+  "plugin.urlfilter.edit.list": "編輯",
+  "plugin.urlfilter.delete.list": "刪除",
+  "plugin.urlfilter.list.contents": "內容",
+  "plugin.urlfilter.list.contents.hint": "使用 * 作為通配符，按行分隔域",
+  "plugin.urlfilter.question.delete.list": "你確定要刪除列表'${listname}'嗎？",
+  "plugin.urlfilter.error.empty.list.name": "請輸入列表名稱！",
+  "plugin.urlfilter.error.empty.list.content": "請輸入列表內容！",
+  "plugin.urlfilter.rule.for": "過濾規則",
+  "plugin.urlfilter.application.not.found": "請安裝 URL 過濾應用程序 (com.hmdm.urlfilter)！",
+  "plugin.urlfilter.no.list": "(無列表)"
+}

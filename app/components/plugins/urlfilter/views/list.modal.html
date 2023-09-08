@@ -1,0 +1,38 @@
+<!-- Localization completed -->
+<div ng-show='errorMessage' class='modal-header'>
+    <div ng-show='errorMessage' class='error'><span>{{errorMessage}}</span></div>
+</div>
+<div class='modal-body'>
+    <form class='form-horizontal'>
+
+        <div class='form-group'>
+            <label class='col-sm-3 control-label' localized>plugin.urlfilter.list.name</label>
+            <div class='col-sm-9'>
+                <input ng-model='list.name' required type='text' class='form-control'
+                       localized-placeholder='plugin.urlfilter.list.name.placeholder'>
+            </div>
+        </div>
+
+        <div class='form-group'>
+            <label class='col-sm-3 control-label' localized>plugin.urlfilter.list.comment</label>
+            <div class='col-sm-9'>
+                <textarea ng-model='list.comment' class='form-control no-resize' rows="3"></textarea>
+            </div>
+        </div>
+
+        <div class='form-group'>
+            <label class='col-sm-3 control-label' localized>plugin.urlfilter.list.contents</label>
+            <div class='col-sm-9'>
+                <textarea ng-model='list.list' required class='form-control no-resize' rows="10"></textarea>
+                <div localized>plugin.urlfilter.list.contents.hint</div>
+            </div>
+        </div>
+
+        <div class='form-group'>
+            <div class='col-sm-offset-3 col-sm-9'>
+                <button type='submit' class='btn btn-default' ng-click='save()' ng-disabled="saving" localized>button.save</button>
+                <button type='button' class='btn btn-default' ng-click='closeModal()' localized>button.cancel</button>
+            </div>
+        </div>
+    </form>
+</div>

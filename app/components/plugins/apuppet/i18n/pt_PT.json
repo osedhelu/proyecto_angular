@@ -1,0 +1,38 @@
+{
+  "breadcrumb.plugin.apuppet.main": "Controle Remoto",
+  
+  "plugin.apuppet.localization.key.name": "Controle Remoto",
+  "plugin.apuppet.title": "Controle Remoto",
+
+  "plugin.apuppet.configuration": "Configurações",
+  "plugin.apuppet.use.default": "Usar configuração padrão",
+  "plugin.apuppet.server.url": "URL do Servidor",
+  "plugin.apuppet.secret": "Senha",
+  "plugin.apuppet.bitrate": "Bitrate",
+  "plugin.apuppet.frame.rate": "Frame rate",
+  "plugin.apuppet.notify.sharing": "Notificar enquanto está compartilhando",
+  "plugin.apuppet.exit.if.idle": "Sair do aplicaitvo se ficar inativo",
+  "plugin.apuppet.default.server.url": "Server URL",
+  "plugin.apuppet.default.secret": "Senha",
+  "plugin.apuppet.configuration.hint": "Por favor selecione a configuração de acesso remoto que vai ser utilizada, e salve as configurações no dispositivo.",
+
+  "plugin.apuppet.enter.secret": "Por favor digite a senha gerada durante a instalação do servidor do Headwind Remote!",
+  "plugin.apuppet.enter.server.url": "Digite a URL do Servidor!",
+
+  "plugin.apuppet.application.not.found": "Por favor faça o upload do aplicativo Headwind Remote (com.hmdm.control) primeiro!",
+  "plugin.apuppet.application.not.found.configuration": "Por favor adicione o aplicativo Headwind Remote (com.hmdm.control) na configuração do dispositivo!",
+
+  "plugin.apuppet.button.control": "Control",
+  "plugin.apuppet.enter.device": "Por favor selecione um dispositivo!",
+  "plugin.apuppet.session.requested": "Sessão remota requisitada, aguarde a confirmação",
+  "plugin.apuppet.session.ready": "Dispositivo está pronto!",
+  "plugin.apuppet.session.start": "Iniciar sessão",
+
+  "plugin.apuppet.one.minute": "minuto",
+  "plugin.apuppet.two.minutes": "minutos",
+  "plugin.apuppet.many.minutes": "minutos",
+  "plugin.apuppet.never": "Nunca",
+
+  "plugin.apuppet.unsaved": "Configurações não foram salvas. Clique em 'Salvar' para configurar o plugin de acesso remoto!",
+  "success.plugin.apuppet.settings.saved": "Configurações salvas com sucesso"
+}

@@ -1,0 +1,39 @@
+<!-- Localization completed -->
+<div ng-show='apps.length === 0' class='modal-header'>
+    <div class='error'><span localized>notfound.applications</span></div>
+    <hr/>
+    <div class="center">
+        <button type='button' class='btn'  style="background-color: red; color: white;"  ng-click='closeModal()' localized>button.close</button>
+    </div>
+</div>
+<div class='modal-body' style="padding:2em;" ng-if="apps.length > 0">
+
+<div class="col-sm-12 table-responsive" style=" padding: 1em; border: #C1C1C2 1px solid;border-radius: 3px;
+box-shadow: 0px 0px 4px 1px #C1C1C2; margin: 0em auto 3em;">
+
+
+    <table class='table table-responsive'>
+        <thead>
+        <tr>
+            <th localized>form.file.apps.name</th>
+            <th localized>form.file.apps.pkg</th>
+            <th localized>form.file.apps.version</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat='app in apps'>
+            <td>{{app.name}}</td>
+            <td>{{app.pkg}}</td>
+            <td>{{app.version}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+ <div class="center">
+
+        <button type='button' class='btn' style="background-color: red; color: white;"  ng-click='closeModal()' localized>button.close</button>
+    </div>
+
+</div>
+</div>

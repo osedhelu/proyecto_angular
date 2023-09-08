@@ -1,0 +1,33 @@
+{
+  "breadcrumb.plugin.urlfilter.rules": "Règles de filtrage",
+  "breadcrumb.plugin.urlfilter.lists": "Listes de filtrage",
+
+  "plugin.urlfilter.localization.key.name": "Règles de filtrage",
+  "plugin.urlfilter.title": "Listes de filtrage",
+
+  "plugin.urlfilter.update.successful": "Les règles de filtrage d'URL ont été mises à jour avec succès",
+  "plugin.urlfilter.copy.source": "Copier depuis la configuration",
+  "plugin.urlfilter.copy.button": "Copier",
+  "plugin.urlfilter.rules.active": "Actif",
+  "plugin.urlfilter.rules.adblock": "Bloquer les publicités",
+  "plugin.urlfilter.rules.blacklist": "Liste noire",
+  "plugin.urlfilter.rules.whitelist": "Liste blanche",
+  "plugin.urlfilter.edit.rules": "Modifier les règles",
+  "plugin.urlfilter.copy.profile": "Copier le profil depuis une autre configuration",
+  "plugin.urlfilter.lists.title": "Listes de filtrage d'URL",
+  "plugin.urlfilter.list.name": "Nom",
+  "plugin.urlfilter.list.name.placeholder": "Entrez le nom identifiant la liste",
+  "plugin.urlfilter.list.comment": "Commentaire",
+  "plugin.urlfilter.list.count": "Compter",
+  "plugin.urlfilter.no.lists": "Aucune liste de filtrage, cliquez sur 'Ajouter' pour en créer une",
+  "plugin.urlfilter.edit.list": "Modifier",
+  "plugin.urlfilter.delete.list": "Supprimer",
+  "plugin.urlfilter.list.contents": "Contenu",
+  "plugin.urlfilter.list.contents.hint": "Utilisez * pour les caractères génériques, séparez les domaines par des lignes",
+  "plugin.urlfilter.question.delete.list": "Êtes-vous sûr de vouloir supprimer la liste '${listname}' ?",
+  "plugin.urlfilter.error.empty.list.name": "Veuillez saisir le nom de la liste !",
+  "plugin.urlfilter.error.empty.list.content": "Veuillez saisir le contenu de la liste !",
+  "plugin.urlfilter.rule.for": "Règles de filtrage pour",
+  "plugin.urlfilter.application.not.found": "Veuillez installer l'application de filtrage d'URL (com.hmdm.urlfilter) !",
+  "plugin.urlfilter.no.list": "(pas de liste)"
+}

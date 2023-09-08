@@ -1,0 +1,38 @@
+{
+  "breadcrumb.plugin.appuppet.main": "リモートコントロール",
+  
+  "plugin.apuppet.localization.key.name": "リモートコントロール",
+  "plugin.apuppet.title": "リモートコントロール",
+
+  "plugin.apuppet.configuration": "設定",
+  "plugin.apuppet.use.default": "デフォルト値を使用",
+  "plugin.apuppet.server.url": "サーバーURL",
+  "plugin.apuppet.secret": "シークレット",
+  "plugin.apuppet.bitrate": "ビットレート",
+  "plugin.apuppet.frame.rate": "フレームレート",
+  "plugin.apuppet.notify.sharing": "共有中にドットが点滅",
+  "plugin.apuppet.exit.if.idle": "アプリがアイドル状態の場合は終了",
+  "plugin.apuppet.default.server.url": "サーバーURL",
+  "plugin.apuppet.default.secret": "シークレット",
+  "plugin.apuppet.configuration.hint": "リモートコントロールが使用される構成を選択し、設定を保存してモバイルエージェントを構成してください。",
+
+  "plugin.apuppet.enter.secret": "Headwind Remoteサーバーのインストール中に生成されたシークレットを入力してください!",
+  "plugin.apuppet.enter.server.url": "サーバーの URL を入力してください!",
+
+  "plugin.apuppet.application.not.found": "最初に Headwind Remote アプリケーション (com.hmdm.control) をアップロードしてください!",
+  "plugin.apuppet.application.not.found.configuration": "このデバイスの構成に Headwind Remote アプリケーション (com.hmdm.control) を追加してください!",
+
+  "plugin.apuppet.button.control": "コントロール",
+  "plugin.apuppet.enter.device": "デバイスを選択してください!",
+  "plugin.apuppet.session.requested": "リモート セッションが要求されました。確認待ちです",
+  "plugin.apuppet.session.ready": "デバイスの準備ができました!",
+  "plugin.apuppet.session.start": "セッションを開始",
+
+  "plugin.apuppet.one.minute": "分",
+  "plugin.apuppet.two.minutes": "分",
+  "plugin.apuppet.many.minutes": "分",
+  "plugin.apuppet.never": "しない",
+
+  "plugin.apuppet.unsaved": "設定はまだ保存されていません。[保存] をクリックしてリモート アクセス プラグインを設定してください!",
+  "success.plugin.apuppet.settings.saved": "設定が正常に保存されました"
+}

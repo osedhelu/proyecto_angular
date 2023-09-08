@@ -1,0 +1,82 @@
+<!-- Localization completed -->
+<div ng-controller="FilesTabController" style="padding: 1em;">
+<br/>
+    <div class='form-group'>
+
+
+
+<div class="col-sm-12">
+ <div class="col-sm-6 margin-bottom">
+        <input class="col-sm-7" type='text'style="padding: 5px; border:#DCDCDC 1px solid;border-radius: 3px;
+box-shadow: 0px 0px 1px 1px #4CEE00; height: 32px; width: 320px;"
+
+               ng-enter='search()'
+               ng-model='search.searchValue'
+               localized-placeholder='search.placeholder.file'
+               class='form-control'> &#160;
+           <button type='button' class='btn btn-success' ng-click='search()' localized>button.search</button>
+</div>
+<div class="col-sm-3"> </div>
+<div class='col-sm-3 margin-bottom'>      
+      <button ng-if="hasPermission('edit_files')" type='button' class='btn btn-primary btn-block' ng-click='addFile()' localized>button.add</button>
+</div>
+</div>
+</div>
+
+
+<div class="col-sm-12"> <br/><br/></div>
+
+<div class="col-sm-12 table-responsive" style="border: #C1C1C2 1px solid;border-radius: 3px;
+                        box-shadow: 0px 0px 4px 1px #C1C1C2; margin: 0em auto 3em;">
+                        <br/>
+    <table ng-if='files && files.length > 0' class='table table-responsive'>
+        <thead>
+        <tr>
+            <th localized>table.heading.file.name</th>
+            <th localized>table.heading.file.path</th>
+            <th localized>table.heading.file.address</th>
+            <th  localized>table.heading.file.actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat='file in files.slice(((paging.currentPage-1)*paging.pageSize), ((paging.currentPage)*paging.pageSize))'>
+            <td>{{file.name}}</td>
+            <td>{{file.path}}</td>
+            <td>{{file.url}}</td>
+
+            <td>
+                <div>
+                    <button type='button' localized-title="button.application"
+                            class='btn' ng-click='showApps( file )' style="border-color: #9B00FF; background-color:white;">
+                        <span class='glyphicon glyphicon-tasks' style="color:#9B00FF;"></span>
+                    </button>
+                    <button type='button' ng-if="hasPermission('edit_files') && !file.removalDisabled" localized-title="button.delete"
+                            class='btn' ng-click='removeFile( file )' style="border-color: red; background-color:white;">
+                        <span class='glyphicon glyphicon-trash' style="color: red;"></span>
+                    </button>
+                    <button type='button' ng-if="file.removalDisabled"
+                            disabled="disabled"
+                            title="{{file.removeButtonTooltip}}"
+                            class='btn' style="border-color: red; background-color:white;">
+                        <span class='glyphicon glyphicon-trash' style="color: red;"></span>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div ng-if='files && files.length == 0' class='center' localized>notfound.files</div>
+<br/>
+    <div class="text-center" ng-if="files.length > paging.pageSize">
+        <pagination
+                boundary-links='true' class='pagination-sm'
+                max-size='3'
+                ng-model='paging.currentPage'
+                total-items='files.length'
+                items-per-page='paging.pageSize'
+                previous-text='&lsaquo;' next-text='&rsaquo;' first-text='&laquo;'
+                last-text='&raquo;'></pagination>
+    </div>
+</div>
+</div>

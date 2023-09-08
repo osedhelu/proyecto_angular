@@ -1,0 +1,98 @@
+<!-- Localization completed -->
+<div ng-controller="ConfigurationsTabController" style="padding: 1em;">
+
+    <notification-message attr-name="configurationsMessage"></notification-message>
+<br/>
+    <div class='form-group'>
+<div class="col-sm-12">
+
+
+  <div class="col-sm-6 margin-bottom">
+      <input class="col-sm-7" type='text'style="padding: 5px; border:#DCDCDC 1px solid;border-radius: 3px;
+box-shadow: 0px 0px 1px 1px #4CEE00; height: 32px; width: 320px;"
+
+               ng-enter='search()'
+               ng-model='searchObj.searchValue'
+               localized-placeholder='search.placeholder.configuration'
+               class='form-control'>  &#160;
+<button type='button' class='btn btn-success' ng-click='search()' localized>button.search</button>
+</div>
+
+<div class="col-sm-3"> </div>
+<div class='col-sm-3 margin-bottom'>
+            <button type='button' class='btn btn-primary btn-block' ng-if="hasPermission('add_config')" ng-click='addConfiguration()' localized>button.add</button>
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-12"> <br/><br/></div>
+
+<div class="col-sm-12 table-responsive" style="border: #C1C1C2 1px solid;border-radius: 3px;
+                        box-shadow: 0px 0px 4px 1px #C1C1C2; margin: 0em auto 3em;">
+                        <br/>
+
+
+
+
+
+    <table ng-if='configurations && configurations.length > 0' class='table table-responsive'>
+        <thead>
+        <tr>
+            <th localized>table.heading.configuration.name</th>
+            <th localized>table.heading.configuration.desc</th>
+            <th class='actions-column-150' localized>table.heading.configuration.actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat='configuration in configurations.slice(((paging.currentPage-1)*paging.pageSize), ((paging.currentPage)*paging.pageSize))'>
+            <td>{{configuration.name}}</td>
+            <td>{{configuration.description}}</td>
+            <td>
+                <div>
+                    <button type='button' class='btn' localized-title="button.change"
+                            ng-click='editConfiguration( configuration )'
+				style="border-color: #00D523; background-color:white;">
+                        <span class='glyphicon glyphicon-pencil' style="color: #00D523;"></span>
+                    </button>
+                    <button ng-disabled='configuration.id === 1'
+                            type='button' localized-title="button.delete"
+                            class='btn'
+			   style="border-color: red; background-color:white;"
+                            ng-if="hasPermission('copy_config')"
+                            ng-click='removeConfiguration( configuration )'>
+                        <span class='glyphicon glyphicon-trash' style="color:red;"></span>
+                    </button>
+                    <button type='button' class='btn btn-default' localized-title="button.copy"
+                            ng-if="hasPermission('copy_config')"
+			    style="border-color: #00B2FF; background-color:white;"
+                            ng-click='copyConfiguration( configuration )'>
+                        <span class='glyphicon glyphicon-duplicate' style="color: #00B2FF;"></span>
+                    </button>
+                    <button type='button' class='btn btn-default' localized-title="button.qrcode"
+                            data-hint-key="hint.step.2"
+			    style="border-color: black; background-color:white;"
+                            ng-if="qrCodeAvailable(configuration)"
+                            ng-click='showQrCode(configuration)'>
+                        <span class='glyphicon glyphicon-qrcode' style="color:black;"></span>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div ng-if='configurations && configurations.length == 0' class='center' localized>notfound.configurations</div>
+
+    <div class="text-center" ng-if="configurations.length > paging.pageSize">
+        <pagination
+                boundary-links='true' class='pagination-sm'
+                max-size='3'
+                ng-model='paging.currentPage'
+                total-items='configurations.length'
+                items-per-page='paging.pageSize'
+                previous-text='&lsaquo;' next-text='&rsaquo;' first-text='&laquo;'
+                last-text='&raquo;'></pagination>
+    </div>
+<br/>
+</div>	
+</div>

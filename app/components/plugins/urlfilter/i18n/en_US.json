@@ -1,0 +1,33 @@
+{
+  "breadcrumb.plugin.urlfilter.rules": "Filtering rules",
+  "breadcrumb.plugin.urlfilter.lists": "Filtering lists",
+
+  "plugin.urlfilter.localization.key.name": "URL Filtering",
+  "plugin.urlfilter.title": "URL Filtering",
+
+  "plugin.urlfilter.update.successful": "URL filtering rules are successfully updated",
+  "plugin.urlfilter.copy.source": "Copy from configuration",
+  "plugin.urlfilter.copy.button": "Copy",
+  "plugin.urlfilter.rules.active": "Active",
+  "plugin.urlfilter.rules.adblock": "Block ads",
+  "plugin.urlfilter.rules.blacklist": "Blacklist",
+  "plugin.urlfilter.rules.whitelist": "Whitelist",
+  "plugin.urlfilter.edit.rules": "Edit rules",
+  "plugin.urlfilter.copy.profile": "Copy profile from another configuration",
+  "plugin.urlfilter.lists.title": "URL filtering lists",
+  "plugin.urlfilter.list.name": "Name",
+  "plugin.urlfilter.list.name.placeholder": "Enter the name identifying the list",
+  "plugin.urlfilter.list.comment": "Comment",
+  "plugin.urlfilter.list.count": "Count",
+  "plugin.urlfilter.no.lists": "No filtering lists, click 'Add' to create one",
+  "plugin.urlfilter.edit.list": "Edit",
+  "plugin.urlfilter.delete.list": "Delete",
+  "plugin.urlfilter.list.contents": "Contents",
+  "plugin.urlfilter.list.contents.hint": "Use * for wildcards, separate domains by lines",
+  "plugin.urlfilter.question.delete.list": "Are you sure you want to delete the list '${listname}'?",
+  "plugin.urlfilter.error.empty.list.name": "Please enter the list name!",
+  "plugin.urlfilter.error.empty.list.content": "Please enter the list contents!",
+  "plugin.urlfilter.rule.for": "Filtering rules for",
+  "plugin.urlfilter.application.not.found": "Please install the URL filtering application (com.hmdm.urlfilter)!",
+  "plugin.urlfilter.no.list": "(no list)"
+}

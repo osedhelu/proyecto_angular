@@ -1,0 +1,38 @@
+{
+  "breadcrumb.plugin.apuppet.main": "Control remoto",
+
+  "plugin.apuppet.localization.key.name": "Control remoto",
+  "plugin.apuppet.title": "Control remoto",
+
+  "plugin.apuppet.configuration": "Configuración",
+  "plugin.apuppet.use.default": "Usar valores predeterminados",
+  "plugin.apuppet.server.url": "URL del servidor",
+  "plugin.apuppet.secret": "Secreto",
+  "plugin.apuppet.bitrate": "Bitrate",
+  "plugin.apuppet.frame.rate": "Cuadros por segundo",
+  "plugin.apuppet.notify.sharing": "Punto parpadeante mientras se comparte",
+  "plugin.apuppet.exit.if.idle": "Salir si está inactivo",
+  "plugin.apuppet.default.server.url": "URL del servidor",
+  "plugin.apuppet.default.secret": "Secreto",
+  "plugin.apuppet.configuration.hint": "Seleccione las configuraciones donde se utilizará el control remoto y guarde las configuraciones para configurar el agente móvil.",
+
+  "plugin.apuppet.enter.secret": "¡Ingrese un secreto generado durante la instalación del servidor Headwind Remote!",
+  "plugin.apuppet.enter.server.url": "Introduzca la URL del servidor.",
+
+  "plugin.apuppet.application.not.found": "¡Primero cargue la aplicación Headwind Remote (com.hmdm.control)!",
+  "plugin.apuppet.application.not.found.configuration": "¡Agregue la aplicación Headwind Remote (com.hmdm.control) en la configuración de este dispositivo!",
+
+  "plugin.apuppet.button.control": "Controlar",
+  "plugin.apuppet.enter.device": "¡Selecciona un dispositivo!",
+  "plugin.apuppet.session.requested": "Sesión remota solicitada, esperando confirmación",
+  "plugin.apuppet.session.ready": "¡El dispositivo está listo!",
+  "plugin.apuppet.session.start": "Iniciar sesión",
+
+  "plugin.apuppet.one.minute": "minuto",
+  "plugin.apuppet.two.minutes": "minutos",
+  "plugin.apuppet.many.minutes": "minutos",
+  "plugin.apuppet.never": "Nunca",
+
+  "plugin.apuppet.unsaved": "La configuración aún no se ha guardado. Haga clic en 'Guardar' para configurar el complemento de acceso remoto.",
+  "success.plugin.apuppet.settings.saved": "Configuracion guardada satisfactoriamente"
+}

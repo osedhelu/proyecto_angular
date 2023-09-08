@@ -1,0 +1,38 @@
+{
+   "breadcrumb.plugin.apuppet.main": "جهاز التحكم",
+
+   "plugin.apuppet.localization.key.name": "جهاز التحكم",
+   "plugin.apuppet.title": "جهاز التحكم",
+
+   "plugin.apuppet.configuration": "ترتيب",
+   "plugin.apuppet.use.default": "استخدم القيم الافتراضية",
+   "plugin.apuppet.server.url": "عنوان URL للخادم",
+   "plugin.apuppet.secret": "سر",
+   "plugin.apuppet.bitrate": "معدل البت",
+   "plugin.apuppet.frame.rate": "معدل الإطار",
+   "plugin.apuppet.notify.sharing": "وامض نقطة أثناء المشاركة",
+   "plugin.apuppet.exit.if.idle": "خروج في حالة الخمول",
+   "plugin.apuppet.default.server.url": "عنوان URL للخادم",
+   "plugin.apuppet.default.secret": "سر",
+   "plugin.apuppet.configuration.hint": "يرجى تحديد التكوينات حيث سيتم استخدام جهاز التحكم عن بعد ، وحفظ الإعدادات لتكوين وكيل الهاتف المحمول.",
+
+   "plugin.apuppet.enter.secret": "الرجاء إدخال السر الذي تم إنشاؤه أثناء تثبيت خادم Headwind Remote!",
+   "plugin.apuppet.enter.server.url": "الرجاء إدخال عنوان URL للخادم!",
+
+   "plugin.apuppet.application.not.found": "يرجى تحميل تطبيق Headwind Remote أولاً!",
+   "plugin.apuppet.application.not.found.configuration": "الرجاء إضافة تطبيق Headwind Remote في تكوين هذا الجهاز!",
+
+   "plugin.apuppet.button.control": "مراقبة",
+   "plugin.apuppet.enter.device": "الرجاء تحديد جهاز!",
+   "plugin.apuppet.session.requested": "تم طلب جلسة عن بعد ، في انتظار التأكيد",
+   "plugin.apuppet.session.ready": "الجهاز جاهز!",
+   "plugin.apuppet.session.start": "ابدأ الجلسة",
+
+   "plugin.apuppet.one.minute": "دقيقة",
+   "plugin.apuppet.two.minutes": "دقائق",
+   "plugin.apuppet.many.minutes": "دقائق",
+   "plugin.apuppet.never": "أبدا",
+
+   "plugin.apuppet.unsaved": "لم يتم حفظ الإعدادات بعد. انقر فوق 'حفظ' لتكوين المكون الإضافي للوصول عن بُعد!",
+   "success.plugin.apuppet.settings.saved": "تم حفظ الإعدادات بنجاح"
+}

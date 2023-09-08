@@ -1,0 +1,38 @@
+{
+  "breadcrumb.plugin.apuppet.main": "Удаленный доступ",
+
+  "plugin.apuppet.localization.key.name": "Удаленный доступ",
+  "plugin.apuppet.title": "Удаленный доступ",
+
+  "plugin.apuppet.configuration": "Конфигурация",
+  "plugin.apuppet.use.default": "Значения по умолчанию",
+  "plugin.apuppet.server.url": "URL сервера",
+  "plugin.apuppet.secret": "Секрет",
+  "plugin.apuppet.bitrate": "Ширина канала",
+  "plugin.apuppet.frame.rate": "Частота кадров",
+  "plugin.apuppet.notify.sharing": "Мигающая точка при передаче",
+  "plugin.apuppet.exit.if.idle": "Выходить, если нет активности",
+  "plugin.apuppet.default.server.url": "URL сервера",
+  "plugin.apuppet.default.secret": "Секрет",
+  "plugin.apuppet.configuration.hint": "Выберите конфигурации с удаленным контролем, и сохраните настройки для инициализации мобильного агента.",
+
+  "plugin.apuppet.enter.secret": "Пожалуйста, введите секрет, сгенерированный при установке сервера Headwind Remote!",
+  "plugin.apuppet.enter.server.url": "Пожалуйста, введите URL сервера!",
+
+  "plugin.apuppet.application.not.found": "Пожалуйста, установите мобильное приложение Headwind Remote (com.hmdm.control)!",
+  "plugin.apuppet.application.not.found.configuration": "Пожалуйста, добавьте приложение Headwind Remote (com.hmdm.control) в конфигурацию устройства!",
+
+  "plugin.apuppet.button.control": "Управлять",
+  "plugin.apuppet.enter.device": "Пожалуйста, выберите устройство!",
+  "plugin.apuppet.session.requested": "Сессия удаленного доступа запрошена, ожидаем подтверждения",
+  "plugin.apuppet.session.ready": "Устройство готово!",
+  "plugin.apuppet.session.start": "Начать сессию",
+
+  "plugin.apuppet.one.minute": "минута",
+  "plugin.apuppet.two.minutes": "минуты",
+  "plugin.apuppet.many.minutes": "минут",
+  "plugin.apuppet.never": "Никогда",
+
+  "plugin.apuppet.unsaved": "Настройки еще не сохранены. Нажмите 'Сохранить', чтобы настроить плагин удаленного доступа!",
+  "success.plugin.apuppet.settings.saved": "Настройки успешно сохранены"
+}

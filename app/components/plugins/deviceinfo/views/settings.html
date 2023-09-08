@@ -1,0 +1,72 @@
+<!--
+  ~
+  ~ Headwind MDM: Open Source Android MDM Software
+  ~ https://h-mdm.com
+  ~
+  ~ Copyright (C) 2019 Headwind Solutions LLC (http://h-sms.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<div ng-controller="PluginDeviceInfoSettingsController" style="padding:1em;">
+    <div class="text-center">
+        <h3 localized-change-tracking>plugin.deviceinfo.title</h3>
+    </div>
+
+    
+        <form class='form-horizontal'>
+            <div class='form-group'>
+                <div ng-show='successMessage' class='success'><span>{{successMessage}}</span></div>
+                <div ng-show='errorMessage' class='error'><span>{{errorMessage}}</span></div>
+            </div>
+<br/>
+
+<div class="col-sm-12 table-responsive" style="border: #C1C1C2 1px solid;border-radius: 3px;
+                        box-shadow: 0px 0px 4px 1px #C1C1C2; margin: 0em auto 3em;">
+                        <br/><br/>
+<div class="col-sm-12 margin-bottom">
+            <div class='form-group'>
+
+                <label class='col-sm-3'for="c0" localized-change-tracking>plugin.deviceinfo.settings.data.preserve.period</label>
+                <div class='col-sm-1'>
+                    <input id="c0" ng-model='settings.dataPreservePeriod' type='number' min="1" class='form-control'/>
+                </div>
+<div class="col-sm-1"></div>
+                <label class='col-sm-3'style="width:250px;" for="c1" localized-change-tracking>plugin.deviceinfo.settings.send.data</label>
+                <div class='col-sm-2'>
+                    <input id="c1" ng-model='settings.sendData' type='checkbox'/>
+                </div>
+</div>         
+</div>
+<div class="col-sm-12 margin-bottom">
+<div class='form-group'>
+                <label class='col-sm-3'  for="c2" localized-change-tracking>plugin.deviceinfo.settings.interval.mins</label>
+                <div class='col-sm-2'>
+                    <select class='form-control' ng-disabled="loading" id="c2"
+                            ng-model='settings.intervalMins'
+                            ng-options="opt.value as opt.label for opt in intervalOptions">
+                    </select>
+                </div>
+</div>
+</div>
+<div class="col-sm-12 margin-bottom">
+<div class="col-sm-5"></div>
+                <div class='col-sm-2'>
+                    <button type='submit' class='btn btn-primary btn-block' ng-click='save()' localized-change-tracking>button.save</button>
+                </div>
+            </div>
+<div class="col-sm-12"><br/></div>
+        </form>
+    </div>
+</div>

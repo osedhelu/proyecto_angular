@@ -1,0 +1,74 @@
+<!-- Localization completed -->
+<div  ng-controller="GroupsTabController" style="padding:1em;">
+
+    <div class="text-center">
+        <h3 localized>form.settings.groups.title</h3>
+    </div>
+<div class="col-sm-12"><br/></div>
+
+<div class="col-sm-12 margin-bottom">
+
+ <div class="col-sm-6 margin-bottom">
+            <input class="col-sm-7"  type='text' ng-model='search.searchValue' ng-enter='search()'
+                   localized-placeholder='form.settings.groups.search.placeholder'
+style="padding: 5px; border:#DCDCDC 1px solid;border-radius: 3px;
+box-shadow: 0px 0px 1px 1px #4CEE00; height: 32px; width: 320px;"                 
+class='form-control'/>&#160;        
+      <button type='button' class='btn btn-success' ng-click='search()' localized>button.search</button>
+
+</div>
+
+<div class="col-sm-3"> </div>
+<div class='col-sm-3 margin-bottom'>
+                <button type='button' class='btn btn-primary btn-block' ng-click='editGroup( {} )' localized>button.add</button>
+        </div>
+</div>
+<div class="col-sm-12"> <br/><br/></div>
+
+<div class="col-sm-12 table-responsive" style="border: #C1C1C2 1px solid;border-radius: 3px;
+                        box-shadow: 0px 0px 4px 1px #C1C1C2; margin: 0em auto 3em;">
+                        <br/>
+
+        <table ng-if='groups && groups.length > 0' class='table table-responsive'>
+            <thead>
+            <tr>
+                <th localized>table.heading.group.name</th>
+                <th class='actions-column' localized>table.heading.group.actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat='group in groups.slice(((paging.currentPage-1)*paging.pageSize), ((paging.currentPage)*paging.pageSize))'>
+                <td>{{group.name}}</td>
+                <td>
+                    <div>
+                        <button type='button' class='btn' style="border-color: #00D523; background-color:white;"  ng-click='editGroup( group )'>
+                            <span class='glyphicon glyphicon-pencil' style="color:#00D523;"></span>
+                        </button>
+                        <button type='button'
+                                class='btn'
+#00D523;
+                                ng-disabled='group.id === 1'
+                                ng-click='removeGroup( group )'>
+                            <span class='glyphicon glyphicon-trash'></span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div ng-if='groups && groups.length === 0' class='center' localized>notfound.groups</div>
+
+        <div class="text-center" ng-if="groups.length > paging.pageSize">
+            <pagination
+                    boundary-links='true' class='pagination-sm'
+                    max-size='3'
+                    ng-model='paging.currentPage'
+                    total-items='groups.length'
+                    items-per-page='paging.pageSize'
+                    previous-text='&lsaquo;' next-text='&rsaquo;' first-text='&laquo;'
+                    last-text='&raquo;'></pagination>
+        </div>
+<br/>
+    </div>
+</div>

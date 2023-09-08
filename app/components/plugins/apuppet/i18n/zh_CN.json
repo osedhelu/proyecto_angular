@@ -1,0 +1,38 @@
+{
+  "breadcrumb.plugin.apuppet.main": "远程控制",
+
+  "plugin.apuppet.localization.key.name": "远程控制",
+  "plugin.apuppet.title": "远程控制",
+
+  "plugin.apuppet.configuration": "配置",
+  "plugin.apuppet.use.default": "使用默认值",
+  "plugin.apuppet.server.url": "服务器地址",
+  "plugin.apuppet.secret": "秘密",
+  "plugin.apuppet.bitrate": "比特率",
+  "plugin.apuppet.frame.rate": "帧率",
+  "plugin.apuppet.notify.sharing": "分享时闪烁的圆点",
+  "plugin.apuppet.exit.if.idle": "如果应用空闲则退出",
+  "plugin.apuppet.default.server.url": "服务器地址",
+  "plugin.apuppet.default.secret": "秘密",
+  "plugin.apuppet.configuration.hint": "请选择将使用遥控器的配置，并保存设置以配置移动代理。",
+
+  "plugin.apuppet.enter.secret": "请输入在 Headwind 远程服务器安装过程中生成的密码！",
+  "plugin.apuppet.enter.server.url": "请输入服务器 URL！",
+
+  "plugin.apuppet.application.not.found": "请先上传 Headwind Remote 应用程序 (com.hmdm.control)！",
+  "plugin.apuppet.application.not.found.configuration": "请在此设备的配置中添加 Headwind Remote 应用程序 (com.hmdm.control)！",
+
+  "plugin.apuppet.button.control": "控制",
+  "plugin.apuppet.enter.device": "请选择设备！",
+  "plugin.apuppet.session.requested": "请求远程会话，等待确认",
+  "plugin.apuppet.session.ready": "设备准备就绪！",
+  "plugin.apuppet.session.start": "开始会话",
+
+  "plugin.apuppet.one.minute": "分钟",
+  "plugin.apuppet.two.minutes": "分钟",
+  "plugin.apuppet.many.minutes": "分钟",
+  "plugin.apuppet.never": "从不",
+
+  "plugin.apuppet.unsaved": "设置尚未保存。点击'保存'配置远程访问插件！",
+  "success.plugin.apuppet.settings.saved": "设置保存成功"
+}

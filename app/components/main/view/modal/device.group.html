@@ -1,0 +1,39 @@
+<!-- Localization completed -->
+<div ng-show='errorMessage' class='modal-header'>
+    <div ng-show='errorMessage' class='error'><span>{{errorMessage}}</span></div>
+</div>
+<div class='modal-body' style="padding: 2em;">
+    <form class='form-horizontal'>
+        <div class='form-group'>
+            <label class='col-sm-3' localized>form.update.device.action</label>
+            <div class='col-sm-9'>
+
+                <select class='form-control'
+                        ng-model='groupAction'>
+                    <option ng-value="'set'" selected localized>form.device.set.group</option>
+                    <option ng-value="'clear'" localized>form.device.clear.group</option>
+                </select>
+            </div>
+        </div>
+
+        <div class='form-group'>
+            <label class='col-sm-3' localized>form.device.groups</label>
+            <div class='col-sm-9'>
+                <div ng-dropdown-multiselect
+                     options='groupsList'
+                     translation-texts='tableFilteringTexts'
+                     selected-model='groupsSelection'
+                     class='left margin-right-half custom-multi-select'></div>
+
+ <div class='col-sm-offset-5'>
+                <button type='submit' class='btn btn-primary' ng-click='save()' localized>button.save</button> &#160; &#160;
+                <button type='button' class='btn' style="background-color: red; color: white;" ng-click='closeModal()' localized>button.cancel</button>
+            </div>
+
+
+            </div>
+        </div>
+
+        </div>
+    </form>
+</div>

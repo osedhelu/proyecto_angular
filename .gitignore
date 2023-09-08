@@ -1,3 +1,6 @@
-WEB-INF
-META-INF
-lib
+/WEB-INF
+/META-INF
+/lib/*
+!/lib/bootstrap-css-only/*
+
+

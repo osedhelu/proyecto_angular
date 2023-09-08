@@ -1,5 +1,5 @@
 <!-- Localization completed -->
-<div  ng-controller="PluginMessagingSettingsController" style="padding:1em;">
+<div ng-controller="PluginMessagingSettingsController" style="padding:1em;">
     <div class="text-center">
         <h3 localized>plugin.messaging.settings.title</h3>
     </div>
@@ -12,21 +12,23 @@
                 <div ng-show='successMessage' class='success'><span>{{successMessage}}</span></div>
             </div>
 
-<div class="col-sm-12" style="border: #C1C1C2 1px solid;border-radius: 3px;
+            <div class="col-sm-12" style="border: #C1C1C2 1px solid;border-radius: 3px;
                         box-shadow: 0px 0px 4px 1px #C1C1C2; margin: 0em auto 3em;">
-                        <br/>
-            <div class='form-group'>
-<div class="col-sm-2"></div>
-                <label class='col-sm-4 control-label' for="c0" localized>plugin.messaging.settings.message.purge.period</label>
-                <div class='col-sm-1'>
-                    <input id="c0" ng-model='settings.messagingPurgePeriod' type='number' min="1" class='form-control'/>
-                </div>
-                <div class='col-sm-2'>
-                    <button type='submit' class='btn'style="background-color: red; color: white;"  ng-click='purge()' localized>plugin.messaging.settings.message.purge.button</button>
+                <br />
+                <div class='form-group'>
+                    <div class="col-sm-2"></div>
+                    <label class='col-sm-4 control-label' for="c0"
+                        localized>plugin.messaging.settings.message.purge.period</label>
+                    <div class='col-sm-1'>
+                        <input id="c0" ng-model='settings.messagingPurgePeriod' type='number' min="1"
+                            class='form-control' />
+                    </div>
+                    <div class='col-sm-2'>
+                        <button type='submit' class='btn' style="background-color: red; color: white;"
+                            ng-click='purge()' localized>plugin.messaging.settings.message.purge.button</button>
+                    </div>
                 </div>
             </div>
-</div>
         </form>
     </div>
 </div>
-

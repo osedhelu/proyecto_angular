@@ -39,19 +39,19 @@ angular.module('plugin-messaging', ['ngResource', 'ui.bootstrap', 'ui.router', '
     })
     .factory('pluginMessagingService', function ($resource) {
         return $resource('', {}, {
-            purgeOldMessages: {url: 'rest/plugins/messaging/private/purge/:days', method: 'GET'},
-            getMessages: {url: 'rest/plugins/messaging/private/search', method: 'POST'},
-            sendMessage: {url: 'rest/plugins/messaging/private/send', method: 'POST'},
-            deleteMessage: {url: 'rest/plugins/messaging/:id', method: 'DELETE'},
-            lookupDevices: {url: 'rest/private/devices/autocomplete', method: 'POST'},
+            purgeOldMessages: { url: 'rest/plugins/messaging/private/purge/:days', method: 'GET' },
+            getMessages: { url: 'rest/plugins/messaging/private/search', method: 'POST' },
+            sendMessage: { url: 'rest/plugins/messaging/private/send', method: 'POST' },
+            deleteMessage: { url: 'rest/plugins/messaging/:id', method: 'DELETE' },
+            lookupDevices: { url: 'rest/private/devices/autocomplete', method: 'POST' },
         });
     })
-    .factory('getDevicesService', ['pluginMessagingService', function(pluginMessagingService) {
-        var getDeviceInfo = function( device ) {
-            if ( device.info ) {
+    .factory('getDevicesService', ['pluginMessagingService', function (pluginMessagingService) {
+        var getDeviceInfo = function (device) {
+            if (device.info) {
                 try {
-                    return JSON.parse( device.info );
-                } catch ( e ) {}
+                    return JSON.parse(device.info);
+                } catch (e) { }
             }
 
             return undefined;
@@ -70,8 +70,8 @@ angular.module('plugin-messaging', ['ngResource', 'ui.bootstrap', 'ui.router', '
         };
 
         return {
-            getDevices: function(val) {
-                return pluginMessagingService.lookupDevices(val).$promise.then(function(response) {
+            getDevices: function (val) {
+                return pluginMessagingService.lookupDevices(val).$promise.then(function (response) {
                     if (response.status === 'OK') {
                         return response.data.map(function (device) {
                             var deviceInfo = getDeviceInfo(device);
@@ -86,7 +86,7 @@ angular.module('plugin-messaging', ['ngResource', 'ui.bootstrap', 'ui.router', '
                     }
                 });
             },
-            deviceLookupFormatter: function(v) {
+            deviceLookupFormatter: function (v) {
                 if (v) {
                     var pos = v.indexOf('/');
                     if (pos > -1) {
@@ -97,9 +97,9 @@ angular.module('plugin-messaging', ['ngResource', 'ui.bootstrap', 'ui.router', '
             }
         }
     }])
-    .filter('status', function() {
-        return function(input) {
-            switch(input) {
+    .filter('status', function () {
+        return function (input) {
+            switch (input) {
                 case 0:
                     return 'plugin.messaging.status.sent';
                 case 1:
@@ -110,8 +110,8 @@ angular.module('plugin-messaging', ['ngResource', 'ui.bootstrap', 'ui.router', '
         };
     })
     .controller('PluginMessagingTabController', function ($scope, $rootScope, $window, $location, $modal, $timeout, $interval,
-                                                          pluginMessagingService, getDevicesService, confirmModal,
-                                                          authService, localization) {
+        pluginMessagingService, getDevicesService, confirmModal,
+        authService, localization) {
 
         $scope.hasPermission = authService.hasPermission;
 
@@ -130,7 +130,7 @@ angular.module('plugin-messaging', ['ngResource', 'ui.bootstrap', 'ui.router', '
             sortValue: 'createTime'
         };
 
-        $scope.$watch('paging.pageNum', function() {
+        $scope.$watch('paging.pageNum', function () {
             $window.scrollTo(0, 0);
         });
 
@@ -152,11 +152,11 @@ angular.module('plugin-messaging', ['ngResource', 'ui.bootstrap', 'ui.router', '
         $scope.getDevices = getDevicesService.getDevices;
         $scope.deviceLookupFormatter = getDevicesService.deviceLookupFormatter;
 
-        $scope.openDateCalendar = function( $event, isStartDate ) {
+        $scope.openDateCalendar = function ($event, isStartDate) {
             $event.preventDefault();
             $event.stopPropagation();
 
-            if ( isStartDate ) {
+            if (isStartDate) {
                 $scope.openDatePickers.dateFrom = true;
             } else {
                 $scope.openDatePickers.dateTo = true;
@@ -194,7 +194,7 @@ angular.module('plugin-messaging', ['ngResource', 'ui.bootstrap', 'ui.router', '
 
             modalInstance.result.then(function () {
                 $scope.successMessage = localization.localize('plugin.messaging.send.success');
-                $timeout(function() { $scope.successMessage = undefined;}, 5000);
+                $timeout(function () { $scope.successMessage = undefined; }, 5000);
                 $scope.search();
             });
         };
@@ -202,7 +202,7 @@ angular.module('plugin-messaging', ['ngResource', 'ui.bootstrap', 'ui.router', '
         var loading = false;
         var loadData = function () {
             $scope.errorMessage = undefined;
-            
+
             if (loading) {
                 console.log("Skipping query for message list since a previous request is pending");
                 return;
@@ -241,7 +241,7 @@ angular.module('plugin-messaging', ['ngResource', 'ui.bootstrap', 'ui.router', '
         });
     })
     .controller('PluginMessagingSettingsController', function ($scope, $rootScope, $modal,
-                                                               confirmModal, localization, pluginMessagingService) {
+        confirmModal, localization, pluginMessagingService) {
         $scope.successMessage = undefined;
         $scope.errorMessage = undefined;
 
@@ -260,7 +260,7 @@ angular.module('plugin-messaging', ['ngResource', 'ui.bootstrap', 'ui.router', '
                 $scope.errorMessage = localization.localize('plugin.messaging.settings.enter.number');
             }
 
-            pluginMessagingService.purgeOldMessages({"days": $scope.settings.messagingPurgePeriod}, function (response) {
+            pluginMessagingService.purgeOldMessages({ "days": $scope.settings.messagingPurgePeriod }, function (response) {
                 if (response.status === 'OK') {
                     $scope.successMessage = localization.localize('plugin.messaging.settings.message.purge.success');
                 } else {
@@ -270,7 +270,7 @@ angular.module('plugin-messaging', ['ngResource', 'ui.bootstrap', 'ui.router', '
         };
     })
     .controller('NewMessageController', function ($scope, $rootScope, $modalInstance, configurationService, groupService,
-                                                  confirmModal, localization, pluginMessagingService, getDevicesService) {
+        confirmModal, localization, pluginMessagingService, getDevicesService) {
 
         $scope.sending = false;
 
@@ -320,7 +320,7 @@ angular.module('plugin-messaging', ['ngResource', 'ui.bootstrap', 'ui.router', '
 
             $scope.sending = true;
 
-            pluginMessagingService.sendMessage($scope.message).$promise.then(function(response) {
+            pluginMessagingService.sendMessage($scope.message).$promise.then(function (response) {
                 $scope.sending = false;
                 if (response.status === 'OK') {
                     $modalInstance.close();

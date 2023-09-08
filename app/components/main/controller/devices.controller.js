@@ -883,26 +883,27 @@ angular.module('headwind-kiosk')
         };
 
         $scope.openBulkUpdateModal = (aa) => {
-            console.log(aa)
-            var modalInstance = $modal.open({
-                resolve: {
-                    devices: function () {
+            configurationService.getAllConfigurations(function (response) {
+                $scope.deviceParams = {
+                    devices: $scope.devices,
+                    save: () => {
+                        var ids = [];
+                        for (var i = 0; i < devices.length; i++) {
+                            if (devices[i].selected) {
+                                ids.push(devices[i].id);
+                            }
+                        }
 
-                        console.log("hola mundo")
-                        return $scope.devices;
-                    }
-                }
+                        var device = { 'ids': ids, configurationId: $scope.device.configurationId };
+                        deviceService.updateDevice(device, function () {
+                            $modalInstance.close();
+                        });
+                    },
+                    configurationId: response.data[0].id,
+                    configurations: response.data
+                };
             });
 
-            console.log($scope.devices)
-            $scope.deviceParams = {
-                devices: $scope.devices
-            };
-
-
-            modalInstance.result.then(function () {
-                $scope.search();
-            });
         };
 
         $scope.openBulkGroupModal = function () {
@@ -1032,6 +1033,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.closeModal = function () {
+            console.log('Hola mundo ==== closeModal',)
             $modalInstance.dismiss();
         }
     })

@@ -13,63 +13,73 @@
         <div class='form-group' ng-show='errorMessage'>
             <div class='error'><span>{{errorMessage}}</span></div>
         </div>
-
-        <div class="d-flex ">
-            <div class="p-2 mr-auto  row">
-                <div class="col">
-                    <select class='form-control' ng-model='selection.groupId' ng-change='initSearch()'
-                        ng-options="group.id as group.name for group in groups">
-                    </select>
-
-                </div>
-                <div class="col">
-                    <select class="form-control" ng-model='selection.configurationId' ng-change='initSearch()'
-                        ng-options="config.id as config.name for config in configurations">
-                    </select>
-                </div>
-                <div class="col text-center text-align-center">
-                    <a class='pointer ' ng-if="!additionalParams.enabled" ng-click="toggleAdditionalParams()"
-                        localized>form.devices.label.params.more</a>
-
-                    <a class='pointer ' ng-if="additionalParams.enabled" ng-click="toggleAdditionalParams()"
-                        localized>form.devices.label.params.less</a>
-
-                </div>
-
-
-            </div>
-            <div class="p-2">
-                <div class="btn-group btn-group-md">
-                    <div class="dropdown" ng-if="hasPermission('edit_devices')">
-                        <button type="button" class="dropdown-toggle btn btn-light" ng-disabled='isNotSelected()'
-                            data-toggle="dropdown" localized>button.group.action</button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" ng-click="openBulkUpdateModal()"
-                                localized>button.set.configuration</a>
-                            <a ng-click="openBulkGroupModal()" class="dropdown-item" localized>button.set.group</a>
-                            <a ng-click="confirmBulkDelete()" class="dropdown-item" localized>button.delete</a>
+        <div class="container-fluid mt-2">
+            <div class="row">
+                <div class="col-6 d-flex justify-content-start m-0 p-0">
+                    <div class="mr-4">
+                        <select class='form-control' ng-model='selection.groupId' ng-change='initSearch()'
+                            ng-options="group.id as group.name for group in groups">
+                        </select>
+                    </div>
+                    <div class="mr-4">
+                        <select class="form-control" ng-model='selection.configurationId' ng-change='initSearch()'
+                            ng-options="config.id as config.name for config in configurations">
+                        </select>
+                    </div>
+                    <div>
+                        <div ng-if="!additionalParams.enabled">
+                            <button class="btn btn-outline-primary" ng-click="toggleAdditionalParams()">
+                                <i class="fas fa-plus"></i>
+                                <span localized>form.devices.label.params.more</span>
+                            </button>
+                        </div>
+                        <div ng-if="additionalParams.enabled">
+                            <button class="btn btn-outline-primary active" ng-click="toggleAdditionalParams()">
+                                <i class="fas fa-minus"></i>
+                                <span localized>form.devices.label.params.less</span>
+                            </button>
                         </div>
                     </div>
-
-
-                    <button type='button' ng-if="hasPermission('edit_devices')"
-                        ng-disabled='commonSettings.deviceLimit > 0 && commonSettings.deviceCount >= commonSettings.deviceLimit'
-                        class='btn btn-primary' ng-click='editDevice( {} )' localized>button.add</button>
                 </div>
+                <div class="col-6 d-flex justify-content-end m-0 p-0">
+                    <div class="mr-4">
+                        <div class="btn-group btn-group-md">
+                            <div class="dropdown" ng-if="hasPermission('edit_devices')">
+                                <button type="button" class="dropdown-toggle btn btn-light"
+                                    ng-disabled='isNotSelected()' data-toggle="dropdown"
+                                    localized>button.group.action</button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item pointer" ng-click="openBulkUpdateModal()"
+                                        data-toggle="modal" data-target="#openBulkUpdateModal"
+                                        localized>button.set.configuration</a>
+                                    <a ng-click="openBulkGroupModal()" class="dropdown-item pointer"
+                                        localized>button.set.group</a>
+                                    <a ng-click="confirmBulkDelete()" class="dropdown-item pointer"
+                                        localized>button.delete</a>
+                                </div>
+                            </div>
+                        </div>
 
-            </div>
-            <div class="p-2 ">
-
-                <div class="input-group mb-3">
-                    <input type='text' ng-model='searchParams.searchValue' ng-enter='initSearch()'
-                        localized-placeholder='search.placeholder.device' class="form-control" placeholder="Buscar">
-                    <div class="input-group-append">
-                        <span class="input-group-text" localized>button.search</span>
+                        <button type='button' ng-if="hasPermission('edit_devices')"
+                            ng-disabled='commonSettings.deviceLimit > 0 && commonSettings.deviceCount >= commonSettings.deviceLimit'
+                            class='btn btn-primary' ng-click='editDevice( {} )' localized>button.add</button>
                     </div>
+                    <div>
+                        <div class="input-group mb-3">
+                            <input type='text' ng-model='searchParams.searchValue' ng-enter='initSearch()'
+                                localized-placeholder='search.placeholder.device' class="form-control"
+                                placeholder="Buscar">
+                            <div class="input-group-append">
+                                <span class="input-group-text" localized>button.search</span>
+                            </div>
 
+                        </div>
+
+
+                    </div>
                 </div>
-
             </div>
+
         </div>
         <div class='form-group'>
             <br />
@@ -365,8 +375,9 @@
                             ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
                     </th>
 
-                    <th ng-if="hasPermission('edit_devices')" class='actions-column' localized>
-                        table.heading.device.actions</th>
+                    <th ng-if="hasPermission('edit_devices')" class='actions-column'>
+                        <span localized>table.heading.device.actions</span>
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -518,8 +529,5 @@
                 last-text='&raquo;'></pagination>
         </div>
     </div>
+    <ng-include src="'app/components/main/view/modal/device.update.html'" ng-init="deviceParams"></ng-include>
 </div>
-
-
-
-<ng-include src="'app/components/main/view/modal/device.update.html'" ng-init="deviceParams"></ng-include>

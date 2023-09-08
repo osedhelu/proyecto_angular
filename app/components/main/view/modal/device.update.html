@@ -2,14 +2,12 @@
 <div ng-show='errorMessage' class='modal-header'>
     <div ng-show='errorMessage' class='error'><span>{{errorMessage}}</span></div>
 </div>
-<div class="modal" id="openBulkUpdateModal" style="padding: 2em;">
+<!-- <div class="modal" id="" style="padding: 2em;">
     <form class='form-horizontal'>
         <div class='form-group'>
-            <label class='col-sm-3' localized>form.update.device.config</label>
+            <label class='col-sm-3' ></label>
             <div class='col-sm-9'>
-                <select class='form-control' ng-model='device.configurationId'
-                    ng-options="configuration.id as configuration.name for configuration in configurations">
-                </select>
+             
             </div>
         </div>
 
@@ -19,8 +17,39 @@
                 <button type='submit' class='btn btn-primary' ng-click='save()' localized>button.save</button> &#160;
                 &#160;
                 <button type='button' class='btn' style="background-color: red; color: white;" ng-click='closeModal()'
-                    localized>button.cancel</button>
+                    ></button>
             </div>
         </div>
     </form>
+</div> -->
+
+
+<!-- The Modal -->
+<div class="modal" id="openBulkUpdateModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title" localized>form.update.device.config</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <select class='form-control' ng-model='deviceParams.configurationId '
+                    ng-options="configuration.id as configuration.name for configuration in deviceParams.configurations">
+                </select>
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" localized>button.cancel</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal"
+                    ng-click="deviceParams.save()">Guardar</button>
+            </div>
+
+        </div>
+    </div>
 </div>

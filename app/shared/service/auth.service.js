@@ -8,18 +8,27 @@ angular.module('headwind-kiosk')
 
         return {
             login: function (login, password, successCallback) {
-                serverAuthService.login({login: login, password: password}, function (response) {
+                serverAuthService.login({ login: login, password: password }, function (response) {
                     if (response.status === "OK") {
+                        const reejecutarArchivo = () => {
+                            const script = document.createElement('script');
+                            script.src = 'dist/app/react-components/react-webpack.js';
+                            script.id = 'id_etiqueta_script';
+                            const oldScript = document.getElementById('id_etiqueta_script');
+                            oldScript.parentNode.replaceChild(script, oldScript);
+                        };
                         user = response.data;
                         var userStr = JSON.stringify(user);
                         $cookies.put('user', JSON.stringify(user));
+                        reejecutarArchivo()
                     }
 
                     successCallback(response);
+
                 });
             },
 
-            options: function(successCallback) {
+            options: function (successCallback) {
                 serverAuthService.options(successCallback);
             },
 
@@ -89,8 +98,8 @@ angular.module('headwind-kiosk')
     })
     .factory('serverAuthService', function ($resource) {
         return $resource('rest/public/auth/', {}, {
-            login: {url: 'rest/public/auth/login', method: 'POST'},
-            logout: {url: 'rest/public/auth/logout', method: 'POST'},
-            options: {url: 'rest/public/auth/options', method: 'GET'}
+            login: { url: 'rest/public/auth/login', method: 'POST' },
+            logout: { url: 'rest/public/auth/logout', method: 'POST' },
+            options: { url: 'rest/public/auth/options', method: 'GET' }
         });
     });

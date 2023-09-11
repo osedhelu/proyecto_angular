@@ -1,7 +1,8 @@
 // Localization completed
 angular.module('headwind-kiosk')
     .factory('localization', function ($http, $timeout, settingsService, authService, getBrowserLanguage,
-                                       ENGLISH, localizeText, LOCALIZATION_BUNDLES) {
+        ENGLISH, localizeText, LOCALIZATION_BUNDLES) {
+        console.log("🚀 ~ file: locale.service.js:5 ~ LOCALIZATION_BUNDLES:")
 
         var loadUserLangSettings = function (scope) {
             settingsService.getSettings(function (response) {
@@ -95,7 +96,7 @@ angular.module('headwind-kiosk')
                         ready = ready && (!!document.localization[LOCALIZATION_BUNDLES[i]]);
                     }
 
-                    if ( !ready) {
+                    if (!ready) {
                         attempts++;
 
                         var delay = 100 + (attempts % 10) * 100;
@@ -165,5 +166,5 @@ angular.module('headwind-kiosk')
             return localization.localize(key);
         };
     })
-;
+    ;
 

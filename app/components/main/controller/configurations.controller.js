@@ -1,8 +1,8 @@
 // Localization completed
 angular.module('headwind-kiosk')
     .controller('ConfigurationsTabController', function ($scope, $rootScope, $state, $modal, confirmModal,
-                                                         configurationService, authService, $window, localization,
-                                                         alertService, hintService, $timeout) {
+        configurationService, authService, $window, localization,
+        alertService, hintService, $timeout) {
         $scope.isTypical = false;
 
         $scope.paging = {
@@ -39,7 +39,7 @@ angular.module('headwind-kiosk')
                 // Hints are shown after all configurations are loaded
                 $timeout(function () {
                     // Onboarding hint in the configuration tab is no more needed
-//                    hintService.onStateChangeSuccess();
+                    //                    hintService.onStateChangeSuccess();
                 }, 100);
             });
         };
@@ -47,7 +47,7 @@ angular.module('headwind-kiosk')
         $scope.search = function (callback) {
             if ($scope.isTypical) {
                 configurationService.getAllTypicalConfigurations(
-                    {value: $scope.searchObj.searchValue},
+                    { value: $scope.searchObj.searchValue },
                     function (response) {
                         $scope.configurations = response.data;
                         if (callback) {
@@ -56,7 +56,7 @@ angular.module('headwind-kiosk')
                     });
             } else {
                 configurationService.getAllConfigurations(
-                    {value: $scope.searchObj.searchValue},
+                    { value: $scope.searchObj.searchValue },
                     function (response) {
                         $scope.configurations = response.data;
                         if (callback) {
@@ -66,16 +66,15 @@ angular.module('headwind-kiosk')
             }
         };
 
-        $scope.addConfiguration = function() {
+        $scope.addConfiguration = function () {
             confirmModal.getUserConfirmation(localization.localize('configuration.add.warning'), function () {
-                $scope.editConfiguration({"id": 0});
+                $scope.editConfiguration({ "id": 0 });
             });
         };
 
         $scope.editConfiguration = function (configuration) {
-
             // $state.goNewTab('configEditor', {"id": configuration.id, "typical": $scope.isTypical});
-            $state.transitionTo('configEditor', {"id": configuration.id, "typical": $scope.isTypical});
+            $state.transitionTo('configEditor', { "id": configuration.id, "typical": $scope.isTypical });
 
         };
 
@@ -100,7 +99,7 @@ angular.module('headwind-kiosk')
                 localization.localize('question.delete.configuration').replace('${configurationName}', configuration.name) :
                 localization.localize('configuration.remove.warning');
             confirmModal.getUserConfirmation(localizedText, function () {
-                configurationService.removeConfiguration({id: configuration.id}, function (response) {
+                configurationService.removeConfiguration({ id: configuration.id }, function (response) {
                     if (response.status === 'OK') {
                         $scope.search();
                     } else {
@@ -115,7 +114,7 @@ angular.module('headwind-kiosk')
     .controller('CopyConfigurationModalController',
         function ($scope, $modalInstance, configurationService, configuration, localization) {
 
-            $scope.configuration = {"id": configuration.id, "name": "", "description": configuration.description};
+            $scope.configuration = { "id": configuration.id, "name": "", "description": configuration.description };
 
             $scope.save = function () {
                 $scope.saveInternal();
@@ -147,7 +146,7 @@ angular.module('headwind-kiosk')
             }
         })
     .controller('ApplicationSettingEditorController', function ($scope, $modalInstance, localization,
-                                                                applicationSetting, getApps) {
+        applicationSetting, getApps) {
         var copy = {};
         for (var p in applicationSetting) {
             if (applicationSetting.hasOwnProperty(p)) {
@@ -206,11 +205,11 @@ angular.module('headwind-kiosk')
         };
     })
     .controller('AddConfigurationAppModalController', function ($scope, localization, configurationService, authService,
-                                                                applications, configuration, $modalInstance, $modal) {
+        applications, configuration, $modalInstance, $modal) {
 
         // TODO : ISV : Update this controller
         // $scope.mainAppSelected = false;
-        $scope.mainApp = {id: -1, name: ""};
+        $scope.mainApp = { id: -1, name: "" };
 
         $scope.hasPermission = authService.hasPermission;
 
@@ -259,8 +258,8 @@ angular.module('headwind-kiosk')
         });
 
         $scope.showIconSelectOptions = [
-            {id: true, label: localization.localize('form.configuration.apps.label.show')},
-            {id: false, label: localization.localize('form.configuration.apps.label.not.show')},
+            { id: true, label: localization.localize('form.configuration.apps.label.show') },
+            { id: false, label: localization.localize('form.configuration.apps.label.not.show') },
         ];
 
         $scope.isInstallOptionAvailable = function (application) {
@@ -309,7 +308,7 @@ angular.module('headwind-kiosk')
     })
     .controller('ConfigurationEditorController',
         function ($scope, configurationService, settingsService, $stateParams, $state, $rootScope, $window, $timeout,
-                  $transitions, localization, confirmModal, alertService, $modal, appVersionComparisonService, settingsService) {
+            $transitions, localization, confirmModal, alertService, $modal, appVersionComparisonService) {
 
             $scope.successMessage = null;
 
@@ -355,7 +354,7 @@ angular.module('headwind-kiosk')
                     || (item.type === 'app' && item.pkg && item.pkg.toLowerCase().indexOf(filter) >= 0);
             };
 
-            $scope.splitApkWarning = function(application) {
+            $scope.splitApkWarning = function (application) {
                 if (application.type != 'app') {
                     return null;
                 }
@@ -368,7 +367,7 @@ angular.module('headwind-kiosk')
                 return null;
             };
 
-            $scope.checkNetworkState = function() {
+            $scope.checkNetworkState = function () {
                 if ($scope.configuration.wifi === false && $scope.configuration.mobileData === false) {
                     alertService.showAlertMessage(localization.localize('form.configuration.settings.common.no.network.warning'));
                 }
@@ -427,11 +426,11 @@ angular.module('headwind-kiosk')
                 }
             };
 
-            $scope.pushOptionsChanged = function() {
+            $scope.pushOptionsChanged = function () {
                 updateMqttHint();
             };
 
-            var updateMqttHint = function() {
+            var updateMqttHint = function () {
                 if ($scope.configuration.pushOptions === 'mqttWorker') {
                     $scope.pushHint = localization.localize('form.configuration.settings.push.options.mqtt.worker.hint');
                 } else if ($scope.configuration.pushOptions === 'mqttAlarm') {
@@ -455,7 +454,7 @@ angular.module('headwind-kiosk')
                 confirmModal.getUserConfirmation(localizedText, function () {
                     $scope.upgrading = true;
                     configurationService.upgradeConfigurationApplication(
-                        {configurationId: $scope.configuration.id, applicationId: application.id}, function (response) {
+                        { configurationId: $scope.configuration.id, applicationId: application.id }, function (response) {
                             $scope.upgrading = false;
                             if (response.status === 'OK') {
                                 $scope.configuration.mainAppId = response.data.mainAppId;
@@ -474,8 +473,8 @@ angular.module('headwind-kiosk')
             };
 
             $scope.showIconSelectOptions = [
-                {id: true, label: localization.localize('form.configuration.apps.label.show')},
-                {id: false, label: localization.localize('form.configuration.apps.label.not.show')},
+                { id: true, label: localization.localize('form.configuration.apps.label.show') },
+                { id: false, label: localization.localize('form.configuration.apps.label.not.show') },
             ];
 
             $scope.isInstallOptionAvailable = function (application) {
@@ -487,18 +486,18 @@ angular.module('headwind-kiosk')
 
             $scope.desktopHeaderTemplatePlaceholder = localization.localize('form.configuration.settings.design.desktop.header.template.placeholder') + ' deviceId, description, custom1, custom2, custom3';
 
-            var transFunction = function(trans) {
+            var transFunction = function (trans) {
                 if ($scope.configurationForm && $scope.configurationForm.$dirty) {
                     if (!$scope.saved) {
                         var confirmed = confirm(localization.localize('question.exit.without.saving'));
                         if (!confirmed) {
-                            $transitions.onStart({ }, transFunction, {invokeLimit: 1});
+                            $transitions.onStart({}, transFunction, { invokeLimit: 1 });
                             return false;
                         }
                     }
                 }
             }
-            $transitions.onStart({ }, transFunction, {invokeLimit: 1});
+            $transitions.onStart({}, transFunction, { invokeLimit: 1 });
 
             $scope.sortByChanged = function () {
                 $window.localStorage.setItem('HMDM_configAppsSortBy', $scope.sort.by);
@@ -606,7 +605,7 @@ angular.module('headwind-kiosk')
             };
 
             $scope.loadApps = function (configId) {
-                configurationService.getApplications({"id": configId}, function (response) {
+                configurationService.getApplications({ "id": configId }, function (response) {
                     if (response.status === 'OK') {
                         response.data.forEach(function (app) {
                             app.actionChanged = false;
@@ -799,9 +798,9 @@ angular.module('headwind-kiosk')
                     controller: 'FileEditorController',
                     resolve: {
                         file: function () {
-                            return {remove: false};
+                            return { remove: false };
                         },
-                        defaultFilePath: function() {
+                        defaultFilePath: function () {
                             return $scope.configuration.defaultFilePath;
                         }
                     }
@@ -823,7 +822,7 @@ angular.module('headwind-kiosk')
                     controller: 'ApplicationSettingEditorController',
                     resolve: {
                         applicationSetting: function () {
-                            return {type: "STRING"};
+                            return { type: "STRING" };
                         },
                         getApps: function () {
                             return getAppSettingsApps;
@@ -890,7 +889,7 @@ angular.module('headwind-kiosk')
                             .replace('${v1}', application.name)
                             .replace('${v3}', newAppVersion.version)
                             .replace('${v2}', $scope.configuration.name);
-                        
+
                         confirmModal.getUserConfirmation(localizedText, function () {
                             mergeApplicationUsageParameters(data.applicationParameters);
 
@@ -904,7 +903,7 @@ angular.module('headwind-kiosk')
                             });
 
                             allApplications = allApplications.filter(function (app) {
-                                return app.id !== newAppVersion.applicationId  || app.action == 1 || app.usedVersionId !== newAppVersion.id;
+                                return app.id !== newAppVersion.applicationId || app.action == 1 || app.usedVersionId !== newAppVersion.id;
                             });
 
                             allApplications.sort(function (a, b) {
@@ -922,7 +921,7 @@ angular.module('headwind-kiosk')
                         let localizedText = localization.localize('form.configuration.app.version.select.downgrade.warning')
                             .replace('${v1}', application.name)
                             .replace('${v2}', newAppVersion.version);
-                        
+
                         confirmModal.getUserConfirmation(localizedText, function () {
                             mergeApplicationUsageParameters(data.applicationParameters);
                             applicationVersions.forEach(function (availableAppVersion) {
@@ -976,7 +975,7 @@ angular.module('headwind-kiosk')
                             allApplications.push(copy);
 
                             allApplications = allApplications.filter(function (app) {
-                                return app.id !== newAppVersion.applicationId  || app.action == 1 || app.usedVersionId !== newAppVersion.id;
+                                return app.id !== newAppVersion.applicationId || app.action == 1 || app.usedVersionId !== newAppVersion.id;
                             });
 
                             allApplications.sort(function (a, b) {
@@ -1106,7 +1105,7 @@ angular.module('headwind-kiosk')
                         file: function () {
                             return file;
                         },
-                        defaultFilePath: function() {
+                        defaultFilePath: function () {
                             return $scope.configuration.defaultFilePath;
                         }
                     }
@@ -1255,7 +1254,7 @@ angular.module('headwind-kiosk')
                 angular.element(document.querySelector('#password-c')).attr('type', 'password');
             }, 300);
 
-            $scope.togglePassword = function() {
+            $scope.togglePassword = function () {
                 var passwordElement = angular.element(document.querySelector('#password-c'));
                 var passwordButton = angular.element(document.querySelector('#button-show-password'));
                 var passwordIcon = angular.element(document.querySelector('#span-show-password'));
@@ -1290,17 +1289,17 @@ angular.module('headwind-kiosk')
             }
 
             var d1 = new Date();
-            d1.setHours(01);
+            d1.setHours(1);
             d1.setMinutes(0);
 
             var d2 = new Date();
-            d2.setHours(05);
+            d2.setHours(5);
             d2.setMinutes(59);
 
             $scope.dates = {};
 
             if (configId != 0) {
-                configurationService.getById({"id": configId}, function (response) {
+                configurationService.getById({ "id": configId }, function (response) {
                     if (response.data) {
                         $scope.configuration = response.data;
 
@@ -1375,7 +1374,7 @@ angular.module('headwind-kiosk')
                 $scope.configuration.systemUpdateType = 0;
             }
 
-            $scope.selected = {id: ''};
+            $scope.selected = { id: '' };
 
             $scope.paging = {
                 currentPage: 1,
@@ -1407,8 +1406,8 @@ angular.module('headwind-kiosk')
                 $window.scrollTo(0, 0);
             });
 
-            $scope.mainApp = {id: -1, name: ""};
-            $scope.contentApp = {id: -1, name: ""};
+            $scope.mainApp = { id: -1, name: "" };
+            $scope.contentApp = { id: -1, name: "" };
 
             if (!configId) {
                 $scope.configuration.useDefaultDesignSettings = true;
@@ -1436,7 +1435,7 @@ angular.module('headwind-kiosk')
             }
         })
     .controller('ConfigurationAppVersionSelectController', function ($scope, $modalInstance, applicationService,
-                                                                     localization, application, applicationParameters) {
+        localization, application, applicationParameters) {
 
         $scope.errorMessage = undefined;
         $scope.application = application;
@@ -1460,7 +1459,7 @@ angular.module('headwind-kiosk')
             applicationVersionId: application.usedVersionId || application.latestVersion
         };
 
-        applicationService.getApplicationVersions({id: application.id}, function (response) {
+        applicationService.getApplicationVersions({ id: application.id }, function (response) {
             if (response.status === 'OK') {
                 $scope.versions = response.data;
             } else {
@@ -1483,7 +1482,7 @@ angular.module('headwind-kiosk')
         };
     })
     .controller('ConfigurationAppDetailsController', function ($scope, $modalInstance, applicationService,
-                                                                     localization, application) {
+        localization, application) {
 
         $scope.errorMessage = undefined;
         $scope.application = application;
@@ -1544,7 +1543,7 @@ angular.module('headwind-kiosk')
             }
         };
 
-        $scope.onUploadProgress = function(progress) {
+        $scope.onUploadProgress = function (progress) {
             var loadedMb = (progress.loaded / 1048576).toFixed(1);
             var totalMb = (progress.total / 1048576).toFixed(1);
             $scope.successMessage = localization.localize('success.uploading.file') +
@@ -1604,4 +1603,4 @@ angular.module('headwind-kiosk')
                 $modalInstance.dismiss();
             }
         })
-;
+    ;

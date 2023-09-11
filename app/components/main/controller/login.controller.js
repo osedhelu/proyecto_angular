@@ -1,12 +1,11 @@
-<!-- Localization completed -->
 angular.module('headwind-kiosk')
     .controller('LoginController', function ($scope, $state, $rootScope, $timeout, authService, localization,
-                                             rebranding, getBrowserLanguage) {
+        rebranding, getBrowserLanguage) {
         $scope.login = {};
         $scope.transmitPassword = false;
 
         $scope.rebranding = null;
-        rebranding.query(function(value) {
+        rebranding.query(function (value) {
             $scope.rebranding = value;
             $scope.rebranding.year = new Date().getFullYear();
             // A very dirty hack preventing language change on h-mdm.com!
@@ -29,7 +28,7 @@ angular.module('headwind-kiosk')
         var loginHandler = function (response) {
             if (response.status === 'OK') {
                 if (response.data.passwordReset) {
-                    $state.transitionTo('passwordReset', {"token": response.data.passwordResetToken});
+                    $state.transitionTo('passwordReset', { "token": response.data.passwordResetToken });
                 } else {
                     $state.transitionTo('main');
                     $rootScope.$emit('aero_USER_AUTHENTICATED');
@@ -52,18 +51,18 @@ angular.module('headwind-kiosk')
             authService.login($scope.login.username, password, loginHandler);
         };
 
-        $scope.recoverPassword = function() {
+        $scope.recoverPassword = function () {
             $state.transitionTo('passwordRecovery');
         };
 
-        $scope.signup = function() {
+        $scope.signup = function () {
             $state.transitionTo('signup');
         };
 
-            /**
-         * detect IE
-         * returns version of IE or false, if browser is not Internet Explorer
-         */
+        /**
+     * detect IE
+     * returns version of IE or false, if browser is not Internet Explorer
+     */
         function detectIE() {
             var ua = window.navigator.userAgent;
 
@@ -87,6 +86,7 @@ angular.module('headwind-kiosk')
             }
 
             // other browser
+
             return false;
         }
     });

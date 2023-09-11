@@ -47,7 +47,7 @@ angular.module('headwind-kiosk')
         });
 
         var clear = function () {
-            hints  = [];
+            hints = [];
             hintKeys = {};
             nonAddedHints = {};
         };
@@ -82,14 +82,14 @@ angular.module('headwind-kiosk')
         var initialized = false;
         var nonAddedHints = {};
 
-        var init =  function () {
+        var init = function () {
             clear();
             shownHints = {};
             initialized = false;
 
             httpHintService.list({}, function (response) {
                 if (response.status === 'OK') {
-                    response.data.forEach(addShownHint) ;
+                    response.data.forEach(addShownHint);
                 } else {
                     console.error("Failed to get list of shown hints", localization.localizeServerResponse(response));
                 }
@@ -98,7 +98,6 @@ angular.module('headwind-kiosk')
                 console.error("Error when sending request to server", response);
                 initialized = true;
             });
-
         };
 
         var enableHints = function (callback, errorCallback) {
@@ -168,7 +167,7 @@ angular.module('headwind-kiosk')
                         break;
                     }
                 }
-                
+
                 if (!initialized || nonAddedHintsExist) {
                     $timeout(onStateChangeSuccessFunc, 50);
                 } else {
@@ -192,10 +191,10 @@ angular.module('headwind-kiosk')
     })
     .factory('httpHintService', function ($resource) {
         return $resource('rest/private/users', {}, {
-            list: {url: 'rest/private/hints/history', method: 'GET'},
-            enable: {url: 'rest/private/hints/enable', method: 'POST'},
-            disable: {url: 'rest/private/hints/disable', method: 'POST'},
-            add: {url: 'rest/private/hints/history', method: 'POST'},
+            list: { url: 'rest/private/hints/history', method: 'GET' },
+            enable: { url: 'rest/private/hints/enable', method: 'POST' },
+            disable: { url: 'rest/private/hints/disable', method: 'POST' },
+            add: { url: 'rest/private/hints/history', method: 'POST' },
         });
     })
     .directive('hintKey', function (hintService) {

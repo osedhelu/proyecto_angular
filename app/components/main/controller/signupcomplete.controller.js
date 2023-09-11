@@ -1,4 +1,3 @@
-<!-- Localization completed -->
 angular.module('headwind-kiosk')
     .controller('SignupCompleteController', function ($scope, $state, $rootScope, $timeout, authService, localization, rebranding,
                                              signupService, $stateParams) {

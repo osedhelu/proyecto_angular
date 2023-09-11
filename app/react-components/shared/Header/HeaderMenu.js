@@ -70,6 +70,7 @@ export const HeaderMenu = () => {
 
                             {
                                 updatesAllowed && <a className="dropdown-item"
+                                    href='#/updates'
                                 >
                                     <i className="fas fa-tools fa-sm fa-fw mr-2 text-gray-400"></i>
                                     {localization.localize('updates.title')}</a>

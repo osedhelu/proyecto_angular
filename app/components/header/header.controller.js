@@ -17,43 +17,37 @@ export default (({ angular, ComponetReact }) => {
         .controller('HeaderController', function ($scope, $rootScope, $state, $modal, $timeout, $interval, $filter, $window,
             authService, localization, hintService, rebranding) {
             let iniStateInit = 0
+            let iniStateInitisHidden = 0
             $scope.isControlPanel = false;
             $scope.authService = authService;
             $scope.showExitReportMode = false;
             $scope.$on('START_REPORT_MODE', function () {
-                console.log("🚀 ~ file: header.controller.js:23 ~ START_REPORT_MODE:")
 
 
                 $scope.showExitReportMode = true;
             });
 
             $scope.$on('HIDE_REPORT_MODE', function () {
-                console.log("🚀 ~ file: header.controller.js:30 ~ HIDE_REPORT_MODE:")
                 $scope.showExitReportMode = false;
             });
 
             $scope.$on('HIDE_ADDRESS', function () {
-                console.log("🚀 ~ file: header.controller.js:35 ~ HIDE_ADDRESS:")
                 $scope.mapToolsConfig.showDeviceAddress = false;
             });
 
             $scope.$on('SHOW_CHECKLIST_INFO', function (event, checklistId) {
-                console.log("🚀 ~ file: header.controller.js:40 ~ SHOW_CHECKLIST_INFO:")
                 showWorkResultsContent(checklistId);
             });
 
             $scope.$on('SHOW_DATA_LOADING_MODAL', function () {
-                console.log("🚀 ~ file: header.controller.js:45 ~ SHOW_DATA_LOADING_MODAL:")
                 $scope.dataLoadingWait = true;
             });
 
             $scope.$on('HIDE_DATA_LOADING_MODAL', function () {
-                console.log("🚀 ~ file: header.controller.js:50 ~ HIDE_DATA_LOADING_MODAL:",)
                 $scope.dataLoadingWait = false;
             });
 
             $rootScope.$on('SHOW_EXPIRY_WARNING', function () {
-                console.log("🚀 ~ file: header.controller.js:55 ~ SHOW_EXPIRY_WARNING:")
                 $scope.expiryWarning = true;
             });
 
@@ -70,14 +64,8 @@ export default (({ angular, ComponetReact }) => {
             $scope.$on('$destroy', function () { $interval.cancel(interval) });
 
             $scope.getUserName = function () { return authService.getUserName(); };
-            $scope.isAuth = function () {
-                const state = authService.isLoggedIn() && document.URL.indexOf('invoice') === -1;
-                console.log("🚀 ~ file: header.controller.js:75 ~ state:", state)
-                return state
-            };
-            $scope.isHidden = function () {
-                return $state.current.name === 'qr' || $state.current.name === 'passwordReset';
-            };
+
+
 
             $scope.isSuperAdmin = function () {
                 return authService.isSuperAdmin();
@@ -94,7 +82,6 @@ export default (({ angular, ComponetReact }) => {
             };
 
             $scope.isActive = function (state) {
-                console.log("🚀 ~ file: header.controller.js:83 ~ state:", state)
                 return $state.$current.self.name === state;
             };
 
@@ -125,6 +112,22 @@ export default (({ angular, ComponetReact }) => {
                 iniStateInit = iniStateInit + 1
                 if (!state) {
                     iniStateInit = 0
+                }
+                return state
+            };
+            $scope.isHidden = function () {
+                const state = $state.current.name === 'qr' || $state.current.name === 'passwordReset';
+                if (iniStateInitisHidden === 0) {
+                    initComponentReact({
+                        context: { ...$scope, localization },
+                        contextRoot: $rootScope
+                    })
+                }
+                if (state) {
+                    iniStateInitisHidden = 0
+                } else {
+
+                    iniStateInitisHidden = iniStateInitisHidden + 1
                 }
                 return state
             };

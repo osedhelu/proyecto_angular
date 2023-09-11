@@ -38,11 +38,5 @@
   "plugin.messaging.scope.configuration": "Конфигурацию",
   "plugin.messaging.scope.all": "Все устройства",
   "plugin.messaging.label.group": "Группа",
-  "plugin.messaging.label.configuration": "Конфигурация",
-  "": "",
-  "": "",
-  "": "",
-  "": "",
-  "": "",
-  "": ""
+  "plugin.messaging.label.configuration": "Конфигурация"
 }

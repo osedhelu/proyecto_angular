@@ -1,20 +1,17 @@
-import React from 'react'
-import { useRouter } from '../../hook/useRouter'
-import { useLocalization } from '../../hook/locatization'
+import React, { useContext } from 'react'
+import { AuthContext } from '../../provider/auth/AuthContext'
 export const NavbarLink = ({
     path = "",
     icon = "",
     region = "tab.configurations",
     active = false
-
 }) => {
-    const { location } = useLocalization()
+    const { localization } = useContext(AuthContext)
     return (
         <li className={`nav-item ${active ? 'active' : ''}`} >
             <a className="nav-link pointer" href={`#${path}`}>
                 <i className={`fas fa-fw ${icon}`}></i>
-                <span>{location[region]}</span></a>
+                <span>{localization.localize(region)}</span></a>
         </li>
-
     )
 }

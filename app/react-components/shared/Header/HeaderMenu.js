@@ -1,12 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useLocalization } from '../../hook/locatization'
 import { AuthContext } from '../../provider/auth/AuthContext'
 import { HeaderTimeRealTime } from './HeaderTimeRealTime'
 
 export const HeaderMenu = () => {
-    const { getUserName, loadding, logout, controlPanel, authService, isControlPanel, updatesAllowed, mainPanel, contextRoot } = useContext(AuthContext)
+    const { getUserName, loadding, logout, controlPanel, authService, isControlPanel, updatesAllowed, mainPanel, contextRoot, localization } = useContext(AuthContext)
     const { expiryWarning, setexpiryWarning } = useState(false)
-    const { location } = useLocalization()
     useEffect(() => {
         if (loadding) {
             contextRoot.$on('SHOW_EXPIRY_WARNING', function () {
@@ -23,7 +21,7 @@ export const HeaderMenu = () => {
                 {
                     expiryWarning && <div>
                         <a id='headerExpiryWarning' className="expiry-warning"
-                        >{location['account.expired.short']}</a>
+                        >{localization.localize('account.expired.short')}</a>
                     </div>
                 }
 
@@ -58,13 +56,13 @@ export const HeaderMenu = () => {
                             <a className="dropdown-item " data-toggle="modal" data-target="#AboutController">
                                 <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 {
-                                    location['menu.about']
+                                    localization.localize('menu.about')
                                 }
                             </a>
                             <a className="dropdown-item" href="#/profile">
                                 <i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                 {
-                                    location['menu.profile']
+                                    localization.localize('menu.profile')
                                 }
                             </a>
 
@@ -73,8 +71,8 @@ export const HeaderMenu = () => {
                             {
                                 updatesAllowed && <a className="dropdown-item"
                                 >
-                                    <i class="fas fa-tools fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    {location['updates.title']}</a>
+                                    <i className="fas fa-tools fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    {localization.localize('updates.title')}</a>
                             }
                             {
                                 authService.isSuperAdmin() && !isControlPanel && (
@@ -82,7 +80,7 @@ export const HeaderMenu = () => {
                                         <a className="dropdown-item" onClick={controlPanel}>
                                             <i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                             {
-                                                location['menu.panel.master']
+                                                localization.localize('menu.panel.master')
                                             }
                                         </a>
 
@@ -90,7 +88,7 @@ export const HeaderMenu = () => {
                                         <a className="dropdown-item" onClick={mainPanel}>
                                             <i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                             {
-                                                location['menu.panel.main']
+                                                localization.localize('menu.panel.main')
 
                                             }
                                         </a>
@@ -105,7 +103,7 @@ export const HeaderMenu = () => {
                             <a className="dropdown-item" onClick={() => logout()} >
                                 <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 {
-                                    location['menu.logout']
+                                    localization.localize('menu.logout')
                                 }
                             </a>
 

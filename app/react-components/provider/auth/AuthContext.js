@@ -1,8 +1,6 @@
-import React, { createContext, useEffect, useReducer, useState } from 'react';
-
+import React, { createContext, useEffect, useState } from 'react';
 
 // Create context
-export const AuthContext = createContext();
 
 const initContext = {
     "$$childTail": null,
@@ -30,18 +28,31 @@ const initContext = {
     "isActive": null,
     "controlPanel": null,
     "mainPanel": null,
-    "about": null
+    "about": null,
+    localization: {
+        getLocale: () => null,
+        loadPluginResourceBundles: (pluginId) => null,
+        localize: (key) => null,
+        localizeServerResponse: (response) => null,
+        onLangSettingsChange: (newSettings, scope) => null,
+        onLogin: (scope) => null
+    }
+
 }
 const initContextRoot = { "$id": null, "$$childTail": null, "$$childHead": null, "$$prevSibling": null, "$$nextSibling": null, "$$watchers": null, "$parent": null, "$$phase": null, "$root": null, "$$destroyed": null, "$$listeners": null, "$$listenerCount": null, "$$watchersCount": null, "$$isolateBindings": null, "$$asyncQueue": null, "$$postDigestQueue": null, "$$applyAsyncQueue": null, "stylesheets": null, "$state": null, "$stateParams": null, "$$ChildScope": null, "settingsTabActive": null, "pluginsTabActive": null }
+export const AuthContext = createContext({ ...initContext, contextRoot: initContext });
+
 // Provider component
 export const AuthProvider = ({ children, context = initContext, contextRoot = initContextRoot }) => {
+    const [providerAngular, setProviderAngular] = useState({ ...context, contextRoot })
     const [loadding, setLoadding] = useState(false)
     useEffect(() => {
         setLoadding(true)
+        setProviderAngular({ ...context, contextRoot })
     }, [])
 
     return (
-        <AuthContext.Provider value={{ ...context, contextRoot, loadding }}>
+        <AuthContext.Provider value={{ ...providerAngular, loadding }}>
             {children}
         </AuthContext.Provider>
 

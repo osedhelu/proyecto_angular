@@ -38,8 +38,5 @@
   "plugin.messaging.scope.configuration": "構成",
   "plugin.messaging.scope.all": "すべてのデバイス",
   "plugin.messaging.label.group": "グループ",
-  "plugin.messaging.label.configuration": "設定",
-  "": "",
-  "": "",
-  "": ""
+  "plugin.messaging.label.configuration": "設定"
 }

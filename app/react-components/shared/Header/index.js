@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { HeaderLogo } from "./HeaderLogo"
+import React from 'react';
 import { HeaderMenu } from './HeaderMenu';
 
 export const Header = ({ }) => {
@@ -73,7 +72,7 @@ export const Header = ({ }) => {
 //                 <img src='' alt='Logo' style='width: 100%;'>
 //             </a>
 //         </div>
-//         <div className="p-2 "> <a id='headerExpiryWarning' ng-if="expiryWarning" class="expiry-warning"
+//         <div className="p-2 "> <a id='headerExpiryWarning' ng-if="expiryWarning" className="expiry-warning"
 //             localized-change-tracking>account.expired.short</a>
 //             <div className="mr-3" id='headerDateTime'>
 //                 <i className="far fa-calendar-alt"></i>

@@ -2,7 +2,6 @@
 angular.module('headwind-kiosk')
     .factory('localization', function ($http, $timeout, settingsService, authService, getBrowserLanguage,
         ENGLISH, localizeText, LOCALIZATION_BUNDLES) {
-        console.log("🚀 ~ file: locale.service.js:5 ~ LOCALIZATION_BUNDLES:")
 
         var loadUserLangSettings = function (scope) {
             settingsService.getSettings(function (response) {
@@ -75,7 +74,6 @@ angular.module('headwind-kiosk')
                 loadUserLangSettings(scope);
             },
             loadPluginResourceBundles: function (pluginId) {
-
                 const loadLocalizationBundle = function (bundleId) {
                     $http.get('app/components/plugins/' + pluginId + '/i18n/' + bundleId + ".json")
                         .then(function (response) {

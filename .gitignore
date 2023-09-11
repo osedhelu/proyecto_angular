@@ -19,4 +19,4 @@
 /lib/myforce-angularjs-dropdown-multiselect/*
 /lib/ng-tags-input/*
 /lib/oclazyload/*
-node_modules
+/node_modules

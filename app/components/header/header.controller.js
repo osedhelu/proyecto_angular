@@ -15,7 +15,7 @@ export default (({ angular, ComponetReact }) => {
 
     angular.module('headwind-kiosk')
         .controller('HeaderController', function ($scope, $rootScope, $state, $modal, $timeout, $interval, $filter, $window,
-            authService, localization, hintService, rebranding) {
+            authService, localization, hintService, pluginService, rebranding) {
             let iniStateInit = 0
             let iniStateInitisHidden = 0
             $scope.isControlPanel = false;
@@ -101,11 +101,21 @@ export default (({ angular, ComponetReact }) => {
                     controller: 'AboutController'
                 });
             };
+            rebranding.query(function (value) {
+                $scope.line1Text = localization.localize('about.line.1').replace('${appName}', value.appName);
+            });
+            //     if (response.status === 'OK') {
+            //         $scope.plugins = response.data.map(function (plugin) {
+            //             return localization.localize(plugin.nameLocalizationKey)
+            //         }).sort();
+            //         $scope.pluginList = $scope.plugins.join(', ');
+            //     }
+            // });
             $scope.isAuth = function () {
                 const state = authService.isLoggedIn() && document.URL.indexOf('invoice') === -1;
                 if (iniStateInit === 0) {
                     initComponentReact({
-                        context: { ...$scope, localization },
+                        context: { ...$scope, localization, pluginService },
                         contextRoot: $rootScope
                     })
                 }
@@ -119,7 +129,7 @@ export default (({ angular, ComponetReact }) => {
                 const state = $state.current.name === 'qr' || $state.current.name === 'passwordReset';
                 if (iniStateInitisHidden === 0) {
                     initComponentReact({
-                        context: { ...$scope, localization },
+                        context: { ...$scope, localization, pluginService },
                         contextRoot: $rootScope
                     })
                 }
@@ -131,6 +141,7 @@ export default (({ angular, ComponetReact }) => {
                 }
                 return state
             };
+
         });
 })({
     angular: window.angular, ComponetReact: ({ context, contextRoot, element }) => {

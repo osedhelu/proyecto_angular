@@ -10,17 +10,9 @@ angular.module('headwind-kiosk')
             login: function (login, password, successCallback) {
                 serverAuthService.login({ login: login, password: password }, function (response) {
                     if (response.status === "OK") {
-                        // const reejecutarArchivo = () => {
-                        //     const script = document.createElement('script');
-                        //     script.src = 'dist/app/react-components/react-webpack.js';
-                        //     script.id = 'id_etiqueta_script';
-                        //     const oldScript = document.getElementById('id_etiqueta_script');
-                        //     oldScript.parentNode.replaceChild(script, oldScript);
-                        // };
                         user = response.data;
                         var userStr = JSON.stringify(user);
-                        $cookies.put('user', JSON.stringify(user));
-                        // reejecutarArchivo()
+                        $cookies.put('user', userStr);
                     }
 
                     successCallback(response);

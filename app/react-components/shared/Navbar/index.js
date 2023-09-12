@@ -15,19 +15,14 @@ export const Navbar = () => {
 
 
     return (<>
-        <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion " id="accordionSidebar">
 
-            <a className="sidebar-brand d-flex align-items-center justify-content-center" style={{
-                height: '9rem'
-            }} href="#/">
+        {/* <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion " id="accordionSidebar"></ul> */}
 
-                <div className="text-center">
-                    <div className="login-logo " ><img src="images/logo4.png" /></div>
-                </div>
-            </a>
-
-            <hr className="sidebar-divider my-0" />
-
+        <ul className="col-md-2 d-none  bg-gradient-primary d-md-block  sidebar position-fixed sidebar-dark accordion" id="accordionSidebar">
+            <div className='' style={{
+                width: '100%',
+                height: '6rem'
+            }}></div>
             <NavbarLink active={router === '#/'} icon='fa-tachometer-alt' path='/' region='tab.devices' />
 
             {
@@ -65,9 +60,7 @@ export const Navbar = () => {
                         <NabvarCollapseLink active={router === '#/langSettings'} router='langSettings' title='tab.language' />
                         {
                             dataMenu.settingsPlugins.map((plugin) => !plugin.settingsPermission || hasPermission(plugin.settingsPermission) && (
-                                <>
-                                    <NabvarCollapseLink key={plugin.nameLocalizationKey} active={router === `#/plugin-settings-${plugin.identifier}`} router={`plugin-settings-${plugin.identifier}`} title={plugin.nameLocalizationKey} />
-                                </>
+                                <NabvarCollapseLink key={plugin.nameLocalizationKey} active={router === `#/plugin-settings-${plugin.identifier}`} router={`plugin-settings-${plugin.identifier}`} title={plugin.nameLocalizationKey} />
 
                             ))
                         }
@@ -87,14 +80,13 @@ export const Navbar = () => {
                         <h6 className="collapse-header">Custom Utilities:</h6>
                         {
 
-                            dataMenu.functionsPlugins.map((plugin) => (!plugin.functionsPermission || hasPermission(plugin.functionsPermission)) && <>
-
+                            dataMenu.functionsPlugins.map((plugin) => (!plugin.functionsPermission || hasPermission(plugin.functionsPermission)) &&
                                 <NabvarCollapseLink
                                     key={plugin.nameLocalizationKey}
                                     active={router === `#/plugin-${plugin.identifier}`}
                                     router={`plugin-${plugin.identifier}`}
                                     title={plugin.nameLocalizationKey} />
-                            </>)
+                            )
 
                         }
 

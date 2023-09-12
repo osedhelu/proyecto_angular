@@ -36,7 +36,7 @@ export const HeaderMenu = () => {
             <div className="topbar-divider d-none d-sm-block"></div>
 
             <li className="nav-item dropdown no-arrow">
-                <a className="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                <a className="nav-link dropdown-toggle" id="userDropdown" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span className="mr-2 d-none d-lg-inline text-gray-600 small">
                         {
@@ -53,7 +53,7 @@ export const HeaderMenu = () => {
                     aria-labelledby="userDropdown">
                     {
                         loadding && <>
-                            <a className="dropdown-item " data-toggle="modal" data-target="#AboutController">
+                            <a className="dropdown-item " data-toggle="modal" data-target="#AboutController" >
                                 <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 {
                                     localization.localize('menu.about')

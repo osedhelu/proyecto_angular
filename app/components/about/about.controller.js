@@ -2,7 +2,6 @@ export default ((angular) => {
     angular.module('headwind-kiosk')
         .controller('AboutController', function ($scope, $rootScope, $modalInstance, APP_VERSION, localization,
             pluginService, rebranding) {
-            console.log("🚀 ~ file: about.controller.js:5 ~ rebranding:")
 
             rebranding.query(function (value) {
                 $scope.line1Text = localization.localize('about.line.1').replace('${appName}', value.appName);

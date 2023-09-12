@@ -90,148 +90,163 @@
 
 
 
-            <div class="col-sm-12" ng-if="additionalParams.enabled">
-
-                <div class="form-group col-sm-12 margin-left" ng-if="additionalParams.enabled">
-
-
-                    <br />
-
-
-                    <div class='margin-bottom'>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        <span localized>form.settings.common.enrollment.date</span>
-                    </div>
-
-                    <div class='col-sm-3 margin-bottom'>
-                        <div class='date-picker date-picker-input'>
-                            <input class='form-control' datepicker-popup='{{dateFormat}}'
+            <div class="container-fluid" ng-if="additionalParams.enabled">
+                <!-- #region  formulario de parametros</h1> -->
+                <div class="row">
+                    <div class="form-group col">
+                        <label attr.for="enrollment"> <span
+                                localized>form.settings.common.enrollment.date</span></label>
+                        <div class="input-group">
+                            <input class='form-control' id="enrollment" datepicker-popup='{{dateFormat}}'
                                 localized-placeholder="search.placeholder.from" ng-enter='initSearch()'
                                 ng-model='additionalParams.dateFrom' is-open='openDatePickers.dateFrom'
                                 show-button-bar='false' datepicker-options='datePickerOptions' />
+                            <div class="input-group-append">
+                                <span class="input-group-text " ng-click='openDateCalendar( $event, true )'>
+                                    <i class='glyphicon glyphicon-calendar'></i>
+                                </span>
+                            </div>
                         </div>
-                        <div class='date-picker date-picker-button'>
+                    </div>
 
-                            <span class='glyphicon glyphicon-calendar'
-                                ng-click='openDateCalendar( $event, true )'></span>
-                        </div>
+                    <div class="form-group col">
+                        <label attr.for="enrollmentxxxx">Email address:</label>
 
 
-                        <div class='min-padding date-picker date-picker-input'>
-                            <input class='form-control' datepicker-popup='{{dateFormat}}'
+
+                        <div class="input-group">
+                            <input class='form-control' id="enrollmentxxxx" datepicker-popup='{{dateFormat}}'
                                 localized-placeholder="search.placeholder.to" ng-enter='initSearch()'
                                 ng-model='additionalParams.dateTo' is-open='openDatePickers.dateTo'
                                 show-button-bar='false' datepicker-options='datePickerOptions' />
-                        </div>
-                        <div class='min-padding date-picker date-picker-button'>
-                            <span class='glyphicon glyphicon-calendar'
-                                ng-click='openDateCalendar( $event, false )'></span>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-2  text-center  margin-bottom">
-                        <input type="checkbox" id="addParamsImeiChanged" ng-model='additionalParams.imeiChanged'> <span
-                            localized>form.devices.selection.imei.changed</span>
-                    </div>
-
-                    <div class="col-sm-3  margin-bottom">
-                        <select class='form-control' id="kweiufwieu" ng-model='additionalParams.installationStatus'
-                            ng-options="opt.id as opt.name for opt in installStatusOptions">
-                            <option value="" localized>form.devices.selection.install.status.default</option>
-                        </select>
-                    </div>
-
-                    <div class="col-sm-3  text-right margin-bottom">
-                        <input type='text' ng-enter='initSearch()' ng-model='additionalParams.launcherVersion'
-                            localized-placeholder='search.placeholder.launcher.version' class='form-control'>
-                    </div>
-                </div>
-
-
-                <div class="col-sm-12">
-                    <div class="form-group" ng-if="additionalParams.enabled">
-                        <div class='col-sm-3  margin-bottom'>
-                            <select class='form-control' id="onlineOrOffline"
-                                ng-model='additionalParams.onlineOrOffline'>
-                                <option value="" localized>form.devices.selection.status</option>
-                                <option value="1" localized>form.devices.selection.online</option>
-                                <option value="2" localized>form.devices.selection.offline</option>
-                            </select>
-                        </div>
-                        <div class='col-sm-3  margin-bottom'>
-                            <select class='form-control' id="onlineTimeSelect"
-                                ng-model='additionalParams.onlineTimeSelect'>
-                                <option value="15" localized>form.devices.selection.online.status.1</option>
-                                <option value="30" localized>form.devices.selection.online.status.2</option>
-                                <option value="60" localized>form.devices.selection.online.status.3</option>
-                                <option value="120" localized>form.devices.selection.online.status.4</option>
-                                <option value="360" localized>form.devices.selection.online.status.5</option>
-                                <option value="1440" localized>form.devices.selection.online.status.6</option>
-                                <option value="2880" localized>form.devices.selection.online.status.7</option>
-                                <option value="4320" localized>form.devices.selection.online.status.8</option>
-                                <option value="10080" localized>form.devices.selection.online.status.9</option>
-                                <option value="43200" localized>form.devices.selection.online.status.10</option>
-                                <option value="1" localized>form.devices.selection.online.status.custom</option>
-                            </select>
-                        </div>
-                        <div class='col-sm-2  margin-bottom' ng-if='additionalParams.onlineTimeSelect == 1'>
-                            <input type='number' ng-enter='initSearch()' ng-model='additionalParams.onlineTimeEnter'
-                                localized-placeholder='00:00' class='form-control'>
-                        </div>
-                        <div class='col-sm-1  margin-bottom' ng-if='additionalParams.onlineTimeSelect == 1'>
-                            <span localized>form.devices.selection.online.status.label</span>
-                        </div>
-                        <div class='col-sm-2  margin-bottom' ng-if='additionalParams.onlineTimeSelect != 1'>&nbsp;</div>
-
-                        <div class='col-sm-2  margin-bottom'>
-                            <select class='form-control' id="mdmMode" ng-model='additionalParams.mdmMode'>
-                                <option value="" localized>form.settings.common.mdm.mode</option>
-                                <option value="1" localized>form.selection.status.yes</option>
-                                <option value="0" localized>form.selection.status.no</option>
-                            </select>
-                        </div>
-
-                        <div class='col-sm-3  margin-bottom'>
-                            <select class='form-control' id="kioskMode" ng-model='additionalParams.kioskMode'>
-                                <option value="" localized>form.settings.common.kiosk.mode</option>
-                                <option value="1" localized>form.selection.status.yes</option>
-                                <option value="0" localized>form.selection.status.no</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-12">
-
-                    <div class="form-group" ng-if="additionalParams.enabled">
-
-                        <div class='col-sm-3  margin-bottom'>
-                            <input type='text' ng-enter='initSearch()' ng-model='additionalParams.androidVersion'
-                                localized-placeholder='form.settings.common.android.version' class='form-control'>
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <div class='col-sm-3 margin-bottom'>
-                                <input type='text' ng-model='searchParams.searchValue' ng-enter='initSearch()'
-                                    localized-placeholder='search.placeholder.device' class='form-control'>
-                            </div>
-
-                            <div class="col-sm-3 text-center">
-
-                                <input type="checkbox" ng-model='searchParams.fastSearch'>
-                                <span localized>form.devices.fast.search</span>
+                            <div class="input-group-append">
+                                <span class="input-group-text " ng-click='openDateCalendar( $event, false )'>
+                                    <i class='glyphicon glyphicon-calendar'></i>
+                                </span>
                             </div>
 
 
-                            <div class="col-sm-2">
-                                <button type='button' class="btn" ng-click='initSearch()'
-                                    localized>button.search</button>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="row">
+                    <div class="form-group col" ng-if="additionalParams.enabled">
+
+
+
+
+
+                        <div class="col-sm-2  text-center  margin-bottom">
+                            <input type="checkbox" id="addParamsImeiChanged" ng-model='additionalParams.imeiChanged'>
+                            <span localized>form.devices.selection.imei.changed</span>
+                        </div>
+
+                        <div class="col-sm-3  margin-bottom">
+                            <select class='form-control' id="kweiufwieu" ng-model='additionalParams.installationStatus'
+                                ng-options="opt.id as opt.name for opt in installStatusOptions">
+                                <option value="" localized>form.devices.selection.install.status.default</option>
+                            </select>
+                        </div>
+
+                        <div class="col-sm-3  text-right margin-bottom">
+                            <input type='text' ng-enter='initSearch()' ng-model='additionalParams.launcherVersion'
+                                localized-placeholder='search.placeholder.launcher.version' class='form-control'>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group" ng-if="additionalParams.enabled">
+                            <div class='col-sm-3  margin-bottom'>
+                                <select class='form-control' id="onlineOrOffline"
+                                    ng-model='additionalParams.onlineOrOffline'>
+                                    <option value="" localized>form.devices.selection.status</option>
+                                    <option value="1" localized>form.devices.selection.online</option>
+                                    <option value="2" localized>form.devices.selection.offline</option>
+                                </select>
+                            </div>
+                            <div class='col-sm-3  margin-bottom'>
+                                <select class='form-control' id="onlineTimeSelect"
+                                    ng-model='additionalParams.onlineTimeSelect'>
+                                    <option value="15" localized>form.devices.selection.online.status.1</option>
+                                    <option value="30" localized>form.devices.selection.online.status.2</option>
+                                    <option value="60" localized>form.devices.selection.online.status.3</option>
+                                    <option value="120" localized>form.devices.selection.online.status.4</option>
+                                    <option value="360" localized>form.devices.selection.online.status.5</option>
+                                    <option value="1440" localized>form.devices.selection.online.status.6</option>
+                                    <option value="2880" localized>form.devices.selection.online.status.7</option>
+                                    <option value="4320" localized>form.devices.selection.online.status.8</option>
+                                    <option value="10080" localized>form.devices.selection.online.status.9</option>
+                                    <option value="43200" localized>form.devices.selection.online.status.10</option>
+                                    <option value="1" localized>form.devices.selection.online.status.custom</option>
+                                </select>
+                            </div>
+                            <div class='col-sm-2  margin-bottom' ng-if='additionalParams.onlineTimeSelect == 1'>
+                                <input type='number' ng-enter='initSearch()' ng-model='additionalParams.onlineTimeEnter'
+                                    localized-placeholder='00:00' class='form-control'>
+                            </div>
+                            <div class='col-sm-1  margin-bottom' ng-if='additionalParams.onlineTimeSelect == 1'>
+                                <span localized>form.devices.selection.online.status.label</span>
+                            </div>
+                            <div class='col-sm-2  margin-bottom' ng-if='additionalParams.onlineTimeSelect != 1'>&nbsp;
+                            </div>
+
+                            <div class='col-sm-2  margin-bottom'>
+                                <select class='form-control' id="mdmMode" ng-model='additionalParams.mdmMode'>
+                                    <option value="" localized>form.settings.common.mdm.mode</option>
+                                    <option value="1" localized>form.selection.status.yes</option>
+                                    <option value="0" localized>form.selection.status.no</option>
+                                </select>
+                            </div>
+
+                            <div class='col-sm-3  margin-bottom'>
+                                <select class='form-control' id="kioskMode" ng-model='additionalParams.kioskMode'>
+                                    <option value="" localized>form.settings.common.kiosk.mode</option>
+                                    <option value="1" localized>form.selection.status.yes</option>
+                                    <option value="0" localized>form.selection.status.no</option>
+                                </select>
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-sm-12">
+
+                        <div class="form-group" ng-if="additionalParams.enabled">
+
+                            <div class='col-sm-3  margin-bottom'>
+                                <input type='text' ng-enter='initSearch()' ng-model='additionalParams.androidVersion'
+                                    localized-placeholder='form.settings.common.android.version' class='form-control'>
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <div class='col-sm-3 margin-bottom'>
+                                    <input type='text' ng-model='searchParams.searchValue' ng-enter='initSearch()'
+                                        localized-placeholder='search.placeholder.device' class='form-control'>
+                                </div>
+
+                                <div class="col-sm-3 text-center">
+
+                                    <input type="checkbox" ng-model='searchParams.fastSearch'>
+                                    <span localized>form.devices.fast.search</span>
+                                </div>
+
+
+                                <div class="col-sm-2">
+                                    <button type='button' class="btn btn-secondary" ng-click='initSearch()'
+                                        localized>button.search</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+
+                <!--#endregion</h1> -->
             </div>
         </div>
     </form>

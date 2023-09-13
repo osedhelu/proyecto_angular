@@ -94,15 +94,15 @@
                 <!-- #region  formulario de parametros</h1> -->
                 <div class="row">
                     <div class="form-group col">
-                        <label attr.for="enrollment"> <span
-                                localized>form.settings.common.enrollment.date</span></label>
+                        <label attr.for="enrollment"> <span localized>form.settings.common.enrollment.date</span>
+                            de</label>
                         <div class="input-group">
                             <input class='form-control' id="enrollment" datepicker-popup='{{dateFormat}}'
                                 localized-placeholder="search.placeholder.from" ng-enter='initSearch()'
                                 ng-model='additionalParams.dateFrom' is-open='openDatePickers.dateFrom'
                                 show-button-bar='false' datepicker-options='datePickerOptions' />
                             <div class="input-group-append">
-                                <span class="input-group-text " ng-click='openDateCalendar( $event, true )'>
+                                <span class="input-group-text pointer" ng-click='openDateCalendar( $event, true )'>
                                     <i class='glyphicon glyphicon-calendar'></i>
                                 </span>
                             </div>
@@ -110,17 +110,17 @@
                     </div>
 
                     <div class="form-group col">
-                        <label attr.for="enrollmentxxxx">Email address:</label>
-
-
-
+                        <label attr.for="enrollmentxxxx">
+                            <span localized>form.settings.common.enrollment.date</span>
+                            para
+                        </label>
                         <div class="input-group">
                             <input class='form-control' id="enrollmentxxxx" datepicker-popup='{{dateFormat}}'
                                 localized-placeholder="search.placeholder.to" ng-enter='initSearch()'
                                 ng-model='additionalParams.dateTo' is-open='openDatePickers.dateTo'
                                 show-button-bar='false' datepicker-options='datePickerOptions' />
                             <div class="input-group-append">
-                                <span class="input-group-text " ng-click='openDateCalendar( $event, false )'>
+                                <span class="input-group-text pointer" ng-click='openDateCalendar( $event, false )'>
                                     <i class='glyphicon glyphicon-calendar'></i>
                                 </span>
                             </div>
@@ -131,7 +131,33 @@
 
 
 
+
+                    <div class="form-check col">
+                        <div style="height: 2.2rem; width: 3rem;"></div>
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" type="checkbox" id="addParamsImeiChanged"
+                                ng-model='additionalParams.imeiChanged'>
+                            <span localized>form.devices.selection.imei.changed</span>
+                        </label>
+                    </div>
+
                 </div>
+                <div class="row">
+                    <div class="form-group col">
+                        <!-- <label attr.for="kweiufwieu">Estado de Instalacion:</label> -->
+                        <select class="form-control" id="kweiufwieu" ng-model='additionalParams.installationStatus'
+                            ng-options="opt.id as opt.name for opt in installStatusOptions">
+                            <option value="" localized>search.placeholder.launcher.version</option>
+                        </select>
+
+                    </div>
+                    <div class="form-group col">
+                        <label attr.for="kweiufwieu">Estado de Instalacion:</label>
+                        <input type='text' ng-enter='initSearch()' ng-model='additionalParams.launcherVersion'
+                            localized-placeholder='search.placeholder.launcher.version' class='form-control'>
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="form-group col" ng-if="additionalParams.enabled">
 
@@ -139,17 +165,9 @@
 
 
 
-                        <div class="col-sm-2  text-center  margin-bottom">
-                            <input type="checkbox" id="addParamsImeiChanged" ng-model='additionalParams.imeiChanged'>
-                            <span localized>form.devices.selection.imei.changed</span>
-                        </div>
 
-                        <div class="col-sm-3  margin-bottom">
-                            <select class='form-control' id="kweiufwieu" ng-model='additionalParams.installationStatus'
-                                ng-options="opt.id as opt.name for opt in installStatusOptions">
-                                <option value="" localized>form.devices.selection.install.status.default</option>
-                            </select>
-                        </div>
+
+
 
                         <div class="col-sm-3  text-right margin-bottom">
                             <input type='text' ng-enter='initSearch()' ng-model='additionalParams.launcherVersion'
@@ -191,7 +209,8 @@
                             <div class='col-sm-1  margin-bottom' ng-if='additionalParams.onlineTimeSelect == 1'>
                                 <span localized>form.devices.selection.online.status.label</span>
                             </div>
-                            <div class='col-sm-2  margin-bottom' ng-if='additionalParams.onlineTimeSelect != 1'>&nbsp;
+                            <div class='col-sm-2  margin-bottom' ng-if='additionalParams.onlineTimeSelect != 1'>
+                                &nbsp;
                             </div>
 
                             <div class='col-sm-2  margin-bottom'>

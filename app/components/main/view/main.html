@@ -1,13 +1,11 @@
-<!-- Localization completed -->
-
 <div ng-controller='HeaderController'>
     <div ng-if='isAuth() && !isHidden()' id="deoslv_sidebar"></div>
     </di>
 
-    <div class="container-fluid p-0 m-0">
+    <div class="container-fluid p-0 m-0" ng-if="isAuth()">
         <div class="row">
             <div ng-controller='HeaderController'>
-                <div ng-if='isAuth() && !isHidden()' id="deoslv_navbar"></div>
+                <div ng-if='!isHidden()' id="deoslv_navbar"></div>
             </div>
             <!-- <nav class="col-md-2 d-none d-md-block bg-light sidebar position-fixed">
             <div class="sidebar-sticky">
@@ -33,7 +31,7 @@
     </div>
 
 
-    <div id="wrapper">
+    <div id="wrapper" ng-if="isAuth()">
 
         <!-- Sidebar -->
         <div ng-controller='HeaderController'>
@@ -69,8 +67,8 @@
 
     </div>
 
-    <!--
+    <div ng-if='!isAuth() '>
+
+        <div ui-view></div>
+    </div>
 </div>
-<div >
-    <div ui-view></div>
-</div> -->
